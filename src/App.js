@@ -1,11 +1,18 @@
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import Login from './components//Login/Login'
 
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>greeting</h1>
-    </div>
+    <>
+      <h1>photoUpV4</h1>
+      <Router>
+        <Login />
+      </Router>
+    </>
   );
 }
 
