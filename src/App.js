@@ -10,6 +10,8 @@ import Home from './components/Home/Home'
 import Landing from './components/Landing/Landing'
 import './App.css';
 
+import { FirebaseContext } from './components/Firebase'
+
 const App = () => {
   return (
     <Router>
@@ -23,6 +25,13 @@ const App = () => {
       <Route path={ROUTES.HOME} component={Home} />
       <Route path={ROUTES.ACCOUNT} component={Account} />
       </div>
+      {/* <div>
+        <FirebaseContext.Consumer>
+          {firebase => {
+            return <div>hello firebase</div>
+          }}
+        </FirebaseContext.Consumer>
+      </div> */}
     </Router>
   );
 }
