@@ -19,8 +19,13 @@ import 'firebase/auth'
 // }
 
 export const doLogIn = (email, password) => {
-// auth.signInWithEmailAndPassword(email)
-    // console.log(email)
+    app.auth().signInWithEmailAndPassword(email, password)
+    .then((user) => {
+        alert(" signed in")
+    }).catch((error) => {
+        alert("denied")
+        console.log(error)
+    })
 }
 
 export const doRegister = (email, password) => {

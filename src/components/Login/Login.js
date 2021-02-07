@@ -11,8 +11,8 @@ const Login = () => {
         event.preventDefault()
         // doLogIn(email)
         
-        // console.log(email)
-        doLogIn(email)
+        console.log(email, password)
+        doLogIn(email, password)
         setEmail("")
     }
     return (
@@ -28,6 +28,15 @@ const Login = () => {
                 >
                 </input>
                 <div>{email}</div>
+                
+                <input
+                type="text"
+                value={password}
+                onChange={(event) => {
+                    setPassword(event.target.value)
+                }}
+                placeholder="password"
+                ></input>
                 <button>fire</button>
             </form>
         </div>
