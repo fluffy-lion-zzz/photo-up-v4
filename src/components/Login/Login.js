@@ -9,8 +9,7 @@ const Login = () => {
 
     const handleLogIn = (event) => {
         event.preventDefault()
-        // doLogIn(email)
-        
+
         console.log(email, password)
         doLogIn(email, password)
         setEmail("")

@@ -1,23 +1,6 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 
-// export const logIn = (email, password) => {
-//     console.log('LogIn - Email: '+email+', Password: '+ password);
-//         firebase
-//         .auth()
-//         .signInWithEmailAndPassword(email, password)
-//         .then((user) =>
-//         {
-//             alert('user signed in')
-            
-//             console.log(userSignedIn)
-//             show()
-//         }).catch((error) =>{
-//             alert("user not signed in")
-//             show()
-//         })
-// }
-
 export const doLogIn = (email, password) => {
     app.auth().signInWithEmailAndPassword(email, password)
     .then((user) => {
