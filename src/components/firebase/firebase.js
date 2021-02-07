@@ -1,4 +1,5 @@
 import app from 'firebase/app'
+import 'firebase/auth'
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -12,16 +13,10 @@ const config = {
 class Firebase {
         constructor() {
         app.initializeApp(config)
+
+        this.auth = app.auth()
     }
 }
 
 export default Firebase
 
-// const config = {
-//     apiKey: "AIzaSyBSPXFRnINbijBUR5Q4kZbkeuACRqHHErY",
-//     authDomain: "photoupv4.firebaseapp.com",
-//     projectID: "photoupv4",
-//     storageBucket: "photoupv4.appspot.com",
-//     messagingSenderId: "4914798488",
-//     appId: "1:4914798488:web:b3f7286a718fc1182215ed"
-// }
