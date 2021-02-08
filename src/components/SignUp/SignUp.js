@@ -8,6 +8,9 @@ const SignUp = () => {
 const [newEmail, setNewEmail] = useState("")
 const [newPassword, setNewPassword] = useState("")
 const [newPasswordTwo, setNewPasswordTwo] = useState("")
+
+const [newUser, setNewUser] = useState("")
+
 const [error, setError] = useState(null)
 
 const isInvalid = 
