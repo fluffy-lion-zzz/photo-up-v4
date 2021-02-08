@@ -32,16 +32,14 @@ export const doRegister = (email, password) => {
 //     }
 // }
 
-// const logout = () => {
-//     firebase.auth().signOut().then(() =>{
-//         alert('user signed out')
-//         userSignedIn = false
-//         console.log(userSignedIn)
-//         show()
-//     }).catch((error) => {
-//         alert('something went wrong')
-//     })
-// }
+export const doLogOut = () => {
+    app.auth().signOut().then(() =>{
+        alert('user signed out')
+    }).catch((error) => {
+        alert('something went wrong')
+        console.log(error)
+    })
+}
 
 // const updateProfile = () => {
 //     var user = firebase.auth().currentUser

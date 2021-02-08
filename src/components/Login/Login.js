@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
 
-import { doLogIn } from '../../services/userAccount'
+import { doLogIn, doLogOut } from '../../services/userAccount'
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -14,6 +14,10 @@ const Login = () => {
         doLogIn(email, password)
         setEmail("")
     }
+
+const Logout = () => {
+    doLogOut()
+}
     return (
         <div className="loginWrapper">
             <h1>login</h1>
@@ -38,6 +42,9 @@ const Login = () => {
                 ></input>
                 <button>fire</button>
             </form>
+            <div>
+                <button onClick={Logout}>log out</button>
+            </div>
         </div>
     )
 }
