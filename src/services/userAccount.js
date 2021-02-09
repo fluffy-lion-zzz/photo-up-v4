@@ -18,19 +18,20 @@ export const doRegister = (email, password) => {
     .then((user) =>
     {
         alert('user account created')
+        return true
     }).catch((error) => {
         alert("user cannot be created")
         console.log(error)
     })
 }
-// const getProfileData = () => {
-//     let user = firebase.auth().currentUser;
-//     if(user != null){
-//         console.log(' user = ', user)
-//     } else {
-//         alert("there is not authenticated user")
-//     }
-// }
+export const getProfileData = () => {
+    let user = app.auth().currentUser();
+    if(user != null){
+        console.log(' user = ', user)
+    } else {
+        alert("there is not authenticated user")
+    }
+}
 
 export const doLogOut = () => {
     app.auth().signOut().then(() =>{
