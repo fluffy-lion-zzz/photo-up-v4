@@ -14,7 +14,7 @@ const SignUp = () => {
         <div className="signUpWrapper">
             <h1>sign up</h1>
             <FirebaseContext.Consumer>{firebase =>
-                <SignUpForm />
+                <SignUpForm  firebase={firebase} />
                  }
             </FirebaseContext.Consumer> 
             {/* {registerResult ?

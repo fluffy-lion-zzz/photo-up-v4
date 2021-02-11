@@ -1,6 +1,9 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 
+import { Link, withRouter } from 'react-router-dom'
+import * as ROUTES from './routes'
+
 export const doLogIn = (email, password) => {
     app.auth().signInWithEmailAndPassword(email, password)
     .then((user) => {
@@ -18,12 +21,16 @@ export const doRegister = (email, password) => {
     .then((user) =>
     {
         alert('user account created')
+        // this.history.push(ROUTES.HOME)
         return true
+        
     }).catch((error) => {
         alert("user cannot be created")
         console.log(error)
     })
 }
+// export const SignUpForm = withRouter(doRegister)
+
 export const getProfileData = () => {
     let user = app.auth().currentUser();
     if(user != null){

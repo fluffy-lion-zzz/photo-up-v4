@@ -1,6 +1,7 @@
 import React , { useState } from 'react'
 import './SignUp.css'
 import { doRegister } from '../../services/userAccount'
+import { Redirect, Route } from 'react-router-dom'
 
 const SignUpForm = () => {
 
@@ -23,7 +24,7 @@ const SignUpForm = () => {
         console.log(newEmail, newPassword)
         doRegister(newEmail, newPassword)
         let registerResult = doRegister
-        registerResult !== null ? console.log("rr return true") : console.log("rr no return")
+        registerResult !== null ? <Redirect to="/home"/> : <Redirect to="/account" />
     }
         return (
                 <form onSubmit={handleSignUp}>
