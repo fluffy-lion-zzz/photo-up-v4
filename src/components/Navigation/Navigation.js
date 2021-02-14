@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom'
 
 import * as ROUTES from '../../services/routes'
 
+// const NavAuthTest = ({ authUser }) => (
+//     <div>{authUser ? <p>signed in</p> : <p>not signed in</p>} </div>
+// )
 
 const Navigation = () => {
     return (
     <div>
+        {/* <NavAuthTest /> */}
         <ul>
             <li>
                 <Link to={ROUTES.HOME}>home</Link>

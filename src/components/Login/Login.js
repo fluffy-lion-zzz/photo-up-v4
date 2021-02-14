@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
-
+// import {AuthContext} from '../../services/AuthContext'
 import { doLogIn, doLogOut } from '../../services/userAccount'
 import * as ROUTES from '../../services/routes'
 
@@ -20,6 +20,9 @@ const Login = () => {
 const Logout = () => {
     doLogOut()
 }
+
+    // const authValue = useContext(AuthContext)
+    // console.log(authValue)
     return (
         <div className="loginWrapper">
             <h1>login</h1>
