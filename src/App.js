@@ -9,29 +9,18 @@ import SignUp from './components/SignUp/SignUp'
 import Home from './components/Home/Home'
 import Landing from './components/Landing/Landing'
 import './App.css';
-// import {auth} from 'firebase/firebase-auth'
-import { FirebaseContext } from './components/Firebase'
-// import { useAuth } from './services/AuthContext'
+
 import AuthStatus from './services/UserStatus'
 import { doSignOut } from './services/AuthContext'
 
-// import UserProvider from './services/AuthContext'
-// import UseProvider from './services/AuthContext'
 const App = () => {
 
-  // const { initializing, user } = useAuth()
-  // if (initializing){
-  //   return <div> loading </div>
-  // }
 
 
   return (
     <Router>
 
-      {/* <UseProvider> */}
-      {/* <userContext.Provider value={{ user }}>
-        <p>tester</p>
-      </userContext.Provider> */}
+
       <div>
       <Navigation />
       <h1>photoUpV4</h1>
@@ -44,14 +33,7 @@ const App = () => {
       <Route path={ROUTES.HOME} component={Home} />
       <Route path={ROUTES.ACCOUNT} component={Account} />
       </div>
-      {/* <div>
-        <FirebaseContext.Consumer>
-          {firebase => {
-            return <div>hello firebase</div>
-          }}
-        </FirebaseContext.Consumer>
-      </div> */}
-      {/* </UseProvider> */}
+
     </Router>
   );
 }
