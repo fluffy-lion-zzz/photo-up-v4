@@ -4,7 +4,7 @@ import { doRegister } from '../../services/userAccount'
 import { Redirect, Route } from 'react-router-dom'
 
 const SignUpForm = () => {
-
+    
     const [newEmail, setNewEmail] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [newPasswordTwo, setNewPasswordTwo] = useState("")
@@ -24,7 +24,8 @@ const SignUpForm = () => {
         console.log(newEmail, newPassword)
         doRegister(newEmail, newPassword)
         let registerResult = doRegister
-        registerResult !== null ? <Redirect to="/home"/> : <Redirect to="/account" />
+        // registerResult !== null ? <Redirect to="/home"/> : <Redirect to="/account" />
+       
     }
         return (
                 <form onSubmit={handleSignUp}>
