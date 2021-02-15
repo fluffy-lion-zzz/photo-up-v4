@@ -1,33 +1,32 @@
-import React, { useState, createContext, useEffect } from 'react'
-import { onAuthStateChange, doSignOut } from './AuthContext'
+// import React, { useContext, useState, createContext, useEffect } from 'react'
+// import { onAuthStateChange, AuthContext, doSignOut } from './AuthContext'
 
-import Logout from '../components/Logout/Logout'
+// import Logout from '../components/Logout/Logout'
+//     const defaultUser = { loggedIn: false, email: ""}
+//     const UserContext = createContext(AuthContext)
+//     const UserProvider = UserContext.Provider
+//     const UserConsumer = UserContext.Consumer
 
-const AuthStatus = () => {
-    const [user, setUser] = useState({loggedIn: false})
+// const AuthStatus = () => {
+//     const [user, setUser] = useState({loggedIn: false})
 
-    const defaultUser = { loggedIn: false, email: ""}
-    const UserContext = createContext(defaultUser)
-    const UserProvider = UserContext.Provider
-    const UserConsumer = UserContext.Consumer
+//     useEffect(() => {
+//         const unsubscribe = onAuthStateChange(setUser)
+//         return () => {
+//             unsubscribe()
+//         }
+//     }, [])
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChange(setUser)
-        return () => {
-            unsubscribe()
-        }
-    }, [])
+//     if(!user.loggedIn){
+//         return <span>user is logged out</span>
+//     }
 
-    if(!user.loggedIn){
-        return <span>user is logged out</span>
-    }
+//     return (
+//         <UserProvider value={user}>
+//             <Logout onClick={doSignOut} />
 
-    return (
-        <UserProvider value={user}>
-            <Logout user={user} />
+//         </UserProvider>
+//     )
+// }
 
-        </UserProvider>
-    )
-}
-
-export default AuthStatus
+// export default AuthStatus

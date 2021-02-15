@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useContext, createContext } from 'react'
+import AuthStatus from '../../services/UserStatus'
 // import app from 'firebase/app'
 // import 'firebase/auth'
-import { doSignOut } from '../../services/AuthContext'
+// const UserContext = createContext({})
+// const UserConsumer = UserContext.Consumer
+// import {AuthContext} from '../../services/AuthContext'
 
-const Logout = ({ user }) => {
+
+const Logout = (props) => {
+    // const value = useContext(AuthContext)
+    // console.log(value)
     return(
         <div>
-            <p>logout</p>
-            <p>{user.email}</p>
-            <button onClick={doSignOut}>logout</button>
+            <h3>logout</h3>
+            <p></p>
+            {/* <UserConsumer > */}
+            {/* <p>logout</p>
+            <p>{user}</p>
+            <button onClick={onClick}>logout</button> */}
+            {/* <p>{user}</p> */}
+
+            {/* </UserConsumer> */}
         </div>
     )
 }
