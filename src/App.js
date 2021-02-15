@@ -1,4 +1,4 @@
-import React, { useEffect, useState, userContext } from 'react'
+import React, { useEffect, useState, createContext } from 'react'
 import { BrowserRouter as Router, Route, } from 'react-router-dom'
 
 import Navigation from './components/Navigation/Navigation'
@@ -11,7 +11,7 @@ import Landing from './components/Landing/Landing'
 import './App.css';
 
 import AuthStatus from './services/UserStatus'
-import { doSignOut } from './services/AuthContext'
+
 
 const App = () => {
 
@@ -25,7 +25,7 @@ const App = () => {
       <Navigation />
       <h1>photoUpV4</h1>
       <AuthStatus />
-      <button onClick={doSignOut}>sign out</button>
+      {/* <button onClick={doSignOut}>sign out</button> */}
       <Route exact path={ROUTES.LANDING} componet={Landing}/>
         
       <Route path={ROUTES.LOG_IN} component={Login}/>

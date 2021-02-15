@@ -9,9 +9,9 @@ import 'firebase/auth'
 export const onAuthStateChange = (callback) => {
     return app.auth().onAuthStateChanged(user => {
         if(user) {
-            callback({loggedIn: true})
+            callback({ loggedIn: true, email: user.email })
         } else {
-            callback({loggedIn: false})
+            callback({ loggedIn: false })
         }
     })
 }

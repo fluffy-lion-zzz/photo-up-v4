@@ -6,8 +6,7 @@ import SomeComponent from '../SomeComponent'
 
 const Home = () => {
 
-    // const authValue = useContext(AuthContext)
-    // console.log(authValue)
+// console.log(user)
     return (
         <div className="homeWrapper">
             <h1>home</h1>
