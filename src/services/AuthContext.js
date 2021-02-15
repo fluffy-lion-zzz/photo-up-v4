@@ -1,11 +1,13 @@
 // import React, { createContext, useContext, useState, useEffect } from 'react'
 import React, { useState, createContext, useEffect } from 'react'
 
-import app from '../components/Firebase'
-import firebase from 'firebase'
+import app from 'firebase/app'
+import 'firebase/auth'
+
+// import firebase from '../components/Firebase'
 
 export const onAuthStateChange = (callback) => {
-    return firebase.auth().onAuthStateChanged(user => {
+    return app.auth().onAuthStateChanged(user => {
         if(user) {
             callback({loggedIn: true})
         } else {
@@ -15,5 +17,5 @@ export const onAuthStateChange = (callback) => {
 }
 
 
-export const doSignOut = () => firebase.auth().signOut()
+export const doSignOut = () => app.auth().signOut()
 
