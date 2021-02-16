@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './SignUp.css'
 import { FirebaseContext } from '../Firebase'
 // import { Link, withRouter } from 'react-router-dom'

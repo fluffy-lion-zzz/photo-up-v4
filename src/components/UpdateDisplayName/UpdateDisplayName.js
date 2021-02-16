@@ -10,10 +10,9 @@ const UpdateDisplayName = ({ flip, setFirebaseDisplayName }) => {
    
    
     const isInvalid = 
-        inputDisplayName == "" ||
+        inputDisplayName === "" ||
         inputDisplayName.length > 19 
        
-    
     const updateName = (event) => {
         //why PD is needed?
         event.preventDefault()

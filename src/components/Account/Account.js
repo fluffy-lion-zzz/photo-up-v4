@@ -11,29 +11,25 @@ const Account = () => {
     const [show, setShow] = useState(true)
 const profile = getProfileData()
 
-const user = app.auth().currentUser
+
 
 const flip = () => {
-    if(show == false){
+    if(show === false){
         setShow(true)
     }else {
         setShow(false)
     }
-    if(update == true){
+    if(update === true){
         setUpdate(false)
     }else{
         setUpdate(true)
-    }
-    
+    } 
 }
 useEffect(() => {
-    if(user.displayName == null){
-      
-        
+    const user = app.auth().currentUser
+    if(user.displayName === null){
         setFirebaseDisplayName("no display name...bit boring")
     }
-
-    // return Account
 }, [firebaseDisplayName])
 
     return (
@@ -49,7 +45,7 @@ useEffect(() => {
                     >update display name?</button>
                     : <></>
             }
-            {update == false ? <p>not updating</p>
+            {update === false ? <p>not updating</p>
             : 
             
             <UpdateDisplayName flip={flip} setFirebaseDisplayName={setFirebaseDisplayName}/>

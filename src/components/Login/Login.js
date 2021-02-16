@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
 // import {AuthContext} from '../../services/AuthContext'
 import app from 'firebase/app'
 import 'firebase/auth'
-import { doLogIn, doLogOut } from '../../services/userAccount'
+// import { doLogIn, doLogOut } from '../../services/userAccount'
 import * as ROUTES from '../../services/routes'
 
 
