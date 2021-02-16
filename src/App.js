@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Navigation from './components/Navigation/Navigation'
@@ -27,7 +27,7 @@ const onAuthStateChange = (callback) => {
 
 const App = () => {
   const [user, setUser] = useState({loggedIn: false})
-  console.log(user)
+  // console.log(user)
   useEffect(() => {
       const unsubscribe = onAuthStateChange(setUser)
       return () => {

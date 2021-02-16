@@ -19,9 +19,10 @@ export const doRegister = (email, password) => {
 }
 
 export const getProfileData = () => {
-    let user = app.auth().currentUser();
+    let user = app.auth().currentUser;
     if(user != null){
         console.log(' user = ', user)
+        return user
     } else {
         alert("there is not authenticated user")
     }

@@ -1,7 +1,7 @@
 import React , { useState } from 'react'
 import './SignUp.css'
 import { doRegister } from '../../services/userAccount'
-import { Redirect, Route } from 'react-router-dom'
+// import { Redirect, Route } from 'react-router-dom'
 
 const SignUpForm = () => {
     
@@ -11,7 +11,7 @@ const SignUpForm = () => {
 
     const [newUser, setNewUser] = useState("")
 
-    const [error, setError] = useState(null)
+    // const [error, setError] = useState(null)
 
     const isInvalid = 
         newPassword !== newPasswordTwo ||
@@ -23,7 +23,7 @@ const SignUpForm = () => {
         event.preventDefault()
         console.log(newEmail, newPassword)
         doRegister(newEmail, newPassword)
-        let registerResult = doRegister
+        // let registerResult = doRegister
         // registerResult !== null ? <Redirect to="/home"/> : <Redirect to="/account" />
        
     }
