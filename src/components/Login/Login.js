@@ -2,30 +2,41 @@ import React, { useState, useContext } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
 // import {AuthContext} from '../../services/AuthContext'
+import app from 'firebase/app'
+import 'firebase/auth'
 import { doLogIn, doLogOut } from '../../services/userAccount'
 import * as ROUTES from '../../services/routes'
 
-const Login = () => {
+
+
+const Login = (props) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
 
     const handleLogIn = (event) => {
         event.preventDefault()
 
-        console.log(email, password)
-        doLogIn(email, password)
+        app.auth().signInWithEmailAndPassword(email, password)
+        .then((user) => {
+            console.log(user)
+            
+    
+        }).catch((error) => {
+            // alert("denied")
+            console.log(error)
+        })
         setEmail("")
     }
 
-const Logout = () => {
-    doLogOut()
-}
-
-    // const authValue = useContext(AuthContext)
-    // console.log(authValue)
     return (
+        // <UserConsumer>
         <div className="loginWrapper">
+
             <h1>login</h1>
+            
+            {/* {props.value.user.email} */}
+            
             <form onSubmit={handleLogIn}>
                 <input 
                 type="text"
@@ -47,13 +58,14 @@ const Logout = () => {
                 ></input>
                 <button>fire</button>
             </form>
-            <div>
+            {/* <div>
                 <button onClick={Logout}>log out</button>
-            </div>
+            </div> */}
             <div>
                 <p>member of the team but not signed up yet? <Link to={ROUTES.SIGN_UP}>sign up</Link></p>
             </div>
         </div>
+        // </UserConsumer>
     )
 }
 

@@ -1,18 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 
-import { Link, useHistory, withRouter } from 'react-router-dom'
-import * as ROUTES from './routes'
 
-export const doLogIn = (email, password) => {
-    app.auth().signInWithEmailAndPassword(email, password)
-    .then((user) => {
-        // alert(" signed in")
-    }).catch((error) => {
-        // alert("denied")
-        console.log(error)
-    })
-}
 
 export const doRegister = (email, password) => {
     
@@ -22,7 +11,7 @@ export const doRegister = (email, password) => {
     .then((user) =>
     {
         alert('user account created')
-        
+        console.log(user)
         // return true
         
     }).catch((error) => {
@@ -43,7 +32,7 @@ export const getProfileData = () => {
 
 export const doLogOut = () => {
     app.auth().signOut().then(() =>{
-        alert('user signed out')
+        console.log('user signed out')
     }).catch((error) => {
         alert('something went wrong')
         console.log(error)

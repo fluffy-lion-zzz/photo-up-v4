@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { AuthContext } from './AuthContext'
+import UserContext  from './AuthContext'
 
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-    const { currentUser } = useContext(AuthContext)
-    
+    const user = useContext(UserContext)
+    console.log(user)
     return (
         <Route
         {...rest}
         render={routeProps => 
-            !!currentUser ? (
+            !user ? (
                 <RouteComponent {...routeProps} />
         ) : (
             <Redirect to={'/login'} />
