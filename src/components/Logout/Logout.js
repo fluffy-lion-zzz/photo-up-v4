@@ -1,7 +1,6 @@
-import React, { useContext, createContext } from 'react'
+import React, { useContext } from 'react'
 import { doLogOut } from '../../services/userAccount'
 import UserContext from '../../services/AuthContext'
-
 
 const Logout = () => {
     const user = useContext(UserContext)

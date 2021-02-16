@@ -1,8 +1,6 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 
-
-
 export const doRegister = (email, password) => {
     
     console.log('Register - Email: '+email+ ' ' + password);
@@ -19,7 +17,6 @@ export const doRegister = (email, password) => {
         console.log(error)
     })
 }
-// export const SignUpForm = withRouter(doRegister)
 
 export const getProfileData = () => {
     let user = app.auth().currentUser();
@@ -34,7 +31,6 @@ export const doLogOut = () => {
     app.auth().signOut().then(() =>{
         console.log('user signed out')
     }).catch((error) => {
-        alert('something went wrong')
         console.log(error)
     })
 }
