@@ -2,19 +2,26 @@ import React, { useState } from 'react'
 import app from 'firebase'
 
 import 'firebase/auth'
+
+
 const UpdateDisplayName = ({ flip }) => {
-    
-    const [displayName, setDisplayName] = useState("")
+    const user = app.auth().currentUser
+    const [inputDisplayName, setInputDisplayName] = useState("")
    
    
     const isInvalid = 
-        displayName == "" ||
-        displayName.length > 19 
+        inputDisplayName == "" ||
+        inputDisplayName.length > 19 
        
     
-    const updateName = () => {
-        const user = app.auth().currentUser
+    const updateName = (event) => {
+        //why PD is needed?
+        event.preventDefault()
         console.log(user)
+        user.updateProfile({
+            displayName: inputDisplayName
+        })
+        flip()
     }
     return (
         <>
@@ -22,14 +29,14 @@ const UpdateDisplayName = ({ flip }) => {
             <form onSubmit={updateName}>
                 <input 
                 placeholder="new display name"
-                value={displayName}
+                value={inputDisplayName}
                 type="text"
                 onChange={(event) => {
-                    setDisplayName(event.target.value)
+                    setInputDisplayName(event.target.value)
                 }}
                 ></input>
-                <h3> your new display name will be <b>{displayName}</b></h3>
-                <button onClick={flip} disabled={isInvalid}>submit</button>
+                <h3> your new display name will be <b>{inputDisplayName}</b></h3>
+                <button type="submit" disabled={isInvalid}>submit</button>
             </form>
             
         </>

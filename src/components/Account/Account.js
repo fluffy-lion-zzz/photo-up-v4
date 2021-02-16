@@ -31,8 +31,12 @@ useEffect(() => {
       
         
         setFirebaseDisplayName("no display name...bit boring")
+    }else{
+        setFirebaseDisplayName(user.displayName)
     }
-}, [])
+
+    // return Account
+})
 
     return (
         <div className="accountWrapper">
