@@ -31,12 +31,10 @@ useEffect(() => {
       
         
         setFirebaseDisplayName("no display name...bit boring")
-    }else{
-        setFirebaseDisplayName(user.displayName)
     }
 
     // return Account
-})
+}, [firebaseDisplayName])
 
     return (
         <div className="accountWrapper">
@@ -54,7 +52,7 @@ useEffect(() => {
             {update == false ? <p>not updating</p>
             : 
             
-            <UpdateDisplayName flip={flip} setUpdate={setUpdate}/>
+            <UpdateDisplayName flip={flip} setFirebaseDisplayName={setFirebaseDisplayName}/>
             }
         </div>
     )

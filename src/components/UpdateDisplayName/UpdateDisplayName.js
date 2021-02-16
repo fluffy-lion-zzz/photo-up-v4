@@ -4,7 +4,7 @@ import app from 'firebase'
 import 'firebase/auth'
 
 
-const UpdateDisplayName = ({ flip }) => {
+const UpdateDisplayName = ({ flip, setFirebaseDisplayName }) => {
     const user = app.auth().currentUser
     const [inputDisplayName, setInputDisplayName] = useState("")
    
@@ -22,6 +22,7 @@ const UpdateDisplayName = ({ flip }) => {
             displayName: inputDisplayName
         })
         flip()
+        setFirebaseDisplayName(inputDisplayName)
     }
     return (
         <>
