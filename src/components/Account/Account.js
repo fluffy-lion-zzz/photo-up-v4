@@ -9,17 +9,14 @@ const Account = () => {
     const [firebaseDisplayName, setFirebaseDisplayName] = useState("")
     const [update, setUpdate] = useState(false)
     const [show, setShow] = useState(true)
-    
+
     const profile = getProfileData()
 
     let user = app.auth().currentUser
 
 const flip = () => {
-
     !show ? setShow(true) : setShow(false)
-
     update ? setUpdate(false) : setUpdate (true)
-
 }
 useEffect(() => {
     user = app.auth().currentUser
