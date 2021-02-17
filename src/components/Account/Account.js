@@ -9,28 +9,26 @@ const Account = () => {
     const [firebaseDisplayName, setFirebaseDisplayName] = useState("")
     const [update, setUpdate] = useState(false)
     const [show, setShow] = useState(true)
-const profile = getProfileData()
+    
+    const profile = getProfileData()
 
-
+    let user = app.auth().currentUser
 
 const flip = () => {
-    if(show === false){
-        setShow(true)
-    }else {
-        setShow(false)
-    }
-    if(update === true){
-        setUpdate(false)
-    }else{
-        setUpdate(true)
-    } 
+
+    !show ? setShow(true) : setShow(false)
+
+    update ? setUpdate(false) : setUpdate (true)
+
 }
 useEffect(() => {
-    const user = app.auth().currentUser
+    user = app.auth().currentUser
     if(user.displayName === null){
         setFirebaseDisplayName("no display name...bit boring")
     }
-}, [firebaseDisplayName])
+    
+    setFirebaseDisplayName(user.displayName)
+}, [])
 
     return (
         <div className="accountWrapper">
