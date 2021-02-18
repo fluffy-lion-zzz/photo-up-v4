@@ -19,8 +19,7 @@ const ViewPhotos = () => {
                 })
                 
             })
-        })
-        
+        })   
     }
 
     const ListDisplay = ({ url }) => {
