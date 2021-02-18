@@ -4,10 +4,18 @@ import app from 'firebase/app'
 import "firebase/storage"
 // import { useState } from 'react'
 import './ViewPhotos.css'
+import Loading from '../Loading/Loading'
 
 const ViewPhotos = () => {
     const [imgData, setImgData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [folder, setFolder] = useState("")
 
+    // const viewFolder = () => {
+    //     const storage = app.storage()
+    //     const storageRef = storage.ref().listAll()
+    //     console.log(storageRef)
+    // }
     let getData = () => {
         const storage = app.storage()
         const storageRef = storage.ref('test/')
@@ -20,27 +28,38 @@ const ViewPhotos = () => {
                         setImgData(imgData => [...imgData, url])
                 })
             })
-        })   
+            setLoading(false)
+        }) 
+        
+        
     }
     console.log(imgData)
     const ListDisplay = ({ url }) => {
         return (
-            <div className="listDisplayWrapper">
+            <div className="imgWrapper">
                 <img src={url}/>
             </div>
         )
     }
     useEffect(() => {
             getData()
+            
     },[])
 
         return(
             <div id="viewPhotos">
                 <h3>view photos component</h3>
-                <div>
-                {imgData.map(url => {
-                    return <ListDisplay url={url} />
-                })}
+                <div className="imagesContainer">
+                    {loading ? 
+                    <Loading />
+                    : (
+                    imgData.map(url => {
+                        return <ListDisplay url={url} />
+                    })
+                    )
+                    }
+                    
+                
                 </div>
             </div>
         )
