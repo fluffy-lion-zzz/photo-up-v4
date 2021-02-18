@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import app from 'firebase/app'
 import "firebase/storage"
@@ -6,31 +6,44 @@ import "firebase/storage"
 import './ViewPhotos.css'
 
 const ViewPhotos = () => {
-const [imageUrl, setImageUrl] = useState("")
-const [collected, setCollected] = useState("")
+    const [imgData, setImgData] = useState([])
 
-const tester = () => {
-    app.storage().ref('prelude.jpg').getDownloadURL().then((url) => {
-        setImageUrl(url)
-    })
-}
-const lister = () => {
-    console.log(app.storage().ref('test/').listAll())
-    
-}
-    return(
-        <div id="viewPhotos">
-            <h3>view photos component</h3>
-            <div id="individualImgWrapper">
-                <img id="individualImg" src={imageUrl} />
-            </div>
-            <div>
+    let getData = () => {
+        const storage = app.storage()
+        const storageRef = storage.ref('test/')
+        const newImg = storageRef.list()
+        newImg.then((res) => {
+            res.items.map((item)=> {
+                item.getDownloadURL().then((url) => {
+                    setImgData([...imgData, url])
+                })
                 
+            })
+        })
+        
+    }
+
+    const ListDisplay = ({ url }) => {
+        return (
+            <div>
+                <img src={url}/>
             </div>
-            <button onClick={tester}>test</button>
-            <button onClick={lister}>lister</button>
-        </div>
-    )
+        )
+    }
+    useEffect(() => {
+            getData()
+    },[])
+
+        return(
+            <div id="viewPhotos">
+                <h3>view photos component</h3>
+                <div>
+                {imgData.map(url => {
+                    return <ListDisplay url={url} />
+                })}
+                </div>
+            </div>
+        )
 }
 
 export default ViewPhotos
