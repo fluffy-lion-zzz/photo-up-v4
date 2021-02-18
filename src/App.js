@@ -40,12 +40,8 @@ const App = () => {
       
 {/* <AuthProvider> */}
 <UserProvider value={user}>
-    <Router>
-      
-        <p>auth provider</p>
-        
-      
-
+    <Router> 
+      <p>auth provider</p>
       <div>
         {user.loggedIn  ? <Logout /> : <></>}
         

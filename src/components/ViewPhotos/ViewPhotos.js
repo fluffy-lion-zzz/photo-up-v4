@@ -15,16 +15,17 @@ const ViewPhotos = () => {
         newImg.then((res) => {
             res.items.map((item)=> {
                 item.getDownloadURL().then((url) => {
-                    setImgData([...imgData, url])
+                    imgData.includes(url) ?
+                        console.log('url already there') :
+                        setImgData(imgData => [...imgData, url])
                 })
-                
             })
         })   
     }
-
+    console.log(imgData)
     const ListDisplay = ({ url }) => {
         return (
-            <div>
+            <div className="listDisplayWrapper">
                 <img src={url}/>
             </div>
         )

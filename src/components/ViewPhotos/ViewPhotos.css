@@ -15,3 +15,11 @@
 #individualImg{
     width: 100%;
 }
+
+.listDisplayWrapper{
+    width: 90vw;
+}
+
+.listDisplayWrapper img {
+    width: 100%;
+}
