@@ -9,16 +9,24 @@ import Loading from '../Loading/Loading'
 const ViewPhotos = () => {
     const [imgData, setImgData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [folder, setFolder] = useState("")
+    const [folder, setFolder] = useState([])
+    const [folderSelect, setFolderSelect] = useState("")
 
-    // const viewFolder = () => {
-    //     const storage = app.storage()
-    //     const storageRef = storage.ref().listAll()
-    //     console.log(storageRef)
-    // }
-    let getData = () => {
+    const viewFolder = () => {
         const storage = app.storage()
-        const storageRef = storage.ref('test/')
+        const storageRef = storage.ref()
+        storageRef.list().then(res => {
+            res.prefixes.map((prefixes) => {
+                folder.includes(prefixes.name) ?
+                console.log("folder name alread included") :
+                setFolder(folder => [...folder, prefixes.name])
+            })
+        })
+    }
+    let getData = () => {
+        setImgData([])
+        const storage = app.storage()
+        const storageRef = storage.ref(folderSelect +'/')
         const newImg = storageRef.list()
         newImg.then((res) => {
             res.items.map((item)=> {
@@ -33,7 +41,6 @@ const ViewPhotos = () => {
         
         
     }
-    console.log(imgData)
     const ListDisplay = ({ url }) => {
         return (
             <div className="imgWrapper">
@@ -41,15 +48,39 @@ const ViewPhotos = () => {
             </div>
         )
     }
+    const folderHandler = (event) => {
+        let selected = event.target.value
+        setFolderSelect(selected)
+        console.log(selected)
+    }
+    const SelectFolder = () => {
+        return (
+            <div>
+                <form>
+                    <label for="selectAFolder">select a folder</label>
+                    <select name="selectAFolder" onChange={folderHandler} >
+                        {folder.map((folderName) => {
+                            return <option value={folderName}>{folderName}</option>
+                        })}
+                    </select>
+                </form>
+            </div>
+        )
+    }
+    
     useEffect(() => {
             getData()
+            viewFolder()
+            // console.log(folderSelect)
             
-    },[])
+    },[folderSelect])
 
         return(
             <div id="viewPhotos">
                 <h3>view photos component</h3>
+                <SelectFolder />
                 <div className="imagesContainer">
+                    
                     {loading ? 
                     <Loading />
                     : (
