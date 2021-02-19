@@ -5,6 +5,7 @@ import SomeComponent from '../SomeComponent'
 // import {AuthContext} from '../../services/AuthContext'
 import UserContext from '../../services/AuthContext'
 import ViewPhotos from '../ViewPhotos/ViewPhotos'
+import Uploader from '../Uploader/Uploader'
 const Home = () => {
 const user = useContext(UserContext)
 // console.log(user)
@@ -17,7 +18,7 @@ const user = useContext(UserContext)
            {/* {authValue.user == null ? <p>not logged</p> :
            <p>user logged in</p>} */}
             </div>
-            <ViewPhotos />
+            <Uploader />
         </div>
     )
 }

@@ -18,7 +18,7 @@ const ViewPhotos = () => {
         storageRef.list().then(res => {
             res.prefixes.map((prefixes) => {
                 folder.includes(prefixes.name) ?
-                console.log("folder name alread included") :
+                console.log("folder name already included") :
                 setFolder(folder => [...folder, prefixes.name])
             })
         })
@@ -58,11 +58,8 @@ const ViewPhotos = () => {
             <div>
                 <form>
                     <label for="selectAFolder">select a folder</label>
-                    <select name="selectAFolder" onChange={folderHandler} >
-                        {folder.map((folderName) => {
-                            return <option value={folderName}>{folderName}</option>
-                        })}
-                    </select>
+                    <select name="selectAFolder">{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
+
                 </form>
             </div>
         )
