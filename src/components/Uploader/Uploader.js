@@ -13,15 +13,17 @@ const Uploader = () => {
     const [option, setOption] = useState(false)
     const [imageName, setImageName] = useState("")
 
+    const [imageFile, setImageFile] = useState("")
+
     const isInvalid = 
         newFolder === String ||
         newFolder === "" 
 
-    const [imageFile, setImageFile] = useState({
-        image: null,
-        url: "",
-        progress: 0 
-    })
+    // const [imageFile, setImageFile] = useState({
+    //     image: null,
+    //     url: "",
+    //     progress: 0 
+    // })
     const newFolderHandler = (event) => {
         event.preventDefault()
         storageRef.child(newFolder)
@@ -40,14 +42,17 @@ const Uploader = () => {
     const handleUpload = () => {
         const uploadTask = storageRef(`${folderSelect}/`)
     }
-    const handleImageFile = () => {
-        
+    const handleImageFile = (event) => {
+        // event.preventDefault()
+        const image = event.target.files[0]
+        setImageFile(imageFile => (image))
+        // console.log(image)
     }
     useEffect(() => {
         getFolders()
         
     },[])
-    console.log(folder)
+    console.log("imageFile;" , imageFile)
     return (
         <div className="uploaderWrapper">
             <form onSubmit={newFolderHandler}>
@@ -68,16 +73,24 @@ const Uploader = () => {
                     setImageName(event.target.value)
                 }}>
                 </input>
-                <label for="file">choose image to upload</label>
-                <input
-                name="file"
-                type="file"
-                accept="image/*"
-
-                >
-                </input>
                 <button disabled={isInvalid}>create new folder</button>
-            </form>
+                </form>
+                <div>    
+                    <form >
+                    <label for="file">choose image to upload</label>
+                    <input
+
+                    name="file"
+                    type="file"
+                    accept="image/*"
+                    
+                    onChange={handleImageFile}
+                    >
+                    </input>
+                    <button>image</button>
+                    </form>
+                </div>
+            
         </div>
     )
 }
