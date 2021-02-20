@@ -11,12 +11,13 @@ const Uploader = () => {
     const [folder, setFolder] = useState([])
     const [folderSelect, setFolderSelect] = useState("")
     const [option, setOption] = useState(false)
+    const [imageName, setImageName] = useState("")
 
     const isInvalid = 
         newFolder === String ||
         newFolder === "" 
 
-    const [image, setImage] = useState({
+    const [imageFile, setImageFile] = useState({
         image: null,
         url: "",
         progress: 0 
@@ -35,6 +36,13 @@ const Uploader = () => {
             })
         })
     }
+
+    const handleUpload = () => {
+        const uploadTask = storageRef(`${folderSelect}/`)
+    }
+    const handleImageFile = () => {
+        
+    }
     useEffect(() => {
         getFolders()
         
@@ -50,8 +58,24 @@ const Uploader = () => {
                 }}
                 >
                 </input>
+
                 <select>{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
+
                 <h3>your creating a new folder called {newFolder}</h3>
+                <input
+                value={imageName}
+                onChange={(event) => {
+                    setImageName(event.target.value)
+                }}>
+                </input>
+                <label for="file">choose image to upload</label>
+                <input
+                name="file"
+                type="file"
+                accept="image/*"
+
+                >
+                </input>
                 <button disabled={isInvalid}>create new folder</button>
             </form>
         </div>
