@@ -39,7 +39,8 @@ const Uploader = () => {
         })
     }
 
-    const handleUpload = () => {
+    const handleUpload = (event) => {
+        event.preventDefault()
         const uploadTask = storageRef(`${folderSelect}/`)
     }
     const handleImageFile = (event) => {
@@ -52,7 +53,7 @@ const Uploader = () => {
         getFolders()
         
     },[])
-    console.log("imageFile;" , imageFile)
+    // console.log("imageFile;" , imageFile)
     return (
         <div className="uploaderWrapper">
             <form onSubmit={newFolderHandler}>
@@ -67,16 +68,16 @@ const Uploader = () => {
                 <select>{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
 
                 <h3>your creating a new folder called {newFolder}</h3>
-                <input
+                {/* <input
                 value={imageName}
                 onChange={(event) => {
                     setImageName(event.target.value)
-                }}>
-                </input>
+                }}> */}
+                {/* </input> */}
                 <button disabled={isInvalid}>create new folder</button>
-                </form>
+            </form>
                 <div>    
-                    <form >
+                <form onSubmit={handleUpload}>
                     <label for="file">choose image to upload</label>
                     <input
 
@@ -87,8 +88,20 @@ const Uploader = () => {
                     onChange={handleImageFile}
                     >
                     </input>
+                    <p>original name : {imageFile.name}</p>
+                    <p>do you want to rename?</p>
+                    <input
+                    type="text"
+                    value={imageName}
+                    onChange={(event) => {
+                        setImageName(event.target.value)
+                    }}
+                    >
+                    
+                    </input>
+                    <p>new file name: {imageName}</p>
                     <button>image</button>
-                    </form>
+                </form>
                 </div>
             
         </div>
