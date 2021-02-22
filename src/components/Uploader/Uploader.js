@@ -41,7 +41,13 @@ const Uploader = () => {
 
     const handleUpload = (event) => {
         event.preventDefault()
-        const uploadTask = storageRef(`${folderSelect}/`)
+        const name = imageFile.name
+        const uploadRef = storageRef.child(`newfolder/${name}`)
+        uploadRef.put(imageFile).then((snapshot) => {
+            console.log("uploaded")
+        })
+        console.log(uploadRef)
+
     }
     const handleImageFile = (event) => {
         // event.preventDefault()
