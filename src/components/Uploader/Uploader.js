@@ -9,8 +9,8 @@ const Uploader = () => {
     const storageRef = storage.ref()
     const [newFolder, setNewFolder] = useState("")
     const [folder, setFolder] = useState([])
-    const [folderSelect, setFolderSelect] = useState("")
-    const [option, setOption] = useState(false)
+    const [folderOption, setFolderOption] = useState(false)
+
     const [imageName, setImageName] = useState("")
 
     const [imageFile, setImageFile] = useState("")
@@ -19,16 +19,12 @@ const Uploader = () => {
         newFolder === String ||
         newFolder === "" 
 
-    // const [imageFile, setImageFile] = useState({
-    //     image: null,
-    //     url: "",
-    //     progress: 0 
-    // })
     const newFolderHandler = (event) => {
         event.preventDefault()
         storageRef.child(newFolder)
         setNewFolder("")
     }
+
     const getFolders = () => {
         storageRef.list().then(res => {
             res.prefixes.map((prefixes) => {
@@ -42,7 +38,7 @@ const Uploader = () => {
     const handleUpload = (event) => {
         event.preventDefault()
         const name = imageFile.name
-        const uploadRef = storageRef.child(`newfolder/${name}`)
+        const uploadRef = storageRef.child(`${newFolder}/${name}`)
         uploadRef.put(imageFile).then((snapshot) => {
             console.log("uploaded")
         })
@@ -50,37 +46,51 @@ const Uploader = () => {
 
     }
     const handleImageFile = (event) => {
-        // event.preventDefault()
         const image = event.target.files[0]
         setImageFile(imageFile => (image))
-        // console.log(image)
+    }
+
+    const handleFolderView = () => {
+        folderOption ? setFolderOption(false) : setFolderOption(true)
     }
     useEffect(() => {
         getFolders()
         
     },[])
-    // console.log("imageFile;" , imageFile)
     return (
         <div className="uploaderWrapper">
             <form onSubmit={newFolderHandler}>
-                <input
-                value={newFolder}
-                onChange={(event) => {
-                    setNewFolder(event.target.value)
-                }}
-                >
-                </input>
-
-                <select>{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
-
-                <h3>your creating a new folder called {newFolder}</h3>
+                <div>
+                    {folderOption ?
+                    <>
+                        <input
+                        value={newFolder}
+                        onChange={(event) => {
+                            setNewFolder(event.target.value)
+                        }}
+                        >
+                        </input>
+                        <h3>your creating a new folder called {newFolder}</h3>
+                        <button disabled={isInvalid}>create new folder</button>
+                        <p>or...</p><button onClick={handleFolderView}>add to existing folder</button>
+                    </>
+                :
+                <div>
+                    <select onChange={(event) => {
+                        setNewFolder(event.target.value)
+                    }} >{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
+                    <p>or...</p><button onClick={handleFolderView}>create new folder</button>
+                    </div>
+            }
+                
                 {/* <input
                 value={imageName}
                 onChange={(event) => {
                     setImageName(event.target.value)
                 }}> */}
                 {/* </input> */}
-                <button disabled={isInvalid}>create new folder</button>
+                
+                </div>
             </form>
                 <div>    
                 <form onSubmit={handleUpload}>
