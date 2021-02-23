@@ -37,7 +37,10 @@ const Uploader = () => {
 
     const handleUpload = (event) => {
         event.preventDefault()
-        const name = imageFile.name
+        let name = null
+            imageName == "" ?
+            name = imageFile.name :
+            name = imageName
         const uploadRef = storageRef.child(`${newFolder}/${name}`)
         uploadRef.put(imageFile).then((snapshot) => {
             console.log("uploaded")
@@ -110,12 +113,12 @@ const Uploader = () => {
                     type="text"
                     value={imageName}
                     onChange={(event) => {
-                        setImageName(event.target.value)
+                        setImageName(event.target.value.replace(/\s/g,''))
                     }}
                     >
                     
                     </input>
-                    <p>new file name: {imageName}</p>
+                    <p>new file name: {imageName.replace(/\s/g,'')}</p>
                     <button>image</button>
                 </form>
                 </div>
