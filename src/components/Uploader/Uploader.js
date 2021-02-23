@@ -64,7 +64,7 @@ const Uploader = () => {
         <div className="uploaderWrapper">
             <form onSubmit={newFolderHandler}>
                 <div>
-                    {folderOption ?
+                    {!folderOption ?
                     <>
                         <input
                         value={newFolder}
@@ -118,7 +118,7 @@ const Uploader = () => {
                     >
                     
                     </input>
-                    <p>new file name: {imageName.replace(/\s/g,'')}</p>
+                    <p>new file name: {imageName}</p>
                     <button>image</button>
                 </form>
                 </div>
