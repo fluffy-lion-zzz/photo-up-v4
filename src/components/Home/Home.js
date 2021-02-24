@@ -6,7 +6,8 @@ import SomeComponent from '../SomeComponent'
 import UserContext from '../../services/AuthContext'
 import ViewPhotos from '../ViewPhotos/ViewPhotos'
 import Uploader from '../Uploader/Uploader'
-import { GetMeta } from '../MetaSearch/MetaSearch'
+import MetaSearch from '../MetaSearch/MetaSearch'
+
 
 const Home = () => {
 const user = useContext(UserContext)
@@ -21,8 +22,8 @@ const user = useContext(UserContext)
            <p>user logged in</p>} */}
             </div>
             {/* <Uploader /> */}
-            <ViewPhotos />
-            <button onClick={GetMeta}>get meta</button>
+             {/* <ViewPhotos /> */}
+           <MetaSearch />
         </div>
     )
 }
