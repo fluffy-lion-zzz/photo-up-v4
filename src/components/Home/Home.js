@@ -6,6 +6,8 @@ import SomeComponent from '../SomeComponent'
 import UserContext from '../../services/AuthContext'
 import ViewPhotos from '../ViewPhotos/ViewPhotos'
 import Uploader from '../Uploader/Uploader'
+import { GetMeta } from '../MetaSearch/MetaSearch'
+
 const Home = () => {
 const user = useContext(UserContext)
 // console.log(user)
@@ -18,7 +20,9 @@ const user = useContext(UserContext)
            {/* {authValue.user == null ? <p>not logged</p> :
            <p>user logged in</p>} */}
             </div>
-            <Uploader />
+            {/* <Uploader /> */}
+            <ViewPhotos />
+            <button onClick={GetMeta}>get meta</button>
         </div>
     )
 }

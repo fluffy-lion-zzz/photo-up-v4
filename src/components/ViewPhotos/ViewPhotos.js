@@ -58,7 +58,7 @@ const ViewPhotos = () => {
             <div>
                 <form>
                     <label for="selectAFolder">select a folder</label>
-                    <select name="selectAFolder">{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
+                    <select onChange={folderHandler} name="selectAFolder">{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
 
                 </form>
             </div>
