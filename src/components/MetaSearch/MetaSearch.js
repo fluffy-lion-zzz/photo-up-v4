@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react'
-
+import './MetaSearch.css'
 import app from 'firebase/app'
 import 'firebase/storage'
 
+const selectTags = () => {
+    const metaTag = "event"
+    //store tag
+    const storage = app.storage()
+    const storageRef = storage.ref()
+    //search files meta data for that tag
+    storageRef.map((folders) => {
+        console.log(folders)
+    })
+}
+// selectTags()
 
 const MetaSearch = () => {
     const [meta, setMeta] = useState({
@@ -33,7 +44,7 @@ const MetaSearch = () => {
     }
 
     return(
-        <div>
+        <div className="metaWrapper">
             <button onClick={getMeta}>get meta</button>
             <form onSubmit={addCustomMeta}>
                 <input
@@ -46,6 +57,7 @@ const MetaSearch = () => {
                 ></input>
                 <button type="submit">submit</button>
             </form>
+            
         </div>
     )
 }

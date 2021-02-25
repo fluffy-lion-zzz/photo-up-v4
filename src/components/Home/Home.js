@@ -22,7 +22,7 @@ const user = useContext(UserContext)
            <p>user logged in</p>} */}
             </div>
             {/* <Uploader /> */}
-             {/* <ViewPhotos /> */}
+             <ViewPhotos />
            <MetaSearch />
         </div>
     )
