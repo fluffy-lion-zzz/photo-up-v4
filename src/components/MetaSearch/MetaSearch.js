@@ -9,11 +9,15 @@ const selectTags = () => {
     const storage = app.storage()
     const storageRef = storage.ref()
     //search files meta data for that tag
-    storageRef.map((folders) => {
-        console.log(folders)
-    })
+    console.log(storageRef.list().then((items)=>{
+        console.log(items.prefixes)
+    }))
+    // storageRef.map((folders) => {
+    //     console.log(folders)
+    // })
 }
-// selectTags()
+
+
 
 const MetaSearch = () => {
     const [meta, setMeta] = useState({
@@ -57,7 +61,7 @@ const MetaSearch = () => {
                 ></input>
                 <button type="submit">submit</button>
             </form>
-            
+            <button onClick={selectTags}>select</button>
         </div>
     )
 }
