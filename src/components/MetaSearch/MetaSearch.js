@@ -4,26 +4,42 @@ import app from 'firebase/app'
 import 'firebase/storage'
 
 
-
-const selectTags = () => {
-    const metaTag = "event"
-    //store tag
-    const storage = app.storage()
-    const storageRef = storage.ref()
-    //search files meta data for that tag
-    console.log(storageRef.list().then((items)=>{
-        console.log(items.prefixes)
-    }))
-    // storageRef.map((folders) => {
-    //     console.log(folders)
-    // })
-}
-
-
-
 const MetaSearch = () => {
     const [parentFolder, setParentFolder] = useState([])
+
+    const selectTags = () => {
+        const metaTag = "event"
+        //store tag
+        const storage = app.storage()
+        const storageRef = storage.ref()
+        //search files meta data for that tag
+        // storageRef.list().then((items)=>{
+        //     setParentFolder(parentFolder => [...parentFolder, items.prefixes])
+        // }).then(()=> console.log(parentFolder))
+        
+        // MAY HAVE TO PUT IN USEEFFECT
+        storage.ref().list().then((items)=>{
+           console.log(items.prefixes)
+           setParentFolder(items.prefixes)
+           console.log(parentFolder)
+        })
+        .then(parentFolder.forEach(folderName => {
+            console.log(folderName)
+        //    let items =  storage.ref(`${folderName}`).listAll()
+        //    console.log(`${folderName}`, items)
+        }))
+        
+
+
+        // storageRef.map((folders) => {
+        //     console.log(folders)
+        // })
+       
+    }
+
+
     
+
     const [meta, setMeta] = useState({
         customMetadata: {
             customMeta: ""
