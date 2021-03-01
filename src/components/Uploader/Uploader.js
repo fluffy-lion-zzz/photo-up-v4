@@ -38,14 +38,16 @@ const Uploader = () => {
     const handleUpload = (event) => {
         event.preventDefault()
         let name = null
-            imageName == "" ?
+            imageName === "" ?
             name = imageFile.name :
             name = imageName
         const uploadRef = storageRef.child(`${newFolder}/${name}`)
         uploadRef.put(imageFile).then((snapshot) => {
-            console.log("uploaded")
+            return "complete"
         })
-        console.log(uploadRef)
+        .catch((error) => {
+            console.log(error)
+        })
 
     }
     const handleImageFile = (event) => {

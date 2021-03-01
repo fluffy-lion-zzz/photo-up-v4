@@ -3,6 +3,8 @@ import './MetaSearch.css'
 import app from 'firebase/app'
 import 'firebase/storage'
 
+
+
 const selectTags = () => {
     const metaTag = "event"
     //store tag
@@ -20,6 +22,8 @@ const selectTags = () => {
 
 
 const MetaSearch = () => {
+    const [parentFolder, setParentFolder] = useState([])
+    
     const [meta, setMeta] = useState({
         customMetadata: {
             customMeta: ""

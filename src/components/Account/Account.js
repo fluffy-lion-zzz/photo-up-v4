@@ -12,13 +12,14 @@ const Account = () => {
 
     const profile = getProfileData()
 
-    let user = app.auth().currentUser
+    
 
 const flip = () => {
     !show ? setShow(true) : setShow(false)
     update ? setUpdate(false) : setUpdate (true)
 }
 useEffect(() => {
+    let user = app.auth().currentUser
     user = app.auth().currentUser
     if(user.displayName === null){
         setFirebaseDisplayName("no display name...bit boring")
