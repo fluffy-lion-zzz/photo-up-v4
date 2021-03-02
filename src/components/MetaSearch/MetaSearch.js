@@ -18,16 +18,17 @@ const MetaSearch = () => {
         // }).then(()=> console.log(parentFolder))
         
         // MAY HAVE TO PUT IN USEEFFECT
-        storage.ref().list().then((items)=>{
-           console.log(items.prefixes)
-           setParentFolder(items.prefixes)
-           console.log(parentFolder)
-        })
-        .then(parentFolder.forEach(folderName => {
+        // storage.ref().list().then((items)=>{
+        //     //    console.log(items.prefixes)
+        //        setParentFolder(items.prefixes)
+        //     //    console.log(parentFolder)
+        //     })
+
+        parentFolder.forEach(folderName => {
             console.log(folderName)
         //    let items =  storage.ref(`${folderName}`).listAll()
         //    console.log(`${folderName}`, items)
-        }))
+        })
         
 
 
@@ -36,6 +37,13 @@ const MetaSearch = () => {
         // })
        
     }
+    useEffect(() => {
+        storage.ref().list().then((items)=>{
+            //    console.log(items.prefixes)
+               setParentFolder(items.prefixes)
+            //    console.log(parentFolder)
+            })
+    },[])
 
 
     
