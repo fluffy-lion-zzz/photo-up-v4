@@ -6,9 +6,15 @@ import 'firebase/storage'
 
 const MetaSearch = () => {
     const [parentFolder, setParentFolder] = useState([])
+    const [searchedImages, setSearchedImages] = useState([])
+    const [meta, setMeta] = useState({
+        customMetadata: {
+            customMeta: ""
+        }
+    })
 
     const selectTags = () => {
-        const metaTag = "event"
+        const metaTag = "metatest"
         //store tag
         const storage = app.storage()
         const storageRef = storage.ref()
@@ -21,28 +27,38 @@ const MetaSearch = () => {
                 item.forEach(info => {
                     info.getMetadata()
                     .then((metadata) => {
-                        console.log(metadata.customMetadata)
+                        if(!metadata.customMetadata){
+                            console.log("no custom")
+                        }
+                        else if (metadata.customMetadata.custom === metaTag){
+                            console.log(metadata.customMetadata.custom)
+                            //FINE
+                            storage.ref(metadata.fullPath).getDownloadURL()
+                            .then((img) => {
+                                    if (searchedImages.includes(img)){
+                                        console.log("already in")
+                                    }else{
+                                        setSearchedImages(searchedImages => [...searchedImages, img])
+                                    }
+                                }
+                            )
+                        }else{
+                            console.log("not found")
+                        }
                     })
+                    
                 })
             })
-            // console.log(folderName)
-
         })
     }
     useEffect(() => {
         storage.ref().list().then((items)=>{
                setParentFolder(items.prefixes)
             })
-    },[])
+            console.log(searchedImages)
+    },[searchedImages])
 
 
-    
-
-    const [meta, setMeta] = useState({
-        customMetadata: {
-            customMeta: ""
-        }
-    })
 
     const storage = app.storage()
     const storageRef = storage.ref('test/akira.jpg')
@@ -62,7 +78,6 @@ const MetaSearch = () => {
         }).catch((error) => {
             console.log("error: ", error)
         })
-        // console.log(meta)
     }
 
     return(
