@@ -12,36 +12,26 @@ const MetaSearch = () => {
         //store tag
         const storage = app.storage()
         const storageRef = storage.ref()
-        //search files meta data for that tag
-        // storageRef.list().then((items)=>{
-        //     setParentFolder(parentFolder => [...parentFolder, items.prefixes])
-        // }).then(()=> console.log(parentFolder))
-        
-        // MAY HAVE TO PUT IN USEEFFECT
-        // storage.ref().list().then((items)=>{
-        //     //    console.log(items.prefixes)
-        //        setParentFolder(items.prefixes)
-        //     //    console.log(parentFolder)
-        //     })
+
 
         parentFolder.forEach(folderName => {
-            console.log(folderName)
-        //    let items =  storage.ref(`${folderName}`).listAll()
-        //    console.log(`${folderName}`, items)
+            storage.refFromURL(`${folderName}/`).listAll()
+            .then((image) => {
+                let item = image.items
+                item.forEach(info => {
+                    info.getMetadata()
+                    .then((metadata) => {
+                        console.log(metadata.customMetadata)
+                    })
+                })
+            })
+            // console.log(folderName)
+
         })
-        
-
-
-        // storageRef.map((folders) => {
-        //     console.log(folders)
-        // })
-       
     }
     useEffect(() => {
         storage.ref().list().then((items)=>{
-            //    console.log(items.prefixes)
                setParentFolder(items.prefixes)
-            //    console.log(parentFolder)
             })
     },[])
 
