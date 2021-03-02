@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Uploader.css'
 import app from 'firebase/app'
 import 'firebase/storage'
+import ChooseImage from './ChooseImage'
 
 
 const Uploader = () => {
@@ -13,8 +14,10 @@ const Uploader = () => {
 
     const [imageName, setImageName] = useState("")
 
+    //taken
     const [imageFile, setImageFile] = useState("")
-
+    //taken
+    
     const isInvalid = 
         newFolder === String ||
         newFolder === "" 
@@ -50,11 +53,12 @@ const Uploader = () => {
         })
 
     }
+    //taken
     const handleImageFile = (event) => {
         const image = event.target.files[0]
         setImageFile(imageFile => (image))
     }
-
+    //taken
     const handleFolderView = () => {
         folderOption ? setFolderOption(false) : setFolderOption(true)
     }
@@ -97,8 +101,10 @@ const Uploader = () => {
                 
                 </div>
             </form>
-                <div>    
+                <div>   
+                    <ChooseImage />
                 <form onSubmit={handleUpload}>
+                    {/* taken */}
                     <label for="file">choose image to upload</label>
                     <input
 
@@ -109,6 +115,7 @@ const Uploader = () => {
                     onChange={handleImageFile}
                     >
                     </input>
+                    {/* taken */}
                     <p>original name : {imageFile.name}</p>
                     <p>do you want to rename?</p>
                     <input

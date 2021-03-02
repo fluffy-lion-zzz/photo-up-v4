@@ -9,7 +9,11 @@ const MetaSearch = () => {
     const [searchedImages, setSearchedImages] = useState([])
     const [meta, setMeta] = useState({
         customMetadata: {
-            customMeta: ""
+            customMetaOne: "",
+            customMetaTwo: "",
+            customMetaThree: "",
+            customMetaFour: "",
+            customMetaFive: ""
         }
     })
 
@@ -30,9 +34,16 @@ const MetaSearch = () => {
                         if(!metadata.customMetadata){
                             console.log("no custom")
                         }
-                        else if (metadata.customMetadata.custom === metaTag){
-                            console.log(metadata.customMetadata.custom)
-                            //FINE
+                        else if (
+                            //TESTING DELETE .CUSTOM
+                            metadata.customMetadata.custom === metaTag ||
+                            //TESTING DELETE .CUSTOM
+                            metadata.customMetadata.customMetaOne === metaTag ||
+                            metadata.customMetadata.customMetaTwo === metaTag ||
+                            metadata.customMetadata.customMetaThree === metaTag ||
+                            metadata.customMetadata.customMetaFour === metaTag ||
+                            metadata.customMetadata.customMetaFive === metaTag
+                            ){
                             storage.ref(metadata.fullPath).getDownloadURL()
                             .then((img) => {
                                     if (searchedImages.includes(img)){
@@ -56,18 +67,20 @@ const MetaSearch = () => {
                setParentFolder(items.prefixes)
             })
             console.log(searchedImages)
+            
     },[searchedImages])
 
 
 
     const storage = app.storage()
-    const storageRef = storage.ref('test/akira.jpg')
+    const storageRef = storage.ref('akira/akira-bike.jpg')
 
     const getMeta = () => {
         storageRef.getMetadata()
         .then((metadata) => {
             console.log(metadata)
         })
+       
     }
 
     const addCustomMeta = (event) => {
@@ -88,7 +101,7 @@ const MetaSearch = () => {
                     onChange={((event) => {
                         setMeta({
                             customMetadata: {
-                            custom: event.target.value
+                            customMetaOne: event.target.value
                         }})
                     })}
                 ></input>
