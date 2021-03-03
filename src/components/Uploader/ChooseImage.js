@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import app from 'firebase/app'
 import 'firebase/storage'
 import './ChooseImage.css'
+// import ImageInfo from './ImageInfo'
+
 
 const ChooseImage = () => {
     const [imageFile, setImageFile] = useState("")
@@ -22,8 +24,7 @@ const ChooseImage = () => {
         setImageFile(imageFile => (image))
     }
     return (
-        <div>
-            <h2>choose test component</h2>
+        <div className="chooseImg">
             <label for="file">choose image to upload</label>
                 <input
 
@@ -37,7 +38,7 @@ const ChooseImage = () => {
                 </input>
                 <p>image</p>
                 <img id="imagePreview" src={imagePreview} />
-            <h2>choose test component</h2>
+                {/* <ImageInfo imageFile={imageFile}/> */}
         </div>
     )
 }

@@ -1,3 +1,7 @@
+.chooseImg{
+    border: green 3px solid;
+}
+
 #imagePreview {
     width: 20%;
 }

@@ -3,6 +3,7 @@ import './Uploader.css'
 import app from 'firebase/app'
 import 'firebase/storage'
 import ChooseImage from './ChooseImage'
+import ImageInfo from './ImageInfo'
 
 
 const Uploader = () => {
@@ -17,7 +18,7 @@ const Uploader = () => {
     //taken
     const [imageFile, setImageFile] = useState("")
     //taken
-    
+
     const isInvalid = 
         newFolder === String ||
         newFolder === "" 
@@ -105,7 +106,7 @@ const Uploader = () => {
                     <ChooseImage />
                 <form onSubmit={handleUpload}>
                     {/* taken */}
-                    <label for="file">choose image to upload</label>
+                    {/* <label for="file">choose image to upload</label>
                     <input
 
                     name="file"
@@ -114,8 +115,9 @@ const Uploader = () => {
                     
                     onChange={handleImageFile}
                     >
-                    </input>
+                    </input> */}
                     {/* taken */}
+                    <ImageInfo />
                     <p>original name : {imageFile.name}</p>
                     <p>do you want to rename?</p>
                     <input
