@@ -7,6 +7,8 @@ import ImageInfo from './ImageInfo'
 
 
 const Uploader = () => {
+
+    
     const storage = app.storage()
     const storageRef = storage.ref()
     const [newFolder, setNewFolder] = useState("")
@@ -18,7 +20,9 @@ const Uploader = () => {
     //taken
     const [imageFile, setImageFile] = useState("")
     //taken
-
+    const funcTest = () => {
+        console.log("hit funcTest")
+    }
     const isInvalid = 
         newFolder === String ||
         newFolder === "" 
@@ -105,31 +109,12 @@ const Uploader = () => {
                 <div>   
                     <ChooseImage />
                 <form onSubmit={handleUpload}>
-                    {/* taken */}
-                    {/* <label for="file">choose image to upload</label>
-                    <input
-
-                    name="file"
-                    type="file"
-                    accept="image/*"
-                    
-                    onChange={handleImageFile}
-                    >
-                    </input> */}
-                    {/* taken */}
-                    <ImageInfo />
-                    <p>original name : {imageFile.name}</p>
-                    <p>do you want to rename?</p>
-                    <input
-                    type="text"
-                    value={imageName}
-                    onChange={(event) => {
-                        setImageName(event.target.value.replace(/\s/g,''))
-                    }}
-                    >
-                    
-                    </input>
-                    <p>new file name: {imageName}</p>
+                    <ImageInfo 
+                        funcTest={funcTest}
+                        imageFile={imageFile}
+                        imageName={imageName}
+                        setImageName={setImageName}
+                    />
                     <button>image</button>
                 </form>
                 </div>
