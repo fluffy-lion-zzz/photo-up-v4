@@ -53,7 +53,7 @@ const Uploader = () => {
             name = imageName
         const uploadRef = storageRef.child(`${newFolder}/${name}`)
         uploadRef.put(imageFile).then((snapshot) => {
-            return "complete"
+            console.log("complete")
         })
         .catch((error) => {
             console.log(error)
@@ -83,40 +83,12 @@ const Uploader = () => {
                     folder={folder}
                     handleFolderView={handleFolderView}
                 />
-                <div>
-                    {!folderOption ?
-                    <>
-                        <input
-                        value={newFolder}
-                        onChange={(event) => {
-                            setNewFolder(event.target.value)
-                        }}
-                        >
-                        </input>
-                        <h3>your creating a new folder called {newFolder}</h3>
-                        <button disabled={isInvalid}>create new folder</button>
-                        <p>or...</p><button onClick={handleFolderView}>add to existing folder</button>
-                    </>
-                :
-                <div>
-                    <select onChange={(event) => {
-                        setNewFolder(event.target.value)
-                    }} >{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
-                    <p>or...</p><button onClick={handleFolderView}>create new folder</button>
-                    </div>
-            }
-                
-                {/* <input
-                value={imageName}
-                onChange={(event) => {
-                    setImageName(event.target.value)
-                }}> */}
-                {/* </input> */}
-                
-                </div>
             </form>
                 <div>   
-                    <ChooseImage />
+                    <ChooseImage 
+                        imageFile={imageFile}
+                        setImageFile={setImageFile}
+                    />
                 <form onSubmit={handleUpload}>
                     <ImageInfo 
                         funcTest={funcTest}
@@ -124,9 +96,9 @@ const Uploader = () => {
                         imageName={imageName}
                         setImageName={setImageName}
                     />
-                    <button>image</button>
+                    <button type="submit">image</button>
                 </form>
-                </div>
+            </div>
             
         </div>
     )

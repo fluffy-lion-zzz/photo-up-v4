@@ -5,8 +5,8 @@ import './ChooseImage.css'
 // import ImageInfo from './ImageInfo'
 
 
-const ChooseImage = () => {
-    const [imageFile, setImageFile] = useState("")
+const ChooseImage = ({ imageFile, setImageFile}) => {
+    // const [imageFile, setImageFile] = useState("")
     const [imagePreview, setImagePreview] = useState("")
 
     const handleImageFile = (event) => {
