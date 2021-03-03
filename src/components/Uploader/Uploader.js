@@ -71,8 +71,11 @@ const Uploader = () => {
     }
     useEffect(() => {
         getFolders()
+        // setFolder(folder[Math.floor(Math.random()*folder.length)])
+        console.log(folder)
         
     },[])
+    console.log(newFolder)
     return (
         <div className="uploaderWrapper">
             <form onSubmit={newFolderHandler}>
@@ -96,7 +99,7 @@ const Uploader = () => {
                         imageName={imageName}
                         setImageName={setImageName}
                     />
-                    <button type="submit">image</button>
+                    <button type="submit">upload</button>
                 </form>
             </div>
             

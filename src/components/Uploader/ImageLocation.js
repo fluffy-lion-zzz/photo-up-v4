@@ -28,7 +28,7 @@ const ImageLocation = ({folderOption, newFolder, setNewFolder, handleFolderView,
             <div>
                 <select onChange={(event) => {
                         setNewFolder(event.target.value)
-                    }} >{folder.map((item, index) => <option key={index}>{item}</option>)}</select>
+                    }} >{folder.map((item, index) => <option value={item} key={index}>{item}</option>)}</select>
                     <p>or...</p><button onClick={handleFolderView}>create new folder</button>
                    
 
