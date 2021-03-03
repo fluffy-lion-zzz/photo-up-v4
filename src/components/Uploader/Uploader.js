@@ -4,6 +4,7 @@ import app from 'firebase/app'
 import 'firebase/storage'
 import ChooseImage from './ChooseImage'
 import ImageInfo from './ImageInfo'
+import ImageLocation from './ImageLocation'
 
 
 const Uploader = () => {
@@ -23,10 +24,11 @@ const Uploader = () => {
     const funcTest = () => {
         console.log("hit funcTest")
     }
+    //TAKEN
     const isInvalid = 
         newFolder === String ||
         newFolder === "" 
-
+    //TAKEN
     const newFolderHandler = (event) => {
         event.preventDefault()
         storageRef.child(newFolder)
@@ -74,6 +76,13 @@ const Uploader = () => {
     return (
         <div className="uploaderWrapper">
             <form onSubmit={newFolderHandler}>
+                <ImageLocation 
+                    folderOption={folderOption}
+                    newFolder={newFolder}
+                    setNewFolder={setNewFolder}
+                    folder={folder}
+                    handleFolderView={handleFolderView}
+                />
                 <div>
                     {!folderOption ?
                     <>
