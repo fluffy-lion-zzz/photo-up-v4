@@ -41,8 +41,10 @@ const Uploader = () => {
                 folder.includes(prefixes.name) ?
                 console.log("folder name already included") :
                 setFolder(folder => [...folder, prefixes.name])
+                // setNewFolder(folder[Math.floor(Math.random * folder.length)])
             })
         })
+        // .then(setNewFolder(folder[0]))
     }
 
     const handleUpload = (event) => {
@@ -71,10 +73,12 @@ const Uploader = () => {
     }
     useEffect(() => {
         getFolders()
-        // setFolder(folder[Math.floor(Math.random()*folder.length)])
-        console.log(folder)
+        // setNewFolder(folder[Math.floor(Math.random()*folder.length)])
+        // setNewFolder(() => folder[0])
         
     },[])
+    console.log(folder)
+    
     console.log(newFolder)
     return (
         <div className="uploaderWrapper">

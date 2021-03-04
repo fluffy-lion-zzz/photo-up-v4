@@ -10,7 +10,7 @@ const ImageLocation = ({folderOption, newFolder, setNewFolder, handleFolderView,
 
     return(
         <div className="imageLocation">
-            {!folderOption ?
+            {folderOption ?
             <div> 
                 <h1>image location</h1>
                 <input
