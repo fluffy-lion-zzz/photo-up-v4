@@ -8,27 +8,18 @@ import ImageLocation from './ImageLocation'
 
 
 const Uploader = () => {
-
-    
     const storage = app.storage()
     const storageRef = storage.ref()
     const [newFolder, setNewFolder] = useState("")
     const [folder, setFolder] = useState([])
     const [folderOption, setFolderOption] = useState(false)
-
     const [imageName, setImageName] = useState("")
-
-    //taken
     const [imageFile, setImageFile] = useState("")
-    //taken
+
     const funcTest = () => {
         console.log("hit funcTest")
     }
-    //TAKEN
-    const isInvalid = 
-        newFolder === String ||
-        newFolder === "" 
-    //TAKEN
+
     const newFolderHandler = (event) => {
         event.preventDefault()
         storageRef.child(newFolder)
@@ -41,10 +32,8 @@ const Uploader = () => {
                 folder.includes(prefixes.name) ?
                 console.log("folder name already included") :
                 setFolder(folder => [...folder, prefixes.name])
-                // setNewFolder(folder[Math.floor(Math.random * folder.length)])
             })
         })
-        // .then(setNewFolder(folder[0]))
     }
 
     const handleUpload = (event) => {
@@ -62,24 +51,20 @@ const Uploader = () => {
         })
 
     }
-    //taken
+
     const handleImageFile = (event) => {
         const image = event.target.files[0]
         setImageFile(imageFile => (image))
     }
-    //taken
+
     const handleFolderView = () => {
         folderOption ? setFolderOption(false) : setFolderOption(true)
     }
     useEffect(() => {
         getFolders()
-        // setNewFolder(folder[Math.floor(Math.random()*folder.length)])
-        // setNewFolder(() => folder[0])
-        
     },[])
-    console.log(folder)
+ 
     
-    console.log(newFolder)
     return (
         <div className="uploaderWrapper">
             <form onSubmit={newFolderHandler}>

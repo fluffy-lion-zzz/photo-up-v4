@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './ImageLocation.css'
 
-const ImageLocation = ({folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
+const ImageLocation = ({ folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
+    const [name, setName] = useState("")
 
+    const FolderName = () => {
+        console.log("selected: ", name)
+        setNewFolder(name)
+        return (
+            <div>
+            {name === "" ||
+            name === " " ||
+            name === undefined ?
+            <div><p>please select a folder</p></div> :
+            <div><p>you selected {name}</p></div> 
+            }
+            </div>
+        )
+        
+    }
     const isInvalid = 
         newFolder === String ||
         newFolder === "" 
@@ -26,12 +42,14 @@ const ImageLocation = ({folderOption, newFolder, setNewFolder, handleFolderView,
             </div>
             :
             <div>
-                <select onChange={(event) => {
-                        setNewFolder(event.target.value)
-                    }} >{folder.map((item, index) => <option value={item} key={index}>{item}</option>)}</select>
+                <div onClick={(event) => {
+                        setName(event.target.value)
+                    }} >{folder.map((item, index) => 
+                    <button type="text" value={item} key={index}>{item}</button>
+                    )}
+                </div>
+                        <FolderName />
                     <p>or...</p><button onClick={handleFolderView}>create new folder</button>
-                   
-
             </div>
             }
         </div>
