@@ -15,6 +15,7 @@ const Uploader = () => {
     const [folderOption, setFolderOption] = useState(false)
     const [imageName, setImageName] = useState("")
     const [imageFile, setImageFile] = useState("")
+    const [folderSelected, setFolderSelected] = useState(false)
 
     const funcTest = () => {
         console.log("hit funcTest")
@@ -23,9 +24,11 @@ const Uploader = () => {
     const newFolderHandler = (event) => {
         event.preventDefault()
         storageRef.child(newFolder)
+
         setFolder(folder => [...folder, newFolder])
         console.log(folder)
-        setNewFolder("")
+        // setNewFolder("")
+        setFolderSelected(true)
     }
 
     const getFolders = () => {
@@ -70,7 +73,9 @@ const Uploader = () => {
     return (
         <div className="uploaderWrapper">
             
-                <ImageLocation 
+                <ImageLocation
+                    folderSelected={folderSelected} 
+                    setFolderSelected={setFolderSelected}
                     folderOption={folderOption}
                     newFolder={newFolder}
                     setNewFolder={setNewFolder}
