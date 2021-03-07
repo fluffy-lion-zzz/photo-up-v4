@@ -23,6 +23,8 @@ const Uploader = () => {
     const newFolderHandler = (event) => {
         event.preventDefault()
         storageRef.child(newFolder)
+        setFolder(folder => [...folder, newFolder])
+        console.log(folder)
         setNewFolder("")
     }
 
@@ -67,15 +69,16 @@ const Uploader = () => {
     
     return (
         <div className="uploaderWrapper">
-            <form onSubmit={newFolderHandler}>
+            
                 <ImageLocation 
                     folderOption={folderOption}
                     newFolder={newFolder}
                     setNewFolder={setNewFolder}
                     folder={folder}
                     handleFolderView={handleFolderView}
+                    newFolderHandler={newFolderHandler}
                 />
-            </form>
+            
                 <div>   
                     <ChooseImage 
                         imageFile={imageFile}

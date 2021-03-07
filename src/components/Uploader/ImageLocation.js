@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './ImageLocation.css'
 
-const ImageLocation = ({ folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
+const ImageLocation = ({ newFolderHandler, folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
     const [name, setName] = useState("")
 
     const FolderName = () => {
@@ -29,6 +29,7 @@ const ImageLocation = ({ folderOption, newFolder, setNewFolder, handleFolderView
             {folderOption ?
             <div> 
                 <h1>image location</h1>
+                <form onSubmit={newFolderHandler}>
                 <input
                     value={newFolder}
                     onChange={(event) => {
@@ -39,6 +40,7 @@ const ImageLocation = ({ folderOption, newFolder, setNewFolder, handleFolderView
                     <h3>your creating a new folder called {newFolder}</h3>
                     <button disabled={isInvalid}>create new folder</button>
                     <p>or...</p><button onClick={handleFolderView}>add to existing folder</button>
+                    </form>
             </div>
             :
             <div>
