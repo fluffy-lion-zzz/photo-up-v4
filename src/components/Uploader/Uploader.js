@@ -16,18 +16,31 @@ const Uploader = () => {
     const [imageName, setImageName] = useState("")
     const [imageFile, setImageFile] = useState("")
     const [folderSelected, setFolderSelected] = useState(false)
+    //needed? \/ 
+    const [folderDisplay, setFolderDisplay] = useState("")
 
+    const [step, setStep] = useState(true)
+
+    const ViewFolder = () => {
+        return( 
+        <div>
+            <h1>being stored in: {folderDisplay}</h1>
+        </div>
+        )
+    }
     const funcTest = () => {
         console.log("hit funcTest")
     }
 
     const newFolderHandler = (event) => {
         event.preventDefault()
+        // view where use will be saving 
+        setFolderDisplay("")
         storageRef.child(newFolder)
 
         setFolder(folder => [...folder, newFolder])
-        console.log(folder)
-        // setNewFolder("")
+        setFolderDisplay(newFolder)
+        setNewFolder("")
         setFolderSelected(true)
     }
 
@@ -67,13 +80,16 @@ const Uploader = () => {
     }
     useEffect(() => {
         getFolders()
+        
     },[])
  
     
     return (
         <div className="uploaderWrapper">
-            
+            {step ? 
                 <ImageLocation
+                setStep={setStep}
+                    setFolderDisplay={setFolderDisplay}
                     folderSelected={folderSelected} 
                     setFolderSelected={setFolderSelected}
                     folderOption={folderOption}
@@ -83,8 +99,10 @@ const Uploader = () => {
                     handleFolderView={handleFolderView}
                     newFolderHandler={newFolderHandler}
                 />
-            
-                <div>   
+                :
+                <div>
+                <ViewFolder />
+                 
                     <ChooseImage 
                         imageFile={imageFile}
                         setImageFile={setImageFile}
@@ -96,11 +114,14 @@ const Uploader = () => {
                         imageName={imageName}
                         setImageName={setImageName}
                     />
+                    <button onClick={() => setStep(true)}>go back</button>
                     <button type="submit">upload</button>
                 </form>
+                </div>
+            }
             </div>
             
-        </div>
+        // </div>
     )
 }
 

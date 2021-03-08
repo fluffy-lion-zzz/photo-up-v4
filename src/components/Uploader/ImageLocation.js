@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './ImageLocation.css'
 
-const ImageLocation = ({ setFolderSelected, folderSelected,newFolderHandler, folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
+const ImageLocation = ({ setStep, setFolderDisplay, newFolderHandler, folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
     const [name, setName] = useState("")
 
     const FolderName = () => {
@@ -21,6 +21,48 @@ const ImageLocation = ({ setFolderSelected, folderSelected,newFolderHandler, fol
         )
         
     }
+
+    const FolderForm = () => {
+        return (
+        <form onSubmit={newFolderHandler}>
+            <input
+                value={newFolder}
+                onChange={(event) => {
+                    setNewFolder(event.target.value)
+                    
+                }}
+                >
+                </input>
+                <h3>your creating a new folder called {newFolder}</h3>
+                    {folder.includes(newFolder) ? 
+                    <p>this folder has already been created</p> :
+                    <></>
+                    }
+                <button  disabled={isInvalid}>create new folder</button>
+                <p>or...</p><button onClick={handleFolderView}>add to existing folder</button>
+            </form>
+        )
+    }
+
+    const FolderConfirm = () => {
+        return (
+            <div>
+                <button onClick={setStep(false)}>continue to upload</button>
+            </div>
+        )
+    }
+
+    const FolderArrItems = () => {
+        return (
+            <div onClick={(event) => {
+                setName(event.target.value)
+                setFolderDisplay(event.target.value)
+            }} >{folder.map((item, index) => 
+            <button type="text" value={item} key={index}>{item}</button>
+            )}
+        </div>
+        )
+    }
     const isInvalid = 
         newFolder === String ||
         newFolder === "" ||
@@ -28,71 +70,32 @@ const ImageLocation = ({ setFolderSelected, folderSelected,newFolderHandler, fol
 
     return(
         <div>
-            {/* {folderSelected ?  */}
-            {/* <div>
-            <p>folder has been selected</p>
-            <p>{newFolder}</p>
-            </div> : */}
-        
-            <div className="imageLocation">
             
-                {/* <p>folder selected</p> */}
-                
+            <div className="imageLocation">
+            <h1>image location</h1>
                 {folderOption ?
                 <div> 
-                    <h1>image location</h1>
-                    {/* {folderSelected ? */}
-                    {/* <p>being save in {folder}</p> 
-                : */}
-                    <form onSubmit={newFolderHandler}>
-                    <input
-                        value={newFolder}
-                        onChange={(event) => {
-                            setNewFolder(event.target.value)
-                            
-                        }}
-                        >
-                        </input>
-                        <h3>your creating a new folder called {newFolder}</h3>
-                            {folder.includes(newFolder) ? 
-                            <p>this folder has already been created</p> :
-                            <></>
-                            }
-                        <button  disabled={isInvalid}>create new folder</button>
-                        <p>or...</p><button onClick={handleFolderView}>add to existing folder</button>
-                        </form>
-                        {/* on this bit */}
-                        {newFolder === "" ?
-                        <p>no value</p> :
-                        <p>{newFolder}</p>
+                    <FolderForm />
+                    {newFolder === "" ?
+                    <p>no value</p> :
+                    <p>{newFolder}</p>
                     }
                 </div>
                 :
                 <div>
-                    <div onClick={(event) => {
-                            setName(event.target.value)
-                        }} >{folder.map((item, index) => 
-                        <button type="text" value={item} key={index}>{item}</button>
-                        )}
+                    <FolderArrItems />
+                    <FolderName />
+                    <div>
+                        <p>or...</p>
+                        <button onClick={handleFolderView}>create new folder</button>
                     </div>
-                        
-                        {/* {folderSelected ?  */}
-                        <div>
-                            {/* <p>being saved in {newFolder}</p> */}
-                            <FolderName />
-                        </div>
-                        {/* : */}
-                        <div>
-                            
-                            <p>or...</p>
-                            <button onClick={handleFolderView}>create new folder</button>
-                        </div>
-                        {/* } */}
-                        
                 </div>
                 }
+                {name !== "" ?
+                <FolderConfirm /> :
+                <></>
+                }
             </div>
-        {/* } */}
         </div>
     )
 }
