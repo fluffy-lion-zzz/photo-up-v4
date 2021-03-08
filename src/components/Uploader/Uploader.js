@@ -5,7 +5,7 @@ import 'firebase/storage'
 import ChooseImage from './ChooseImage'
 import ImageInfo from './ImageInfo'
 import ImageLocation from './ImageLocation'
-
+import metaHandler from '../AddMeta/AddMeta'
 
 const Uploader = () => {
     const storage = app.storage()
@@ -18,8 +18,12 @@ const Uploader = () => {
     const [folderSelected, setFolderSelected] = useState(false)
     //needed? \/ 
     const [folderDisplay, setFolderDisplay] = useState("")
+    const [metaUploadRef, setMetaUploadRef] = useState("")
 
-    const [step, setStep] = useState(true)
+    // CAUTION CAUTION CAUTION
+    //CHANGED TO FALSE FOR META TESTING
+    //CAUTION CAUTION CAUTION
+    const [step, setStep] = useState(false)
 
     const ViewFolder = () => {
         return( 
@@ -61,6 +65,7 @@ const Uploader = () => {
             name = imageFile.name :
             name = imageName
         const uploadRef = storageRef.child(`${newFolder}/${name}`)
+        setMetaUploadRef(uploadRef)
         uploadRef.put(imageFile).then((snapshot) => {
             console.log("complete")
         })
@@ -109,6 +114,7 @@ const Uploader = () => {
                     />
                 <form onSubmit={handleUpload}>
                     <ImageInfo 
+                    metaUploadRef={metaUploadRef}
                         funcTest={funcTest}
                         imageFile={imageFile}
                         imageName={imageName}
