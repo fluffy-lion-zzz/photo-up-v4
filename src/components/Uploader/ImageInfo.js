@@ -1,5 +1,5 @@
 import React from 'react'
-import AddMeta from '../AddMeta/AddMeta'
+// import AddMeta from '../AddMeta/AddMeta'
 import './ImageInfo.css'
 const ImageInfo = (props) => {
 
@@ -17,7 +17,7 @@ const ImageInfo = (props) => {
                 }}
             />
             <p>new file name: {props.imageName}</p>
-            <AddMeta metaUploadRef={props.metaUploadRef} imageInfo={props.imageFile}/>
+            {/* <AddMeta metaUploadRef={props.metaUploadRef} imageInfo={props.imageFile}/> */}
         </div>
     )
 }
