@@ -5,6 +5,7 @@ import 'firebase/storage'
 import ChooseImage from './ChooseImage'
 import ImageInfo from './ImageInfo'
 import ImageLocation from './ImageLocation'
+import AddMeta from '../AddMeta/AddMeta'
 // import metaHandler from '../AddMeta/AddMeta'
 // import AddMeta from '../AddMeta/AddMeta'
 
@@ -25,17 +26,17 @@ const Uploader = () => {
     // ..TESTING
     // ....TESTING
 
-    const [meta1, setMeta1] = useState("")
+    // const [meta1, setMeta1] = useState("")
 
-    const meta = useState({
-        customMetadata: {
-            customMetaOne: "test",
-            customMetaTwo: "",
-            customMetaThree: "",
-            customMetaFour: "",
-            customMetaFive: ""
-        }
-    })
+    // const meta = useState({
+    //     customMetadata: {
+    //         customMetaOne: "test",
+    //         customMetaTwo: "",
+    //         customMetaThree: "",
+    //         customMetaFour: "",
+    //         customMetaFive: ""
+    //     }
+    // })
 
     // CAUTION CAUTION CAUTION
     //CHANGED TO FALSE FOR META TESTING
@@ -82,11 +83,11 @@ const Uploader = () => {
             name = imageFile.name :
             name = imageName
         const uploadRef = storageRef.child(`${newFolder}/${name}`)
-        
+        setMetaUploadRef(uploadRef)
         uploadRef.put(imageFile).then((snapshot) => {
             console.log(imageFile)
         })
-        metaHandler(uploadRef)
+        
         .catch((error) => {
             console.log(error)
         })
@@ -102,55 +103,6 @@ const Uploader = () => {
         folderOption ? setFolderOption(false) : setFolderOption(true)
     }
 
-    //TESTING
-    // ..TESTING
-    // ....TESTING
-
-    const metaHandler = (event) => {
-        event.preventDefault()
-        // downloadRef.updateMetadata(meta)
-        // .then((metadata) => {
-        //     console.log(metadata)
-        // }).catch((error) => {
-        //     console.log("error: ", error)
-        // })
-    }
-
-    const AddTestMeta = () => {
-
-        const metaHandler = (event) => {
-            event.preventDefault()
-            console.log("hit")
-
-        }
-
-        return (
-            <div className="addMetaWrapper">
-                <h2>meta wrapper</h2>
-                <p>add up to 5 tags for people to search</p>
-                {/* <button onClick={tester}>meta tester here</button> */}
-                <form onSubmit={metaHandler}>
-                    <input 
-                        type="text"
-                        value={meta1}
-                        onChange={(event) => {
-                           
-                            setMeta1(event.target.value)   
-                        }} 
-                        >
-                        </input>
-                        <p>{meta1}</p>
-                 </form>
-               
-                 <button type="submit">metatestet</button>
-                 </div>
-    )
-}
-
-
-    //TESTING
-    // ..TESTING
-    // ....TESTING
 
     useEffect(() => {
         getFolders()
@@ -192,7 +144,7 @@ const Uploader = () => {
                         imageName={imageName}
                         setImageName={setImageName}
                     />
-                    <AddTestMeta />
+                    {/* <AddTestMeta /> */}
 
                     {/* <button onClick={() => setStep(true)}>go back</button> */}
 
@@ -201,6 +153,7 @@ const Uploader = () => {
                 </div>
             {/* } */}
                 <button type="submit">form handler</button>
+                <AddMeta photoRef={metaUploadRef}/>
             
             </div>
             

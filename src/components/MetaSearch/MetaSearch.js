@@ -72,6 +72,7 @@ const MetaSearch = () => {
 
 
 
+    // WILL BE PART OF ADD META COMPONENT
     const storage = app.storage()
     const storageRef = storage.ref('akira/akira-bike.jpg')
 

@@ -3,17 +3,14 @@ import './AddMeta.css'
 import app from'firebase/app'
 import 'firebase/storage'
 
-// export const metaHandler = () => {
-    
-// }
-const AddMeta = (props) => {
-    const [metaCounter, setMetaCounter] = useState("")
-    const [items, setItems] = useState([])
-    const [meta1, setMeta1] = useState("")
-   
+const AddMeta = ({ photoRef }) => {
+    photoRef !== "" ?
+    console.log("photp ref: ", photoRef.fullPath) :
+    console.log("not photo ref")
+
     const [meta, setMeta] = useState({
         customMetadata: {
-            customMetaOne: "test",
+            customMetaOne: "testing",
             customMetaTwo: "",
             customMetaThree: "",
             customMetaFour: "",
@@ -21,58 +18,30 @@ const AddMeta = (props) => {
         }
     })
 
-    
-    // console.log(meta)
-    const metaInput = (event) => {
-        event.preventDefault()
-        let metaOne = meta.customMetadata
-        metaOne.customMetaOne = meta1
-        console.log(metaOne)
-        // setMeta({metaOne: meta1})
-        // console.log(meta)
-        props.metaUploadRef.updateMetadata(meta)
+    const storage = app.storage()
+    const storageRef = storage.ref(photoRef.fullPath)
+
+    const getMeta = () => {
+        storageRef.getMetadata()
+        .then((metadata) => {
+            console.log(metadata)
+        })
     }
-// console.log(props)
+    const addCustomMeta = (event) => {
+        event.preventDefault()
+        storageRef.updateMetadata(meta)
+
+        .then((metadata) => {
+            console.log(metadata)
+        }).catch((error) => {
+            console.log("error: ", error)
+        })
+    }
+
     return (
-        <div className="addMetaWrapper">
-            <h2>meta wrapper</h2>
-            <p>add up to 5 tags for people to search</p>
-            {/* <button onClick={tester}>meta tester here</button> */}
-            <input 
-                type="text"
-                // value={metaOne.customMetaOne}
-                onChange={(event) => {
-                    setMeta1(event.target.value)
-                    
-                }
-             } />
-             <p>{meta1}</p>
-             <button onClick={metaInput}>metatestet</button>
-            {/* <input type="text"
-                
-                value={meta.customMetadata.customMetaTwo}
-                onChange={(event) => {
-                    setMeta({customMetadata.customMetaOne: })
-                } />
-            <input type="text"
-                
-                value={meta.customMetadata.customMetaThree}
-                onChange={(event) => {
-                    setMeta({customMetadata.customMetaOne: event.target.value })
-                }
-            } />
-            <input type="text"
-                
-                value={meta.customMetadata.customMetaFour}
-                onChange={(event) => {
-                    setMeta({customMetadata.customMetaOne: })
-                } />
-            <input type="text"
-                
-                value={meta.customMetadata.customMetaFive}
-                onChange={(event) => {
-                    setMeta({customMetadata.customMetaOne: })
-                } /> */}
+        <div>
+        <h1>add meta</h1>
+        <button onClick={addCustomMeta}>meta tester</button>
         </div>
     )
 }
