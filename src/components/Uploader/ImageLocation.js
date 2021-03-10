@@ -6,6 +6,7 @@ const ImageLocation = ({ setStep, setFolderDisplay, newFolderHandler, folderOpti
     const [name, setName] = useState("")
 
     const FolderName = () => {
+        // event.preventDefault()
         console.log("selected: ", name)
         setNewFolder(name)
         // setFolderSelected(true)
@@ -91,10 +92,10 @@ const ImageLocation = ({ setStep, setFolderDisplay, newFolderHandler, folderOpti
                     </div>
                 </div>
                 }
-                {name !== "" ?
+                {/* {name !== "" ?
                 <FolderConfirm /> :
                 <></>
-                }
+                } */}
             </div>
         </div>
     )

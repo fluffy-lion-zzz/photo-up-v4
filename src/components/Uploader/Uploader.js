@@ -6,6 +6,7 @@ import ChooseImage from './ChooseImage'
 import ImageInfo from './ImageInfo'
 import ImageLocation from './ImageLocation'
 // import metaHandler from '../AddMeta/AddMeta'
+// import AddMeta from '../AddMeta/AddMeta'
 
 const Uploader = () => {
     const storage = app.storage()
@@ -19,6 +20,22 @@ const Uploader = () => {
     //needed? \/ 
     const [folderDisplay, setFolderDisplay] = useState("")
     const [metaUploadRef, setMetaUploadRef] = useState("")
+    const [download, setDownload] = useState("")
+    //TESTING
+    // ..TESTING
+    // ....TESTING
+
+    const [meta1, setMeta1] = useState("")
+
+    const meta = useState({
+        customMetadata: {
+            customMetaOne: "test",
+            customMetaTwo: "",
+            customMetaThree: "",
+            customMetaFour: "",
+            customMetaFive: ""
+        }
+    })
 
     // CAUTION CAUTION CAUTION
     //CHANGED TO FALSE FOR META TESTING
@@ -65,10 +82,11 @@ const Uploader = () => {
             name = imageFile.name :
             name = imageName
         const uploadRef = storageRef.child(`${newFolder}/${name}`)
-        setMetaUploadRef(uploadRef)
+        
         uploadRef.put(imageFile).then((snapshot) => {
-            console.log("complete")
+            console.log(imageFile)
         })
+        metaHandler(uploadRef)
         .catch((error) => {
             console.log(error)
         })
@@ -88,47 +106,47 @@ const Uploader = () => {
     // ..TESTING
     // ....TESTING
 
-    const AddMeta = () => {
-        const [metaCounter, setMetaCounter] = useState("")
-        const [items, setItems] = useState([])
-        const [meta1, setMeta1] = useState("")
+    const metaHandler = (event) => {
+        event.preventDefault()
+        // downloadRef.updateMetadata(meta)
+        // .then((metadata) => {
+        //     console.log(metadata)
+        // }).catch((error) => {
+        //     console.log("error: ", error)
+        // })
+    }
 
-        const [meta, setMeta] = useState({
-            customMetadata: {
-                customMetaOne: "test",
-                customMetaTwo: "",
-                customMetaThree: "",
-                customMetaFour: "",
-                customMetaFive: ""
-            }
-        })
-        const metaInput = (event) => {
+    const AddTestMeta = () => {
+
+        const metaHandler = (event) => {
             event.preventDefault()
-            let metaOne = meta.customMetadata
-            metaOne.customMetaOne = meta1
-            console.log(metaOne)
-            // setMeta({metaOne: meta1})
-            // console.log(meta)
-            metaUploadRef.updateMetadata(meta)
+            console.log("hit")
+
         }
+
         return (
             <div className="addMetaWrapper">
                 <h2>meta wrapper</h2>
                 <p>add up to 5 tags for people to search</p>
                 {/* <button onClick={tester}>meta tester here</button> */}
-                <input 
-                    type="text"
-                    // value={metaOne.customMetaOne}
-                    onChange={(event) => {
-                        setMeta1(event.target.value)
-                        
-                    }
-                 } />
-                 <p>{meta1}</p>
-                 <button onClick={metaInput}>metatestet</button>
+                <form onSubmit={metaHandler}>
+                    <input 
+                        type="text"
+                        value={meta1}
+                        onChange={(event) => {
+                           
+                            setMeta1(event.target.value)   
+                        }} 
+                        >
+                        </input>
+                        <p>{meta1}</p>
+                 </form>
+               
+                 <button type="submit">metatestet</button>
                  </div>
     )
 }
+
 
     //TESTING
     // ..TESTING
@@ -142,9 +160,10 @@ const Uploader = () => {
     
     return (
         <div className="uploaderWrapper">
-            {step ? 
+            
+            {/* {step ?  */}
                 <ImageLocation
-                setStep={setStep}
+                // setStep={setStep}
                     setFolderDisplay={setFolderDisplay}
                     folderSelected={folderSelected} 
                     setFolderSelected={setFolderSelected}
@@ -155,7 +174,7 @@ const Uploader = () => {
                     handleFolderView={handleFolderView}
                     newFolderHandler={newFolderHandler}
                 />
-                :
+                {/* : */}
                 <div>
                 <ViewFolder />
                  
@@ -164,7 +183,7 @@ const Uploader = () => {
                         setImageFile={setImageFile}
                     />
                 <form 
-                // onSubmit={handleUpload}
+                onSubmit={handleUpload}
                 >
                     <ImageInfo 
                     metaUploadRef={metaUploadRef}
@@ -173,12 +192,16 @@ const Uploader = () => {
                         imageName={imageName}
                         setImageName={setImageName}
                     />
-                    <AddMeta />
-                    <button onClick={() => setStep(true)}>go back</button>
+                    <AddTestMeta />
+
+                    {/* <button onClick={() => setStep(true)}>go back</button> */}
+
                     <button type="submit">upload</button>
                 </form>
                 </div>
-            }
+            {/* } */}
+                <button type="submit">form handler</button>
+            
             </div>
             
         // </div>
