@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 import './Uploader.css'
 import app from 'firebase/app'
 import 'firebase/storage'
@@ -6,6 +7,8 @@ import ChooseImage from './ChooseImage'
 import ImageInfo from './ImageInfo'
 import ImageLocation from './ImageLocation'
 import AddMeta from '../AddMeta/AddMeta'
+
+import * as ROUTES from '../../services/routes'
 // import metaHandler from '../AddMeta/AddMeta'
 // import AddMeta from '../AddMeta/AddMeta'
 
@@ -111,6 +114,7 @@ const Uploader = () => {
  
     
     return (
+        <Router>
         <div className="uploaderWrapper">
             
             {/* {step ?  */}
@@ -153,11 +157,13 @@ const Uploader = () => {
                 </div>
             {/* } */}
                 <button type="submit">form handler</button>
-                <AddMeta photoRef={metaUploadRef}/>
+                {/* {metaUploadRef !== "" ? <Redirect to="/addmeta" component={AddMeta} /> : null} */}
+                {/* <AddMeta photoRef={metaUploadRef}/> */}
             
             </div>
-            
-        // </div>
+        </Router>
+       
+        
     )
 }
 

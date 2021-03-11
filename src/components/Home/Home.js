@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import './Home.css'
 import SomeComponent from '../SomeComponent'
+import MetaSearch from '../MetaSearch/MetaSearch'
+import * as ROUTES from '../../services/routes'
 
 // import {AuthContext} from '../../services/AuthContext'
 import UserContext from '../../services/AuthContext'
 import ViewPhotos from '../ViewPhotos/ViewPhotos'
 import Uploader from '../Uploader/Uploader'
-import MetaSearch from '../MetaSearch/MetaSearch'
+
 
 
 const Home = () => {
