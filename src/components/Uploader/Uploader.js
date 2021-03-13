@@ -157,8 +157,8 @@ const Uploader = () => {
                 </div>
             {/* } */}
                 <button type="submit">form handler</button>
-                {/* {metaUploadRef !== "" ? <Redirect to="/addmeta" component={AddMeta} /> : null} */}
-                {/* <AddMeta photoRef={metaUploadRef}/> */}
+                {/* {metaUploadRef !== "" ? <Redirect to="/addmeta"  /> : null} */}
+                <AddMeta photoRef={metaUploadRef}/>
             
             </div>
         </Router>

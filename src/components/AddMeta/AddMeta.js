@@ -37,10 +37,26 @@ const AddMeta = ({ photoRef }) => {
             console.log("error: ", error)
         })
     }
-
+    let meta1 = meta.customMetadata.customMetaOne
     return (
         <div>
         <h1>add meta</h1>
+        <div>
+            <input
+            type="text"
+            onChange={(event) => {
+                
+                setMeta(prevState => ({
+                    customMetadata: {
+                        ...prevState.meta,
+                        customMetaOne: event.target.value
+                    }
+                }))
+            }}
+            >
+            </input>
+        <p>{meta1}</p>
+        </div>
         <button onClick={addCustomMeta}>meta tester</button>
         </div>
     )
