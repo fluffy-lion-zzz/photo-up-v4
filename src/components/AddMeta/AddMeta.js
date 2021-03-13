@@ -9,6 +9,7 @@ const AddMeta = ({ photoRef }) => {
     console.log("not photo ref")
 
     const [meta, setMeta] = useState({
+        
         customMetadata: {
             customMetaOne: "testing",
             customMetaTwo: "",
@@ -38,6 +39,7 @@ const AddMeta = ({ photoRef }) => {
         })
     }
     let meta1 = meta.customMetadata.customMetaOne
+    let meta2 = meta.customMetadata.customMetaTwo
     return (
         <div>
         <h1>add meta</h1>
@@ -55,7 +57,23 @@ const AddMeta = ({ photoRef }) => {
             }}
             >
             </input>
-        <p>{meta1}</p>
+        <p>meta1= {meta1}</p>
+        </div>
+        <div>
+            <input
+            type="text"
+            onChange={(event) => {
+                
+                setMeta(prevState => ({
+                    customMetadata: {
+                        ...prevState.meta,
+                        customMetaTwo: event.target.value
+                    }
+                }))
+            }}
+            >
+            </input>
+        <p>meta2= {meta2}</p>
         </div>
         <button onClick={addCustomMeta}>meta tester</button>
         </div>
