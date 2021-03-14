@@ -7,7 +7,7 @@ const AddMeta = ({ photoRef }) => {
     photoRef !== "" ?
     console.log("photp ref: ", photoRef.fullPath) :
     console.log("not photo ref")
-
+    const [amount, setAmount] = useState(0)
     const [meta, setMeta] = useState({
         
         customMetadata: {
@@ -38,6 +38,9 @@ const AddMeta = ({ photoRef }) => {
         })
     }
 
+    const TagInput = () => {
+
+    }
     return (
         <div>
         <h1>add meta</h1>
@@ -75,8 +78,63 @@ const AddMeta = ({ photoRef }) => {
             <button onClick={addCustomMeta}>confirm</button>
         <p>meta2= {meta.customMetadata.customMetaTwo}</p>
         </div>
+        <div>
+            <input
+            type="text"
+            onChange={(event) => {
+                let metaThree = event.target.value
+                setMeta(prevState => ({       
+                    customMetadata: {
+                        ...prevState.meta,
+                        customMetaThree: metaThree
+                    }
+                }))
+            }}
+            >
+            </input>
+            <button onClick={addCustomMeta}>confirm</button>
+        <p>meta3= {meta.customMetadata.customMetaThree}</p>
+        </div>
+        <div>
+            <input
+            type="text"
+            onChange={(event) => {
+                let metaFour = event.target.value
+                setMeta(prevState => ({       
+                    customMetadata: {
+                        ...prevState.meta,
+                        customMetaFour: metaFour
+                    }
+                }))
+            }}
+            >
+            </input>
+            <button onClick={addCustomMeta}>confirm</button>
+        <p>meta4= {meta.customMetadata.customMetaFour}</p>
+        </div>
+        <div>
+            <input
+            type="text"
+            onChange={(event) => {
+                let metaFive = event.target.value
+                setMeta(prevState => ({       
+                    customMetadata: {
+                        ...prevState.meta,
+                        customMetaFive: metaFive
+                    }
+                }))
+            }}
+            >
+            </input>
+            <button onClick={addCustomMeta}>confirm</button>
+        <p>meta5= {meta.customMetadata.customMetaFive}</p>
+        </div>
 
         <button onClick={addCustomMeta}>meta tester</button>
+
+        <div>
+            
+        </div>
         </div>
     )
 }
