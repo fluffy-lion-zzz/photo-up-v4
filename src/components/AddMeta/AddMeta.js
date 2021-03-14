@@ -28,8 +28,7 @@ const AddMeta = ({ photoRef }) => {
             console.log(metadata)
         })
     }
-    const addCustomMeta = (event) => {
-        event.preventDefault()
+    const addCustomMeta = () => {
         storageRef.updateMetadata(meta)
 
         .then((metadata) => {
@@ -39,21 +38,6 @@ const AddMeta = ({ photoRef }) => {
         })
     }
 
-    
-    const manageMeta = (...params) => {
-        console.log(params[0])
-        console.log(params[1])
-        // setMeta(prevState => ({
-        //     customMetadata: {
-        //         ...prevState.meta,
-        //         customMetaOne: params[0],
-        //         customMetaTwo: params[1]
-        //     }
-        // }))
-        // console.log(meta.customMetadata.customMetaOne)
-    }
-    let userMeta1
-    let userMeta2
     return (
         <div>
         <h1>add meta</h1>
@@ -61,37 +45,37 @@ const AddMeta = ({ photoRef }) => {
             <input
             type="text"
             onChange={(event) => {
-                event.preventDefault()
-                userMeta1 = event.target.value
-                manageMeta(userMeta1)
+                let metaOne = event.target.value
+                setMeta(prevState => ({       
+                    customMetadata: {
+                        ...prevState.meta,
+                        customMetaOne: metaOne
+                    }
+                }))
             }}
             >
             </input>
+            <button onClick={addCustomMeta}>confirm</button>
         <p>meta1= {meta.customMetadata.customMetaOne}</p>
         </div>
         <div>
             <input
             type="text"
             onChange={(event) => {
-                event.preventDefault()
-                userMeta2 = event.target.value
-                manageMeta(userMeta2)
-
-                //works
-                //works
-                //works
-                //works
-                // setMeta(prevState => ({
-                //     customMetadata: {
-                //         ...prevState.meta,
-                //         customMetaTwo: event.target.value
-                //     }
-                // }))
+                let metaTwo = event.target.value
+                setMeta(prevState => ({       
+                    customMetadata: {
+                        ...prevState.meta,
+                        customMetaTwo: metaTwo
+                    }
+                }))
             }}
             >
             </input>
+            <button onClick={addCustomMeta}>confirm</button>
         <p>meta2= {meta.customMetadata.customMetaTwo}</p>
         </div>
+
         <button onClick={addCustomMeta}>meta tester</button>
         </div>
     )
