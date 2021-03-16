@@ -63,6 +63,8 @@ const MetaSearch = () => {
         })
     }
     useEffect(() => {
+        const storage = app.storage()
+        
         storage.ref().list().then((items)=>{
                setParentFolder(items.prefixes)
             })
@@ -73,18 +75,20 @@ const MetaSearch = () => {
 
 
     // WILL BE PART OF ADD META COMPONENT
-    const storage = app.storage()
-    const storageRef = storage.ref('akira/akira-bike.jpg')
+    // const storage = app.storage()
+    // const storageRef = storage.ref('akira/akira-bike.jpg')
 
-    const getMeta = () => {
-        storageRef.getMetadata()
-        .then((metadata) => {
-            console.log(metadata)
-        })
+    // const getMeta = () => {
+    //     storageRef.getMetadata()
+    //     .then((metadata) => {
+    //         console.log(metadata)
+    //     })
        
-    }
+    // }
 
     const addCustomMeta = (event) => {
+        const storage = app.storage()
+        const storageRef = storage.ref()
         event.preventDefault()
         storageRef.updateMetadata(meta)
         .then((metadata) => {
@@ -96,7 +100,7 @@ const MetaSearch = () => {
 
     return(
         <div className="metaWrapper">
-            <button onClick={getMeta}>get meta</button>
+            {/* <button onClick={getMeta}>get meta</button> */}
             <form onSubmit={addCustomMeta}>
                 <input
                     onChange={((event) => {

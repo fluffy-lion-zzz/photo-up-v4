@@ -2,6 +2,8 @@ import React, { useState }from 'react'
 import './AddMeta.css'
 import app from'firebase/app'
 import 'firebase/storage'
+import MainMetaTags from '../MainMetaTags/MainMetaTags'
+
 
 const AddMeta = ({ photoRef }) => {
     photoRef !== "" ?
@@ -71,6 +73,7 @@ const AddMeta = ({ photoRef }) => {
     return (
         <div>
         <h1>add meta</h1>
+        <MainMetaTags />
         { oneDisplay ? 
         <div>
             <input

@@ -24,27 +24,9 @@ const Uploader = () => {
     //needed? \/ 
     const [folderDisplay, setFolderDisplay] = useState("")
     const [metaUploadRef, setMetaUploadRef] = useState("")
-    const [download, setDownload] = useState("")
-    //TESTING
-    // ..TESTING
-    // ....TESTING
-
-    // const [meta1, setMeta1] = useState("")
-
-    // const meta = useState({
-    //     customMetadata: {
-    //         customMetaOne: "test",
-    //         customMetaTwo: "",
-    //         customMetaThree: "",
-    //         customMetaFour: "",
-    //         customMetaFive: ""
-    //     }
-    // })
-
-    // CAUTION CAUTION CAUTION
-    //CHANGED TO FALSE FOR META TESTING
-    //CAUTION CAUTION CAUTION
-    const [step, setStep] = useState(true)
+    // const [download, setDownload] = useState("")
+    
+    // const [step, setStep] = useState(true)
 
     const ViewFolder = () => {
         return( 
