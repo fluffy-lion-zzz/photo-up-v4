@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './ImageLocation.css'
 
-const ImageLocation = ({ setStep, setFolderDisplay, newFolderHandler, folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
+const ImageLocation = ({ setFolderDisplay, newFolderHandler, folderOption, newFolder, setNewFolder, handleFolderView, folder}) => {
     const [name, setName] = useState("")
 
     const FolderName = () => {
@@ -45,13 +45,6 @@ const ImageLocation = ({ setStep, setFolderDisplay, newFolderHandler, folderOpti
         )
     }
 
-    const FolderConfirm = () => {
-        return (
-            <div>
-                <button onClick={setStep(false)}>continue to upload</button>
-            </div>
-        )
-    }
 
     const FolderArrItems = () => {
         return (

@@ -5,11 +5,10 @@ import 'firebase/storage'
 import MainMetaTags from '../MainMetaTags/MainMetaTags'
 
 
-const AddMeta = ({ photoRef }) => {
+const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
     photoRef !== "" ?
     console.log("photp ref: ", photoRef.fullPath) :
     console.log("not photo ref")
-    const [amount, setAmount] = useState(0)
     const [oneDisplay, setOneDisplay] = useState(true)
     const [twoDisplay, setTwoDisplay] = useState(false)
     const [threeDisplay, setThreeDisplay] = useState(false)
@@ -69,6 +68,8 @@ const AddMeta = ({ photoRef }) => {
     const fiveHandler = () => {
         addCustomMeta()
         setFiveDisplay(false)
+        setShowAddMeta(false)
+        viewReset()
     }
     return (
         <div>

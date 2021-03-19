@@ -21,19 +21,28 @@ const Uploader = () => {
     const [imageName, setImageName] = useState("")
     const [imageFile, setImageFile] = useState("")
     const [folderSelected, setFolderSelected] = useState(false)
-    //needed? \/ 
     const [folderDisplay, setFolderDisplay] = useState("")
     const [metaUploadRef, setMetaUploadRef] = useState("")
-    // const [download, setDownload] = useState("")
-    
-    // const [step, setStep] = useState(true)
+    const [showImageLoc, setShowImageLoc] = useState(true)
+    const [showSelectImage, setShowSelectImage] = useState(false)
+    const [showAddMeta, setShowAddMeta] = useState(false)
 
-    const ViewFolder = () => {
+    const ViewFolder = ({ setShowImageLoc }) => {
+        const stepper = () => {
+            setShowImageLoc(false)
+            setShowSelectImage(true)
+        }
+        
         return( 
         <div>
             <h1>being stored in: {folderDisplay}</h1>
+            <button onClick={stepper}>confirm</button>
         </div>
         )
+    }
+    const selectStepper = () => {
+        setShowSelectImage(false)
+        setShowAddMeta(true)
     }
     const funcTest = () => {
         console.log("hit funcTest")
@@ -78,6 +87,14 @@ const Uploader = () => {
         })
 
     }
+    const viewReset = () => {
+        setShowImageLoc(true)
+        setShowSelectImage(false)
+        setShowAddMeta(false)
+        return(
+            <Redirect push to="/login" />
+        )
+    }
 
     const handleImageFile = (event) => {
         const image = event.target.files[0]
@@ -98,13 +115,10 @@ const Uploader = () => {
     return (
         <Router>
         <div className="uploaderWrapper">
-            
-            {/* {step ?  */}
+            {showImageLoc ?
+            <div>
                 <ImageLocation
-                // setStep={setStep}
                     setFolderDisplay={setFolderDisplay}
-                    folderSelected={folderSelected} 
-                    setFolderSelected={setFolderSelected}
                     folderOption={folderOption}
                     newFolder={newFolder}
                     setNewFolder={setNewFolder}
@@ -112,10 +126,15 @@ const Uploader = () => {
                     handleFolderView={handleFolderView}
                     newFolderHandler={newFolderHandler}
                 />
-                {/* : */}
+                
+                
+                <ViewFolder setShowImageLoc={setShowImageLoc}/>
+            </div>
+                 :
+                 <></>
+                }
+                {showSelectImage ? 
                 <div>
-                <ViewFolder />
-                 
                     <ChooseImage 
                         imageFile={imageFile}
                         setImageFile={setImageFile}
@@ -130,22 +149,22 @@ const Uploader = () => {
                         imageName={imageName}
                         setImageName={setImageName}
                     />
-                    {/* <AddTestMeta /> */}
-
-                    {/* <button onClick={() => setStep(true)}>go back</button> */}
-
-                    <button type="submit">upload</button>
+                    <button type="submit" onClick={selectStepper}>upload</button>
                 </form>
-                </div>
-            {/* } */}
+                
+
                 <button type="submit">form handler</button>
-                {/* {metaUploadRef !== "" ? <Redirect to="/addmeta"  /> : null} */}
-                <AddMeta photoRef={metaUploadRef}/>
-            
+                </div>
+                :
+                <></>
+                }
+                {showAddMeta ?
+                <AddMeta viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/>
+                :
+                <></>
+                }
             </div>
-        </Router>
-       
-        
+        </Router>  
     )
 }
 
