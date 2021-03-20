@@ -71,10 +71,46 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
         setShowAddMeta(false)
         viewReset()
     }
+
+    const Director = (props) => {
+        return(
+            <div>
+                <button onClick={props.handler}>confirm</button>
+                <button>undo</button>
+            </div>
+        )
+    }
+    const AddedTags = () => {
+        let metaOne = meta.customMetadata.customMetaOne
+        console.log(metaOne)
+        let metaTwo = meta.customMetadata.customMetaTwo
+        let metaThree = meta.customMetadata.customMetaThree
+        let metaFour = meta.customMetadata.customMetaFour
+        let metaFive = meta.customMetadata.customMetaFive
+        return (
+            <div>
+                <div>
+                    <>{metaOne !== "" ?
+                    <>{metaOne}</> :
+                    <></>
+                    }
+                    </>
+                </div>
+                <div>
+                    <>{metaTwo !== "" ?
+                    <>{metaTwo}</> :
+                    <></>
+                    }
+                    </>
+                </div>
+            </div>
+        )
+    }
     return (
         <div>
         <h1>add meta</h1>
         <MainMetaTags />
+        <AddedTags />
         { oneDisplay ? 
         <div>
             <input
@@ -180,7 +216,7 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
         :
         <><p>5th set</p></>
         }
-        <button onClick={addCustomMeta}>meta tester</button>
+        <button onClick={addCustomMeta}>finish tags</button>
 
         <div>
             
