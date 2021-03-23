@@ -97,13 +97,25 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
         viewReset()
     }
 
-    const Director = (props) => {
-        console.log(props)
-        let reset = props.stateReset("")
+    const Director = ({ handler, stateReset}) => {
+        // console.log("director props: ", props)
+        let undo = () => {
+            console.log("fired")
+            setMetaTagOne("")
+            console.log(metaTagOne)
+            addCustomMeta()
+        }
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaOne: metaOne
+            }
+        }))
+        
         return(
             <div>
-                <button onClick={props.handler}>confirm</button>
-                <button onClick={() => reset}>undo</button>
+                <button onClick={handler}>confirm</button>
+                <button onClick={undo}>undo</button>
             </div>
         )
         
@@ -165,8 +177,11 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
         <div>
             <input
             type="text"
+            // value={metaOne}
             onChange={(event) => {
                 let metaOne = event.target.value
+           
+                
                 setMeta(prevState => ({       
                     customMetadata: {
                         ...prevState.meta,
@@ -179,6 +194,7 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
             <Director 
                 stateReset={setMetaTagOne}
                 handler={oneHandler} 
+                customeOneObject={customeOneObject}
             />
         <p>meta1= {meta.customMetadata.customMetaOne}</p>
         </div>
