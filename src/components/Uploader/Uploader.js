@@ -9,6 +9,7 @@ import ImageLocation from './ImageLocation'
 import AddMeta from '../AddMeta/AddMeta'
 
 import * as ROUTES from '../../services/routes'
+import AddMetaV2 from '../AddMeta/AddMetaV2'
 // import metaHandler from '../AddMeta/AddMeta'
 // import AddMeta from '../AddMeta/AddMeta'
 
@@ -177,8 +178,9 @@ const Uploader = () => {
                 {/* commented out for testing */}
 
 
-                <AddMeta viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/>
-
+                {/* <AddMeta viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/> */}
+                {/* testing! */}
+                <AddMetaV2 viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/>
                 {/* commented out for testing */}
 
                 {/* :
@@ -186,7 +188,7 @@ const Uploader = () => {
                 } */}
 
                 {/* commented out for testing */}
-                
+
             </div>
         </Router>  
     )

@@ -5,10 +5,14 @@ import 'firebase/storage'
 import MainMetaTags from '../MainMetaTags/MainMetaTags'
 
 
-const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
+const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
+
+    // photoRef = "newfolder/akira.jpg"
+    // console.log(photoRef)
     photoRef !== "" ?
     console.log("photp ref: ", photoRef.fullPath) :
     console.log("not photo ref")
+
     // const [oneDisplay, setOneDisplay] = useState(true)
     // const [twoDisplay, setTwoDisplay] = useState(false)
     // const [threeDisplay, setThreeDisplay] = useState(false)
@@ -50,18 +54,19 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
         })
     }
 
-    const oneHandler = (reset) => {
-        
-        if (reset){
-            
-            meta.customMetadata.customMetaOne = ""
+    const oneHandler = (event) => {
+        // addCustomMeta()
+        let metaOne = metaTagOne
+        console.log(metaOne)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaOne: metaOne
+            }
+        })).then(
             addCustomMeta()
-            setMetaTagOne("")
-        }else{
-        addCustomMeta()
-        let metaOne = meta.customMetadata.customMetaOne
-        setMetaTagOne(metaOne)
-        }
+        )
+        
       
 
     }
@@ -121,7 +126,7 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
     }
     useEffect(() => {
 
-    }, [])
+    }, [meta])
     const AddedTags = () => {
 
         return (
@@ -178,24 +183,16 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
             type="text"
             value={metaTagOne}
             onChange={(event) => {
-                let metaOne = event.target.value
-           
-                
-                setMeta(prevState => ({       
-                    customMetadata: {
-                        ...prevState.meta,
-                        customMetaOne: metaOne
-                    }
-                }))
+                setMetaTagOne(event.target.value)
             }}
             >
             </input>
             <Director 
-                stateReset={setMetaTagOne}
+                // stateReset={setMetaTagOne}
                 handler={oneHandler} 
-                customMeta="customMetaOne"
+                // customMeta="customMetaOne"
             />
-        <p>meta1= {meta.customMetadata.customMetaOne}</p>
+        <p>meta1= {metaTagOne}</p>
         </div>
         {/* :
         <><p>first tag set</p></>
@@ -293,4 +290,4 @@ const AddMeta = ({ photoRef, setShowAddMeta, viewReset }) => {
     )
 }
 
-export default AddMeta
+export default AddMetaV2
