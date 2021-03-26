@@ -54,57 +54,69 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         })
     }
 
-    const oneHandler = (event) => {
+    const oneHandler = () => {
         // addCustomMeta()
         let metaOne = metaTagOne
-        console.log(metaOne)
+        console.log("metaone : ",metaOne)
         setMeta(prevState => ({       
             customMetadata: {
                 ...prevState.meta,
                 customMetaOne: metaOne
             }
-        })).then(
-            addCustomMeta()
-        )
-        
+        }))
+        setMetaTagOne("")
       
 
     }
     const twoHandler = () => {
-        addCustomMeta()
-        let metaTwo = meta.customMetadata.customMetaTwo
-        setMetaTagTwo(metaTwo)
+        
+        let metaTwo = metaTagTwo
+        console.log("metaTwo : ", metaTwo)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaTwo: metaTwo
+            }
+        }))
+        setMetaTagTwo("")
 
         // setTwoDisplay(false)
         // setThreeDisplay(true)
 
     }
     const threeHandler = () => {
-        addCustomMeta()
-        let metaThree = meta.customMetadata.customMetaThree
-        setMetaTagThree(metaThree)
-
-        // setThreeDisplay(false)
-        // setFourDisplay(true)
-
+        let metaThree = metaTagThree
+        console.log("metaThree : ", metaThree)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaThree: metaThree
+            }
+        }))
+        setMetaTagThree("")
     }
     const fourHandler = () => {
-        addCustomMeta()
-        let metaFour = meta.customMetadata.customMetaFour
-        setMetaTagFour(metaFour)
-
-        // setFourDisplay(false)
-        // setFiveDisplay(true)
+        let metaFour = metaTagFour
+        console.log("metaFour : ", metaFour)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaFour: metaFour
+            }
+        }))
+        setMetaTagFour("")
 
     }
     const fiveHandler = () => {
-        addCustomMeta()
-        let metaFive = meta.customMetadata.customMetaFive
-        setMetaTagFive(metaFive)
-
-        // setFiveDisplay(false)
-        // setShowAddMeta(false)
-
+        let metaFive = metaTagFive
+        console.log("metaFive : ", metaFive)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaFive: metaFive
+            }
+        }))
+        setMetaTagFive("")
         viewReset()
     }
 
@@ -125,7 +137,8 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         
     }
     useEffect(() => {
-
+        addCustomMeta()
+        console.log("metaupdate")
     }, [meta])
     const AddedTags = () => {
 
@@ -201,82 +214,71 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         <div>
             <input
             type="text"
+            value={metaTagTwo}
             onChange={(event) => {
-                let metaTwo = event.target.value
-                setMeta(prevState => ({       
-                    customMetadata: {
-                        ...prevState.meta,
-                        customMetaTwo: metaTwo
-                    }
-                }))
+                setMetaTagTwo(event.target.value)
             }}
             >
             </input>
-            <button onClick={twoHandler}>confirm</button>
-        <p>meta2= {meta.customMetadata.customMetaTwo}</p>
+            <Director
+                handler={twoHandler}
+            />
+            {/* <button onClick={twoHandler}>confirm</button> */}
+        <p>meta2= {metaTagTwo}</p>
         </div>
         {/* :
         <><p>2nd tag set</p></>
         }
         { threeDisplay ? */}
         <div>
-            <input
+        <input
             type="text"
+            value={metaTagThree}
             onChange={(event) => {
-                let metaThree = event.target.value
-                setMeta(prevState => ({       
-                    customMetadata: {
-                        ...prevState.meta,
-                        customMetaThree: metaThree
-                    }
-                }))
+                setMetaTagThree(event.target.value)
             }}
             >
             </input>
-            <button onClick={threeHandler}>confirm</button>
-        <p>meta3= {meta.customMetadata.customMetaThree}</p>
+            <Director
+                handler={threeHandler}
+            />
+        <p>meta3= {metaTagThree}</p>
         </div>
         {/* :
         <><p>3rd set</p></>
         }
         { fourDisplay ? */}
         <div>
-            <input
+        <input
             type="text"
+            value={metaTagFour}
             onChange={(event) => {
-                let metaFour = event.target.value
-                setMeta(prevState => ({       
-                    customMetadata: {
-                        ...prevState.meta,
-                        customMetaFour: metaFour
-                    }
-                }))
+                setMetaTagFour(event.target.value)
             }}
             >
             </input>
-            <button onClick={fourHandler}>confirm</button>
-        <p>meta4= {meta.customMetadata.customMetaFour}</p>
+            <Director
+                handler={fourHandler}
+            />
+        <p>meta4= {metaTagFour}</p>
         </div>
         {/* :
         <><p>4th set</p></>
         }
         { fiveDisplay ? */}
         <div>
-            <input
+        <input
             type="text"
+            value={metaTagFive}
             onChange={(event) => {
-                let metaFive = event.target.value
-                setMeta(prevState => ({       
-                    customMetadata: {
-                        ...prevState.meta,
-                        customMetaFive: metaFive
-                    }
-                }))
+                setMetaTagFive(event.target.value)
             }}
             >
             </input>
-            <button onClick={fiveHandler}>confirm</button>
-        <p>meta5= {meta.customMetadata.customMetaFive}</p>
+            <Director
+                handler={fiveHandler}
+            />
+        <p>meta5= {metaTagFive}</p>
         </div>
         {/* :
         <><p>5th set</p></>
