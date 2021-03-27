@@ -54,8 +54,8 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         })
     }
 
-    const oneHandler = () => {
-        // addCustomMeta()
+    const oneHandler = (reset) => {
+        console.log("reset : ", reset)
         let metaOne = metaTagOne
         console.log("metaone : ",metaOne)
         setMeta(prevState => ({       
@@ -123,7 +123,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
     const Director = ({ handler, stateReset, customMeta}) => {
         // console.log("director props: ", props)
         let undo = () => {
-            console.log("")
+            console.log("undo hit")
             let reset = "true"
             handler(reset)
        
