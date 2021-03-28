@@ -64,7 +64,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
                 }
             }))
             setMetaTagOne("")
-        } else{
+        } else {
         let metaOne = metaTagOne
         console.log("metaone : ",metaOne)
         setMeta(prevState => ({       
@@ -76,8 +76,16 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         setMetaTagOne("")
     }
     }
-    const twoHandler = () => {
-        
+    const twoHandler = (reset) => {
+        if (reset){
+            setMeta(prevState => ({       
+                customMetadata: {
+                    ...prevState.meta,
+                    customMetaTwo: ""
+                }
+            }))
+            setMetaTagTwo("")
+        } else {
         let metaTwo = metaTagTwo
         console.log("metaTwo : ", metaTwo)
         setMeta(prevState => ({       
@@ -87,12 +95,18 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             }
         }))
         setMetaTagTwo("")
-
-        // setTwoDisplay(false)
-        // setThreeDisplay(true)
-
     }
-    const threeHandler = () => {
+    }
+    const threeHandler = (reset) => {
+        if (reset) {
+            setMeta(prevState => ({       
+                customMetadata: {
+                    ...prevState.meta,
+                    customMetaThree: ""
+                }
+            }))
+            setMetaTagThree("")
+        } else {
         let metaThree = metaTagThree
         console.log("metaThree : ", metaThree)
         setMeta(prevState => ({       
@@ -103,7 +117,17 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         }))
         setMetaTagThree("")
     }
-    const fourHandler = () => {
+    }
+    const fourHandler = (reset) => {
+        if (reset){
+            setMeta(prevState => ({       
+                customMetadata: {
+                    ...prevState.meta,
+                    customMetaFour: ""
+                }
+            }))
+            setMetaTagFour("")
+        } else {
         let metaFour = metaTagFour
         console.log("metaFour : ", metaFour)
         setMeta(prevState => ({       
@@ -113,9 +137,18 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             }
         }))
         setMetaTagFour("")
-
     }
-    const fiveHandler = () => {
+    }
+    const fiveHandler = (reset) => {
+        if (reset) {
+            setMeta(prevState => ({       
+                customMetadata: {
+                    ...prevState.meta,
+                    customMetaFive: ""
+                }
+            }))
+            setMetaTagFive("")
+        } else {
         let metaFive = metaTagFive
         console.log("metaFive : ", metaFive)
         setMeta(prevState => ({       
@@ -126,6 +159,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         }))
         setMetaTagFive("")
         viewReset()
+    }
     }
 
     const Director = ({ handler, stateReset, customMeta}) => {
