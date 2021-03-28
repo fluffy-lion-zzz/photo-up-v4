@@ -56,6 +56,15 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
 
     const oneHandler = (reset) => {
         console.log("reset : ", reset)
+        if (reset) {
+            setMeta(prevState => ({       
+                customMetadata: {
+                    ...prevState.meta,
+                    customMetaOne: ""
+                }
+            }))
+            setMetaTagOne("")
+        } else{
         let metaOne = metaTagOne
         console.log("metaone : ",metaOne)
         setMeta(prevState => ({       
@@ -65,8 +74,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             }
         }))
         setMetaTagOne("")
-      
-
+    }
     }
     const twoHandler = () => {
         
