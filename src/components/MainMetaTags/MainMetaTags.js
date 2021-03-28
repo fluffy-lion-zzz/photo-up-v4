@@ -3,10 +3,18 @@ import './MainMetaTags.css'
 import app from 'firebase/app'
 import 'firebase/storage'
 
-const MainMetaTags = () => {
+const MainMetaTags = (props) => {
+    console.log("main meta props : ", props)
     const storage = app.storage()
     const storageRef = storage.ref()
 
+
+    const getMeta = () => {
+        storageRef.getMetadata()
+        .then((metadata) => {
+            console.log(metadata)
+        })
+    }
     storageRef.list().then(res => {
         //viewing folders in bucket
         console.log(res.prefixes)

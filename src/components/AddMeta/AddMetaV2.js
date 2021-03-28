@@ -54,9 +54,10 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         })
     }
 
-    const oneHandler = (reset) => {
-        console.log("reset : ", reset)
-        if (reset) {
+    const oneHandler = ( reset ) => {
+        console.log("ONE HANDLER>>>reset : ", reset)
+        if (reset == true) {
+            console.log("HANDLER RESET TRUE")
             setMeta(prevState => ({       
                 customMetadata: {
                     ...prevState.meta,
@@ -65,6 +66,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             }))
             setMetaTagOne("")
         } else {
+            console.log("hit false")
         let metaOne = metaTagOne
         console.log("metaone : ",metaOne)
         setMeta(prevState => ({       
@@ -77,7 +79,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
     }
     }
     const twoHandler = (reset) => {
-        if (reset){
+        if (reset == true){
             setMeta(prevState => ({       
                 customMetadata: {
                     ...prevState.meta,
@@ -98,7 +100,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
     }
     }
     const threeHandler = (reset) => {
-        if (reset) {
+        if (reset == true) {
             setMeta(prevState => ({       
                 customMetadata: {
                     ...prevState.meta,
@@ -119,7 +121,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
     }
     }
     const fourHandler = (reset) => {
-        if (reset){
+        if (reset == true){
             setMeta(prevState => ({       
                 customMetadata: {
                     ...prevState.meta,
@@ -140,7 +142,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
     }
     }
     const fiveHandler = (reset) => {
-        if (reset) {
+        if (reset == true) {
             setMeta(prevState => ({       
                 customMetadata: {
                     ...prevState.meta,
@@ -164,9 +166,10 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
 
     const Director = ({ handler, stateReset, customMeta}) => {
         // console.log("director props: ", props)
+        let reset = false
         let undo = () => {
             console.log("undo hit")
-            let reset = "true"
+            reset = true
             handler(reset)
        
     }
@@ -182,54 +185,54 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         addCustomMeta()
         console.log("metaupdate")
     }, [meta])
-    const AddedTags = () => {
+    // const AddedTags = () => {
 
-        return (
-            <div>
-                <div>
-                    <>{metaTagOne !== "" ?
-                    <>{metaTagOne}</> :
-                    <></>
-                    }
-                    </>
-                </div>
-                <div>
-                    <>{metaTagTwo !== "" ?
-                    <>{metaTagTwo}</> :
-                    <></>
-                    }
-                    </>
-                </div>
+    //     return (
+    //         <div>
+    //             <div>
+    //                 <>{metaTagOne !== "" ?
+    //                 <>{metaTagOne}</> :
+    //                 <></>
+    //                 }
+    //                 </>
+    //             </div>
+    //             <div>
+    //                 <>{metaTagTwo !== "" ?
+    //                 <>{metaTagTwo}</> :
+    //                 <></>
+    //                 }
+    //                 </>
+    //             </div>
 
-                <div>
-                    <>{metaTagThree !== "" ?
-                    <>{metaTagThree}</> :
-                    <></>
-                    }
-                    </>
-                </div>
-                <div>
-                    <>{metaTagFour !== "" ?
-                    <>{metaTagFour}</> :
-                    <></>
-                    }
-                    </>
-                </div>
-                <div>
-                    <>{metaTagFive !== "" ?
-                    <>{metaTagFive}</> :
-                    <></>
-                    }
-                    </>
-                </div>
-            </div>
-        )
-    }
+    //             <div>
+    //                 <>{metaTagThree !== "" ?
+    //                 <>{metaTagThree}</> :
+    //                 <></>
+    //                 }
+    //                 </>
+    //             </div>
+    //             <div>
+    //                 <>{metaTagFour !== "" ?
+    //                 <>{metaTagFour}</> :
+    //                 <></>
+    //                 }
+    //                 </>
+    //             </div>
+    //             <div>
+    //                 <>{metaTagFive !== "" ?
+    //                 <>{metaTagFive}</> :
+    //                 <></>
+    //                 }
+    //                 </>
+    //             </div>
+    //         </div>
+    //     )
+    // }
     return (
         <div>
         <h1>add meta</h1>
-        <MainMetaTags />
-        <AddedTags />
+        <MainMetaTags photoRef={photoRef} />
+        {/* <AddedTags /> */}
 
         {/* { oneDisplay ?  */}
         
