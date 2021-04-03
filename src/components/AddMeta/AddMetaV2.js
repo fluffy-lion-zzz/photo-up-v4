@@ -3,6 +3,9 @@ import './AddMeta.css'
 import app from'firebase/app'
 import 'firebase/storage'
 import MainMetaTags from '../MainMetaTags/MainMetaTags'
+import MetaSuggest from '../MetaSuggest/MetaSuggest'
+
+
 
 
 const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
@@ -232,6 +235,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         <div>
         <h1>add meta</h1>
         <MainMetaTags photoRef={photoRef} />
+        <MetaSuggest />
         {/* <AddedTags /> */}
 
         {/* { oneDisplay ?  */}
