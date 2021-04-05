@@ -235,7 +235,13 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         <div>
         <h1>add meta</h1>
         <MainMetaTags photoRef={photoRef} />
-        <MetaSuggest />
+        <MetaSuggest 
+            setMetaTagOne={setMetaTagOne}
+            setMetaTagTwo={setMetaTagTwo}
+            setMetaTagThree={setMetaTagThree}
+            setMetaTagFour={setMetaTagFour}
+            setMetaTagFive={setMetaTagFive}
+        />
         {/* <AddedTags /> */}
 
         {/* { oneDisplay ?  */}
