@@ -7,22 +7,80 @@ const MetaSuggest = (props) => {
     let setFour = props.setMetaTagFour
     let setFive = props.setMetaTagFive
 
+    let add = props.addCustomMeta
+
     const oneHandler = (event) => {
-        console.log("button hit : ", event.target.value)
+        let value = event.target.value
+        setOne(value)
+        add()
+    }
+
+    const twoHandler = (event) => {
+        let value = event.target.value
+        setTwo(value)
+        add()
+    }
+
+    const threeHandler = (event) => {
+        let value = event.target.value
+        setThree(value)
+        add()
+    }
+
+    const fourHandler = (event) => {
+        let value = event.target.value
+        setFour(value)
+        add()
+    }
+
+    const fiveHandler = (event) => {
+        let value = event.target.value
+        setFive(value)
+        add()
     }
     return (
         <div id="suggestContainer">
             <h3>meta suggest tags</h3>
             <div>
-                
-                    <button
-                    value="student"
-                    type="submit"
-                    onClick={oneHandler}
-                    >
-                        student
-                    </button>
-                
+                <button
+                value="student"
+                type="submit"
+                onClick={oneHandler}
+                >
+                    student
+                </button>
+            </div>
+            <div>
+                <button
+                value="classroom"
+                onClick={twoHandler}
+                >
+                    classroom
+                </button>
+            </div>
+            <div>
+                <button
+                value="event"
+                onClick={threeHandler}
+                >
+                    event
+                </button>
+            </div>
+            <div>
+                <button
+                value="virtual"
+                onClick={fourHandler}
+                >
+                    virtual
+                </button>
+            </div>
+            <div>
+                <button
+                value="group"
+                onClick={fiveHandler}
+                >
+                    group
+                </button>
             </div>
         </div>
     )
