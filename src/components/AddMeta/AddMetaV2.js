@@ -4,6 +4,7 @@ import app from'firebase/app'
 import 'firebase/storage'
 import MainMetaTags from '../MainMetaTags/MainMetaTags'
 import MetaSuggest from '../MetaSuggest/MetaSuggest'
+import TagsDisplay from '../TagsDisplay/TagsDisplay'
 
 
 
@@ -243,6 +244,10 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             setMetaTagFive={setMetaTagFive}
             addCustomMeta={addCustomMeta}
             setMeta={setMeta}
+        />
+        <TagsDisplay 
+            metaTagOne={metaTagOne}
+            meta={meta}
         />
         {/* <AddedTags /> */}
 
