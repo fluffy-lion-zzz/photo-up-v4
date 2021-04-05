@@ -242,6 +242,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             setMetaTagFour={setMetaTagFour}
             setMetaTagFive={setMetaTagFive}
             addCustomMeta={addCustomMeta}
+            setMeta={setMeta}
         />
         {/* <AddedTags /> */}
 

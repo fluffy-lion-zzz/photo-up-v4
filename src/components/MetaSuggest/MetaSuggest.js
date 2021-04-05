@@ -8,34 +8,65 @@ const MetaSuggest = (props) => {
     let setFive = props.setMetaTagFive
 
     let add = props.addCustomMeta
+    let setMeta = props.setMeta
 
     const oneHandler = (event) => {
         let value = event.target.value
         setOne(value)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaOne: value
+            }
+        }))
         add()
     }
 
     const twoHandler = (event) => {
         let value = event.target.value
         setTwo(value)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaTwo: value
+            }
+        }))
         add()
     }
 
     const threeHandler = (event) => {
         let value = event.target.value
         setThree(value)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaThree: value
+            }
+        }))
         add()
     }
 
     const fourHandler = (event) => {
         let value = event.target.value
         setFour(value)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaFour: value
+            }
+        }))
         add()
     }
 
     const fiveHandler = (event) => {
         let value = event.target.value
         setFive(value)
+        setMeta(prevState => ({       
+            customMetadata: {
+                ...prevState.meta,
+                customMetaFive: value
+            }
+        }))
         add()
     }
     return (
