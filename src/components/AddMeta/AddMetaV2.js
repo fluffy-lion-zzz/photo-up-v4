@@ -10,12 +10,14 @@ import TagsDisplay from '../TagsDisplay/TagsDisplay'
 
 
 const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
-
+    //testing
     // photoRef = "newfolder/akira.jpg"
+
     // console.log(photoRef)
     photoRef !== "" ?
     console.log("photp ref: ", photoRef.fullPath) :
     console.log("not photo ref")
+    
 
     // const [oneDisplay, setOneDisplay] = useState(true)
     // const [twoDisplay, setTwoDisplay] = useState(false)
@@ -186,6 +188,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         
     }
     useEffect(() => {
+        
         addCustomMeta()
         console.log("metaupdate")
     }, [meta])
