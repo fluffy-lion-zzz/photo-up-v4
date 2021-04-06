@@ -30,6 +30,9 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
     const [metaTagThree, setMetaTagThree] = useState("")
     const [metaTagFour, setMetaTagFour] = useState("")
     const [metaTagFive, setMetaTagFive] = useState("")
+
+    const [oneDisplay, setOneDisplay] = useState("")
+
     const [meta, setMeta] = useState({
         
         customMetadata: {
@@ -81,7 +84,8 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
                 customMetaOne: metaOne
             }
         }))
-        setMetaTagOne("")
+        setOneDisplay(metaOne)
+        // setMetaTagOne("")
     }
     }
     const twoHandler = (reset) => {
@@ -247,10 +251,15 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             setMetaTagFive={setMetaTagFive}
             addCustomMeta={addCustomMeta}
             setMeta={setMeta}
+
+            setOneDisplay={setOneDisplay}
         />
         <TagsDisplay 
             metaTagOne={metaTagOne}
+            metaTagTwo={metaTagTwo}
+            oneDisplay={oneDisplay}
             meta={meta}
+            photoRef={photoRef}
         />
         {/* <AddedTags /> */}
 
