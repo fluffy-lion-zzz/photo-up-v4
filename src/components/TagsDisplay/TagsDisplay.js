@@ -31,6 +31,26 @@ let displayTwo = () => {
     }
 }
 
+let displayThree = () => {
+    if (props.metaTagThree !== ""){
+        setThree(props.metaTagThree)
+        console.log("three>>>>>>>>>", three)
+    }
+}
+
+let displayFour = () => {
+    if (props.metaTagFour !== ""){
+        setFour(props.metaTagFour)
+        console.log("four>>>>>>>>>", four)
+    }
+}
+
+let displayFive = () => {
+    if (props.metaTagFive !== ""){
+        setFive(props.metaTagFive)
+        console.log("five>>>>>>>>", five)
+    }
+}
 
 const Display = () => {
     return (
@@ -67,6 +87,9 @@ const Display = () => {
 useEffect(() => {
     displayOne()
     displayTwo()
+    displayThree()
+    displayFour()
+    displayFive()
 }, [data])
 
     return (
