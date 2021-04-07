@@ -31,7 +31,6 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
     const [metaTagFour, setMetaTagFour] = useState("")
     const [metaTagFive, setMetaTagFive] = useState("")
 
-    const [oneDisplay, setOneDisplay] = useState("")
 
     const [meta, setMeta] = useState({
         
@@ -196,49 +195,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         addCustomMeta()
         console.log("metaupdate")
     }, [meta])
-    // const AddedTags = () => {
-
-    //     return (
-    //         <div>
-    //             <div>
-    //                 <>{metaTagOne !== "" ?
-    //                 <>{metaTagOne}</> :
-    //                 <></>
-    //                 }
-    //                 </>
-    //             </div>
-    //             <div>
-    //                 <>{metaTagTwo !== "" ?
-    //                 <>{metaTagTwo}</> :
-    //                 <></>
-    //                 }
-    //                 </>
-    //             </div>
-
-    //             <div>
-    //                 <>{metaTagThree !== "" ?
-    //                 <>{metaTagThree}</> :
-    //                 <></>
-    //                 }
-    //                 </>
-    //             </div>
-    //             <div>
-    //                 <>{metaTagFour !== "" ?
-    //                 <>{metaTagFour}</> :
-    //                 <></>
-    //                 }
-    //                 </>
-    //             </div>
-    //             <div>
-    //                 <>{metaTagFive !== "" ?
-    //                 <>{metaTagFive}</> :
-    //                 <></>
-    //                 }
-    //                 </>
-    //             </div>
-    //         </div>
-    //     )
-    // }
+    
     return (
         <div>
         <h1>add meta</h1>
