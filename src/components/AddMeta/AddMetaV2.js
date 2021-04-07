@@ -209,7 +209,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
             addCustomMeta={addCustomMeta}
             setMeta={setMeta}
 
-            setOneDisplay={setOneDisplay}
+            // setOneDisplay={setOneDisplay}
         />
         <TagsDisplay 
             metaTagOne={metaTagOne}

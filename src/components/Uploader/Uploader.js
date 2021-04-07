@@ -10,6 +10,7 @@ import AddMeta from '../AddMeta/AddMeta'
 
 import * as ROUTES from '../../services/routes'
 import AddMetaV2 from '../AddMeta/AddMetaV2'
+import UpdateMeta from '../UpdateMeta/UpdateMeta'
 // import metaHandler from '../AddMeta/AddMeta'
 // import AddMeta from '../AddMeta/AddMeta'
 
@@ -180,9 +181,9 @@ const Uploader = () => {
 
                 {/* <AddMeta viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/> */}
                 {/* testing! */}
-                <AddMetaV2 viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/>
+                {/* <AddMetaV2 viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/> */}
                 {/* commented out for testing */}
-
+                <UpdateMeta />
                 {/* :
                 <></>
                 } */}
