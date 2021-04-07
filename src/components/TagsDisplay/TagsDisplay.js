@@ -17,39 +17,20 @@ const [five, setFive] = useState("")
 
 let data = props.meta
 
-// const getMeta = () => {
-//         storageRef.getMetadata()
-//         .then((metadata) => {
-//             console.log(
-//                 "metadata tag display", metadata)
-
-//             }
-            
-//         )
-  
-// }
-
-// setOne(data)
-// let getOne = props.meta.customMetadata.customMetaOne
 let displayOne = () => {
-    if(props.metaTagOne !== "" ){
+    if (props.metaTagOne !== "" ){
         setOne(props.metaTagOne)
         console.log("one>>>>>>>>> ", one)
     }
-    // console.log(props.oneDisplay)
-    // setOne(props.oneDisplay)
 }
 
-let getOne = props.metaTagOne
-// let getTwo = props.meta.customMetadata.customMetaTwo
-// let getTwo = props.metaTagTwo
-// let getThree = props.meta.customMetadata.customMetaThree
-// let getFour = props.meta.customMetadata.customMetaFour
-// let getFive = props.meta.customMetadata.customMetaFive
-
-const loader = () => {
-    displayOne()
+let displayTwo = () => {
+    if (props.metaTagTwo !== ""){
+        setTwo(props.metaTagTwo)
+        console.log("two >>>>>>> ", two)
+    }
 }
+
 
 const Display = () => {
     return (
@@ -64,32 +45,28 @@ const Display = () => {
                 <br />
                 {two ? <p>{two}</p> : <></>}
             </div>
-            
-            {/* {three ? <p>{three}</p> : <></>}
-            {four ? <p>{four}</p> : <></>} */}
+            <div>
+                three:
+                <br />
+                {three ? <p>{three}</p> : <></>}
+            </div>
+            <div>
+                four:
+                <br />
+                {four ? <p>{four}</p> : <></>}
+            </div>
+            <div>
+                five:
+                <br />
+                {five ? <p>{five}</p> : <></>}
+            </div>
         </div>
     )
 }
 
 useEffect(() => {
-    // const getMeta = () => {
-    //     storageRef.getMetadata()
-    //     .then((metadata) => {
-    //         console.log(
-    //             "metadata tag display", metadata)
-    //         }
-            
-    //     ).then((metadata) => {
-    //         setOne(metadata.customMetadata.customMetaOne)
-    //         }
-    //     ).catch((error) => {
-    //         console.log(error)
-    //     })
-    
-    // }
-    // getMeta()
-    // loader()
     displayOne()
+    displayTwo()
 }, [data])
 
     return (

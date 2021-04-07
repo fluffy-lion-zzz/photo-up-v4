@@ -84,7 +84,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
                 customMetaOne: metaOne
             }
         }))
-        setOneDisplay(metaOne)
+        // setOneDisplay(metaOne)
         // setMetaTagOne("")
     }
     }
@@ -106,7 +106,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
                 customMetaTwo: metaTwo
             }
         }))
-        setMetaTagTwo("")
+        // setMetaTagTwo("")
     }
     }
     const threeHandler = (reset) => {
@@ -127,7 +127,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
                 customMetaThree: metaThree
             }
         }))
-        setMetaTagThree("")
+        // setMetaTagThree("")
     }
     }
     const fourHandler = (reset) => {
@@ -148,7 +148,7 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
                 customMetaFour: metaFour
             }
         }))
-        setMetaTagFour("")
+        // setMetaTagFour("")
     }
     }
     const fiveHandler = (reset) => {
@@ -169,8 +169,8 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
                 customMetaFive: metaFive
             }
         }))
-        setMetaTagFive("")
-        viewReset()
+        // setMetaTagFive("")
+        // viewReset()
     }
     }
 
@@ -257,7 +257,10 @@ const AddMetaV2 = ({ photoRef, setShowAddMeta, viewReset }) => {
         <TagsDisplay 
             metaTagOne={metaTagOne}
             metaTagTwo={metaTagTwo}
-            oneDisplay={oneDisplay}
+            metaTagThree={metaTagThree}
+            metaTagFour={metaTagFour}
+            metaTagFive={metaTagFive}
+
             meta={meta}
             photoRef={photoRef}
         />
