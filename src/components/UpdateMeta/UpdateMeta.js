@@ -1,57 +1,74 @@
 import React, { useState, useEffect } from 'react'
 import './UpdateMeta.css'
-const UpdateMeta = () => {
+import 'firebase/storage'
+const UpdateMeta = (props) => {
+    let ref = props.metaUploadRef
+    
     const [metas, setMetas] = useState({
-        meta1: "1",
-        meta2: "2",
-        meta3: "3",
-        meta4: "4",
-        meta5: "5",
+        tag1: "1",
+        tag2: "2",
+        tag3: "3",
+        tag4: "4",
+        tag5: "5",
       });
-      const [currentMeta, setCurrentMeta] = useState("meta1");
+      const [currentMeta, setCurrentMeta] = useState("tag1");
       const [input, setInput] = useState("");
+
       useEffect(() => {}, [metas]);
-      const handleSubmit = (e) => {
+
+      const handleSubmit = () => {
+        ref.updateMetadata({customMetadata: metas})
+          .then((customMetadata) => {
+              console.log(customMetadata)
+          }).catch((error) => {
+              console.log("error: ", error)
+          })
+      }
+
+      const handleState = (e) => {
         e.preventDefault();
         console.log(Object.keys(metas).length);
-        if (currentMeta !== "meta6") {
+        if (currentMeta !== "tag6") {
           setMetas((prevState) => {
             return { ...prevState, [currentMeta]: input };
           });
+          // addCustomMeta()
           setInput("");
           let num = currentMeta.slice(-1);
-          console.log(`meta${num++}`);
-          setCurrentMeta(`meta${num++}`);
+          console.log(`tag${num++}`);
+          setCurrentMeta(`tag${num++}`);
         } else {
           console.log("You have reach the maximum number of metas");
+          setInput("")
         }
       };
     return (
         <div className="updateCont">
             <select
-        value={currentMeta}
-        onChange={(e) => setCurrentMeta(e.target.value)}
-      >
-        <option value="meta1">meta 1</option>
-        <option value="meta2">meta 2</option>
-        <option value="meta3">meta 3</option>
-        <option value="meta4">meta 4</option>
-        <option value="meta5">meta 5</option>
-      </select>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button type="submit">Submit meta</button>
-      </form>
-      {metas &&
-        Object.keys(metas).map((item) => (
-          <li>
-            {item} = {metas[item]}
-          </li>
-        ))}
+                value={currentMeta}
+                onChange={(e) => setCurrentMeta(e.target.value)}
+            >
+                <option value="tag1">tag 1</option>
+                <option value="tag2">tag 2</option>
+                <option value="tag3">tag 3</option>
+                <option value="tag4">tag 4</option>
+                <option value="tag5">tag 5</option>
+            </select>
+            <form onSubmit={handleState}>
+                <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                />
+                <button type="submit">Submit meta</button>
+            </form>
+                {metas &&
+                    Object.keys(metas).map((item) => (
+                    <li>
+                        {item} = {metas[item]}
+                    </li>
+                    ))}
+            <button onClick={handleSubmit}>finish</button>
         </div>
     )
 }

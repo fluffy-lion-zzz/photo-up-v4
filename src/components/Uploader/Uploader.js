@@ -156,7 +156,7 @@ const Uploader = () => {
                 onSubmit={handleUpload}
                 >
                     <ImageInfo 
-                    metaUploadRef={metaUploadRef}
+                        metaUploadRef={metaUploadRef}
                         funcTest={funcTest}
                         imageFile={imageFile}
                         imageName={imageName}
@@ -183,7 +183,7 @@ const Uploader = () => {
                 {/* testing! */}
                 {/* <AddMetaV2 viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/> */}
                 {/* commented out for testing */}
-                <UpdateMeta />
+                <UpdateMeta metaUploadRef={metaUploadRef}/>
                 {/* :
                 <></>
                 } */}
