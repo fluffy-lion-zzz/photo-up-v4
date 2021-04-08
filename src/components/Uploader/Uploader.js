@@ -117,13 +117,6 @@ const Uploader = () => {
     return (
         <Router>
         <div className="uploaderWrapper">
-
-            {/* commented out for testing */}
-
-            {/* {showImageLoc ? */}
-
-            {/* commented out for testing */}
-
             <div>
                 <ImageLocation
                     setFolderDisplay={setFolderDisplay}
@@ -134,19 +127,8 @@ const Uploader = () => {
                     handleFolderView={handleFolderView}
                     newFolderHandler={newFolderHandler}
                 />
-                
-                
                 <ViewFolder setShowImageLoc={setShowImageLoc}/>
             </div>
-
-                {/* commented out for testing */}
-
-                 {/* :
-                 <></>
-                }
-                {showSelectImage ?  */}
-
-                {/* commented out for testing */}
                 <div>
                     <ChooseImage 
                         imageFile={imageFile}
@@ -164,32 +146,10 @@ const Uploader = () => {
                     />
                     <button type="submit" onClick={selectStepper}>upload</button>
                 </form>
-                
-
                 <button type="submit">form handler</button>
                 </div>
 
-                {/* commented out for testing */}
-
-                {/* :
-                <></>
-                }
-                {showAddMeta ? */}
-
-                {/* commented out for testing */}
-
-
-                {/* <AddMeta viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/> */}
-                {/* testing! */}
-                {/* <AddMetaV2 viewReset={viewReset} setShowAddMeta={setShowAddMeta} photoRef={metaUploadRef}/> */}
-                {/* commented out for testing */}
                 <UpdateMeta metaUploadRef={metaUploadRef}/>
-                {/* :
-                <></>
-                } */}
-
-                {/* commented out for testing */}
-
             </div>
         </Router>  
     )
