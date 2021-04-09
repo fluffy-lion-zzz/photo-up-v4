@@ -14,6 +14,7 @@ import Account from './components/Account/Account'
 import 'firebase/auth'
 import app from 'firebase/app'
 import PrivateRoute from './services/PrivateRoute'
+import Uploader from './components/Uploader/Uploader'
 
 const onAuthStateChange = (callback) => {
   return app.auth().onAuthStateChanged(user => {
@@ -28,11 +29,21 @@ const onAuthStateChange = (callback) => {
 const App = () => {
   const [user, setUser] = useState({loggedIn: false})
   // console.log(user)
+
+  const [storageRef, setStorageRef] = useState()
+
+    const loadStorage = async () => {
+        const storage = await app.storage()
+        setStorageRef(storage.ref())
+    }
   useEffect(() => {
+      loadStorage()
       const unsubscribe = onAuthStateChange(setUser)
       return () => {
           unsubscribe()
+          
       }
+      
   }, [])
 
   return (
@@ -51,11 +62,15 @@ const App = () => {
       {/* <button onClick={doSignOut}>sign out</button> */}
       <Route exact path={ROUTES.LANDING} componet={Landing}/>
         {/* <UserConsumer> */}
-            <Route path={ROUTES.LOG_IN} component={Login}/>
+      <Route path={ROUTES.LOG_IN} component={Login}/>
         {/* </UserConsumer> */}
       <Route path={ROUTES.SIGN_UP} component={SignUp} />
       {/* <Route path={ROUTES.HOME} component={Home} /> */}
       <PrivateRoute  exact path={ROUTES.HOME} component={Home}/>
+      <PrivateRoute 
+        path={ROUTES.UPLOAD} 
+        component={() => <Uploader storageRef={storageRef} />}
+      />
       <PrivateRoute path={ROUTES.ACCOUNT} component={Account} />
       </div>
       

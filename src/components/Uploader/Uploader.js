@@ -11,44 +11,48 @@ import AddMeta from '../AddMeta/AddMeta'
 import * as ROUTES from '../../services/routes'
 import AddMetaV2 from '../AddMeta/AddMetaV2'
 import UpdateMeta from '../UpdateMeta/UpdateMeta'
+import ViewPhotos from '../ViewPhotos/ViewPhotos'
 // import metaHandler from '../AddMeta/AddMeta'
 // import AddMeta from '../AddMeta/AddMeta'
 
-const Uploader = () => {
-    const storage = app.storage()
-    const storageRef = storage.ref()
+const Uploader = ({ storageRef }) => {
     const [newFolder, setNewFolder] = useState("")
     const [folder, setFolder] = useState([])
     const [folderOption, setFolderOption] = useState(false)
     const [imageName, setImageName] = useState("")
     const [imageFile, setImageFile] = useState("")
-    const [folderSelected, setFolderSelected] = useState(false)
     const [folderDisplay, setFolderDisplay] = useState("")
     const [metaUploadRef, setMetaUploadRef] = useState("")
-    const [showImageLoc, setShowImageLoc] = useState(true)
-    const [showSelectImage, setShowSelectImage] = useState(false)
-    const [showAddMeta, setShowAddMeta] = useState(false)
 
-    const ViewFolder = ({ setShowImageLoc }) => {
-        const stepper = () => {
-            setShowImageLoc(false)
-            setShowSelectImage(true)
-        }
+
+    // const [storageRef, setStorageRef] = useState()
+
+    // useEffect(() => {
+    //     loadStorage()
+    // }, [])
+
+    // const loadStorage = async () => {
+    //     const storage = await app.storage()
+    //     setStorageRef(storage.ref())
+    // }
+
+    // const ViewFolder = ({ setShowImageLoc }) => {
+    //     // const stepper = () => {
+    //     //     setShowImageLoc(false)
+    //     //     setShowSelectImage(true)
+    //     // }
         
-        return( 
-        <div>
-            <h1>being stored in: {folderDisplay}</h1>
-            <button onClick={stepper}>confirm</button>
-        </div>
-        )
-    }
-    const selectStepper = () => {
-        setShowSelectImage(false)
-        setShowAddMeta(true)
-    }
-    const funcTest = () => {
-        console.log("hit funcTest")
-    }
+    //     return( 
+    //     <div>
+    //         <h1>being stored in: {folderDisplay}</h1>
+    //         {/* <button onClick={stepper}>confirm</button> */}
+    //     </div>
+    //     )
+    // }
+    // const selectStepper = () => {
+    //     setShowSelectImage(false)
+    //     setShowAddMeta(true)
+    // }
 
     const newFolderHandler = (event) => {
         event.preventDefault()
@@ -59,18 +63,18 @@ const Uploader = () => {
         setFolder(folder => [...folder, newFolder])
         setFolderDisplay(newFolder)
         setNewFolder("")
-        setFolderSelected(true)
+        // setFolderSelected(true)
     }
 
-    const getFolders = () => {
-        storageRef.list().then(res => {
-            res.prefixes.map((prefixes) => {
-                folder.includes(prefixes.name) ?
-                console.log("folder name already included") :
-                setFolder(folder => [...folder, prefixes.name])
-            })
-        })
-    }
+    // const getFolders = () => {
+    //     storageRef.list().then(res => {
+    //         res.prefixes.map((prefixes) => {
+    //             folder.includes(prefixes.name) ?
+    //             console.log("folder name already included") :
+    //             setFolder(folder => [...folder, prefixes.name])
+    //         })
+    //     })
+    // }
 
     const handleUpload = (event) => {
         event.preventDefault()
@@ -89,29 +93,29 @@ const Uploader = () => {
         })
 
     }
-    const viewReset = () => {
-        setShowImageLoc(true)
-        setShowSelectImage(false)
-        setShowAddMeta(false)
-        return(
-            <Redirect push to="/login" />
-        )
-    }
+    // const viewReset = () => {
+    //     setShowImageLoc(true)
+    //     setShowSelectImage(false)
+    //     setShowAddMeta(false)
+    //     return(
+    //         <Redirect push to="/login" />
+    //     )
+    // }
 
     const handleImageFile = (event) => {
         const image = event.target.files[0]
         setImageFile(imageFile => (image))
     }
 
-    const handleFolderView = () => {
-        folderOption ? setFolderOption(false) : setFolderOption(true)
-    }
+    // const handleFolderView = () => {
+    //     folderOption ? setFolderOption(false) : setFolderOption(true)
+    // }
 
 
-    useEffect(() => {
-        getFolders()
+    // useEffect(() => {
+    //     getFolders()
         
-    },[])
+    // },[])
  
     
     return (
@@ -119,37 +123,47 @@ const Uploader = () => {
         <div className="uploaderWrapper">
             <div>
                 <ImageLocation
+                    storageRef={storageRef}
+
+                    
                     setFolderDisplay={setFolderDisplay}
                     folderOption={folderOption}
                     newFolder={newFolder}
                     setNewFolder={setNewFolder}
                     folder={folder}
-                    handleFolderView={handleFolderView}
+                    // handleFolderView={handleFolderView}
                     newFolderHandler={newFolderHandler}
                 />
-                <ViewFolder setShowImageLoc={setShowImageLoc}/>
+                {/* <ViewFolder 
+                // setShowImageLoc={setShowImageLoc}
+                /> */}
             </div>
+            
                 <div>
-                    <ChooseImage 
+                    {/* <ChooseImage 
                         imageFile={imageFile}
                         setImageFile={setImageFile}
-                    />
-                <form 
+                    /> */}
+
+                {/* <form 
                 onSubmit={handleUpload}
-                >
-                    <ImageInfo 
+                > */}
+                    {/* <ImageInfo 
                         metaUploadRef={metaUploadRef}
-                        funcTest={funcTest}
                         imageFile={imageFile}
                         imageName={imageName}
                         setImageName={setImageName}
-                    />
-                    <button type="submit" onClick={selectStepper}>upload</button>
-                </form>
-                <button type="submit">form handler</button>
-                </div>
+                    /> */}
+                    {/* <button type="submit" onClick={selectStepper}>upload</button> */}
+                {/* </form> */}
+                {/* <button type="submit">form handler</button> */}
+                {/* </div> */}
 
-                <UpdateMeta metaUploadRef={metaUploadRef}/>
+                {/* <UpdateMeta metaUploadRef={metaUploadRef}/>
+                <ViewPhotos 
+                storageRef={storageRef}
+                /> */}
+            </div>
             </div>
         </Router>  
     )

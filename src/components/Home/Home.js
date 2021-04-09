@@ -23,9 +23,9 @@ const user = useContext(UserContext)
            {/* {authValue.user == null ? <p>not logged</p> :
            <p>user logged in</p>} */}
             </div>
-            <Uploader />
+            {/* <Uploader /> */}
              <ViewPhotos />
-           <MetaSearch />
+           {/* <MetaSearch /> */}
         </div>
     )
 }

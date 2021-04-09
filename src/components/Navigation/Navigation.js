@@ -21,7 +21,9 @@ const Navigation = () => {
             <li>
                 <Link to={ROUTES.ACCOUNT}>account</Link>
             </li>
-           
+            <li>
+                <Link to={ROUTES.UPLOAD}>upload</Link>
+            </li>
         </ul>
     </div>
     )
