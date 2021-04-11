@@ -4,6 +4,22 @@ import './ImageLocation.css'
 
 
 const SelectFolder = ({ folders, setCurrentFolder, currentFolder }) => {
+const [newFolder, setNewFolder] = useState("")
+ const isInvalid = 
+        newFolder === String ||
+        newFolder === ""
+        
+    const newFolderHandler = (e) => {
+        e.preventDefault()
+        console.log(folders)
+        if(folders.includes(newFolder)){
+            console.log("hit")
+        } else {
+            setCurrentFolder(newFolder)
+        }
+        
+    }
+
     return (
         <div>
             drop
@@ -16,13 +32,23 @@ const SelectFolder = ({ folders, setCurrentFolder, currentFolder }) => {
                     })
                 }
             </select>
+            <h2>new folder</h2>
+            <form onSubmit={newFolderHandler}>
+                <input
+                    value={newFolder}
+                    onChange={(e) => setNewFolder(e.target.value)}
+                />
+                <button type="submit"
+                //  disabled={isInvalid}
+                 >add folder</button>
+            </form>
         </div>
     )
 }
-const ImageLocation = ({ setFolderDisplay, newFolderHandler, folderOption, newFolder, folder, storageRef }) => {
+const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder }) => {
     const [name, setName] = useState("")
     const [folders, setFolders] = useState([])
-    const [currentFolder, setCurrentFolder] = useState("--")
+    
 
     const collect = () => {
         storageRef.list().then(res => {
@@ -36,7 +62,7 @@ const ImageLocation = ({ setFolderDisplay, newFolderHandler, folderOption, newFo
     useEffect(()=> {
         collect()
     },[])
-    console.log("fold array : ",folders)
+    // console.log("fold array : ",folders)
     // const FolderName = () => {
     //     // event.preventDefault()
     //     console.log("selected: ", name)
@@ -89,10 +115,11 @@ const ImageLocation = ({ setFolderDisplay, newFolderHandler, folderOption, newFo
     //     </div>
     //     )
     // }
-    const isInvalid = 
-        newFolder === String ||
-        newFolder === "" ||
-        folder.includes(newFolder)
+
+    // const isInvalid = 
+    //     newFolder === String ||
+    //     newFolder === "" ||
+    //     folder.includes(newFolder)
 
     return(
 
@@ -104,6 +131,7 @@ const ImageLocation = ({ setFolderDisplay, newFolderHandler, folderOption, newFo
                 setCurrentFolder={setCurrentFolder}
                 currentFolder={currentFolder}
             />
+            <p>{currentFolder}</p>
         </div>
         // <div>
             

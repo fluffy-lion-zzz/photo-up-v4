@@ -24,6 +24,11 @@ const Uploader = ({ storageRef }) => {
     const [folderDisplay, setFolderDisplay] = useState("")
     const [metaUploadRef, setMetaUploadRef] = useState("")
 
+    const [currentFolder, setCurrentFolder] = useState("--")
+
+   
+
+
 
     // const [storageRef, setStorageRef] = useState()
 
@@ -124,15 +129,8 @@ const Uploader = ({ storageRef }) => {
             <div>
                 <ImageLocation
                     storageRef={storageRef}
-
-                    
-                    setFolderDisplay={setFolderDisplay}
-                    folderOption={folderOption}
-                    newFolder={newFolder}
-                    setNewFolder={setNewFolder}
-                    folder={folder}
-                    // handleFolderView={handleFolderView}
-                    newFolderHandler={newFolderHandler}
+                    currentFolder={currentFolder}
+                    setCurrentFolder={setCurrentFolder}
                 />
                 {/* <ViewFolder 
                 // setShowImageLoc={setShowImageLoc}
