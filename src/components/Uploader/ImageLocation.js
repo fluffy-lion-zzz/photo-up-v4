@@ -13,7 +13,7 @@ const [newFolder, setNewFolder] = useState("")
         e.preventDefault()
         console.log(folders)
         if(folders.includes(newFolder)){
-            console.log("hit")
+            console.log("folder already exists")
         } else {
             setCurrentFolder(newFolder)
         }
@@ -22,7 +22,6 @@ const [newFolder, setNewFolder] = useState("")
 
     return (
         <div>
-            drop
             <select
                 value={currentFolder}
                 onChange={(e) => setCurrentFolder(e.target.value)}
@@ -124,7 +123,7 @@ const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder }) => {
     return(
 
 
-        <div>
+        <div className="imageLocation">
             <h2>new folder</h2>
             <SelectFolder 
                 folders={folders} 
