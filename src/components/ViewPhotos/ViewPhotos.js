@@ -4,9 +4,18 @@ import app from 'firebase/app'
 import "firebase/storage"
 import './ViewPhotos.css'
 import Loading from '../Loading/Loading'
-const Selecter = ({ currentFolder, setCurrentFolder, folder }) => {
+const Selecter = ({ currentFolder, setCurrentFolder, setFolders, folders, storageRef }) => {
 
-    // console.log(currentFolder)
+    const collect = () => {
+        storageRef.list().then(res => {
+            res.prefixes.map(name => {
+                setFolders(folders => [...folders, name.name])
+            })
+        })  
+    }
+    useEffect(() => {
+        collect()
+    },[])
     return (
         <div>
             <select
@@ -14,7 +23,7 @@ const Selecter = ({ currentFolder, setCurrentFolder, folder }) => {
                 onChange={(e) => setCurrentFolder(e.target.value)}
             >
                 {
-                    folder.map(opt => {
+                    folders.map(opt => {
                         return <option value={opt}>{opt}</option>
                     })
                 }
@@ -22,23 +31,37 @@ const Selecter = ({ currentFolder, setCurrentFolder, folder }) => {
         </div>
     )
 }
-const ViewPhotos = ({ storageRef }) => {
+const ViewPhotos = ({ storageRef, storage }) => {
     const [imgData, setImgData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [folder, setFolder] = useState([])
+    const [folders, setFolders] = useState([])
     const [currentFolder, setCurrentFolder] = useState("--")
+
+    const loader = () => {
+        setImgData([])
+        storage.ref(currentFolder+'/').list().then(res => {
+            res.items.map((item) => {
+                item.getDownloadURL().then((url) => {
+                    setImgData(imgData => [...imgData, url])
+                })
+            })
+        })
+    }
+    useEffect(() => {
+        loader()
+        console.log(imgData.length)
+    }, [currentFolder])
     // const [folderSelect, setFolderSelect] = useState("")
     
-
-    storageRef && storageRef.list().then(res => {
-        /* res.prefixes.map(item => {
-            folder.includes(item.name) ?
-                console.log("added") :
-                setFolder([...folder, item.name])
-        }) */
-        console.log(res.prefixes)
-    })
-    console.log("folders : ", folder)
+    // storageRef && storageRef.list().then(res => {
+    //     /* res.prefixes.map(item => {
+    //         folder.includes(item.name) ?
+    //             console.log("added") :
+    //             setFolder([...folder, item.name])
+    //     }) */
+    //     console.log(res.prefixes)
+    // })
+    // console.log("folders : ", folder)
 
     
 
@@ -88,13 +111,20 @@ const ViewPhotos = ({ storageRef }) => {
     // }
 
     return (
-        <div>
-            {/* <Selecter 
-            currentFolder={currentFolder}
-            folder={folder}
-            setCurrentFolder={setCurrentFolder}
-            /> */}
+        <div className="imagesContainer">
+            <Selecter 
+                currentFolder={currentFolder}
+                folders={folders}
+                setFolders={setFolders}
+                setCurrentFolder={setCurrentFolder}
+                storageRef={storageRef}
+            />
             {/* <ViewImages /> */}
+            <div className="imgWrapper">
+                {imgData.map(url => {
+                   return <img src={url} />
+                })}
+            </div>
         </div>
     )
     // >>>>>>>>>>>>>>>>>>>>>>>>>>

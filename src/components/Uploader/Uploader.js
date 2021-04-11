@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
+import React, { useState } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './Uploader.css'
 // import app from 'firebase/app'
 import 'firebase/storage'

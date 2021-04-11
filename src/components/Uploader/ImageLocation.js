@@ -7,7 +7,8 @@ const SelectFolder = ({ folders, setCurrentFolder, currentFolder }) => {
 const [newFolder, setNewFolder] = useState("")
  const isInvalid = 
         newFolder === String ||
-        newFolder === ""
+        newFolder === "" ||
+        newFolder === "--"
         
     const newFolderHandler = (e) => {
         e.preventDefault()
@@ -26,8 +27,9 @@ const [newFolder, setNewFolder] = useState("")
                 value={currentFolder}
                 onChange={(e) => setCurrentFolder(e.target.value)}
             >
+                <option>--</option>
                 {folders.map((folderNames)=> {
-                    return <option>{folderNames}</option>
+                    return <option value={folderNames}>{folderNames}</option>
                     })
                 }
             </select>
@@ -37,9 +39,9 @@ const [newFolder, setNewFolder] = useState("")
                     value={newFolder}
                     onChange={(e) => setNewFolder(e.target.value)}
                 />
-                <button type="submit"
-                //  disabled={isInvalid}
-                 >add folder</button>
+                <button type="submit" disabled={isInvalid}>
+                add folder
+                </button>
             </form>
         </div>
     )

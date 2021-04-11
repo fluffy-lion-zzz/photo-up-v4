@@ -31,10 +31,12 @@ const App = () => {
   // console.log(user)
 
   const [storageRef, setStorageRef] = useState()
+  const [storage, setStorage] = useState()
 
     const loadStorage = async () => {
-        const storage = await app.storage()
-        setStorageRef(storage.ref())
+        const storageConnect = await app.storage()
+        setStorage(storageConnect)
+        setStorageRef(storageConnect.ref())
     }
   useEffect(() => {
       loadStorage()
@@ -66,7 +68,12 @@ const App = () => {
         {/* </UserConsumer> */}
       <Route path={ROUTES.SIGN_UP} component={SignUp} />
       {/* <Route path={ROUTES.HOME} component={Home} /> */}
-      <PrivateRoute  exact path={ROUTES.HOME} component={Home}/>
+      <PrivateRoute  
+        exact path={ROUTES.HOME}
+        component={() => <Home 
+          storage={storage}
+          storageRef={storageRef}/>}
+      />
       <PrivateRoute 
         path={ROUTES.UPLOAD} 
         component={() => <Uploader storageRef={storageRef} />}
