@@ -15,6 +15,7 @@ const Selecter = ({ currentFolder, setCurrentFolder, setFolders, folders, storag
     }
     useEffect(() => {
         collect()
+        setCurrentFolder("test")
     },[])
     return (
         <div>
@@ -111,7 +112,7 @@ const ViewPhotos = ({ storageRef, storage }) => {
     // }
 
     return (
-        <div className="imagesContainer">
+        <div className="imgWrapper">
             <Selecter 
                 currentFolder={currentFolder}
                 folders={folders}
@@ -120,11 +121,16 @@ const ViewPhotos = ({ storageRef, storage }) => {
                 storageRef={storageRef}
             />
             {/* <ViewImages /> */}
-            <div className="imgWrapper">
+            <br/>
+           
                 {imgData.map(url => {
-                   return <img src={url} />
+                return (
+                    <div className="imagesContainer">
+                        <img className="imageSep" src={url} />
+                    </div>
+                )
                 })}
-            </div>
+            
         </div>
     )
     // >>>>>>>>>>>>>>>>>>>>>>>>>>

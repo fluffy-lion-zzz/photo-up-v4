@@ -2,7 +2,10 @@ import React from 'react'
 // import AddMeta from '../AddMeta/AddMeta'
 import './ImageInfo.css'
 const ImageInfo = ({ imageFile, imageName, setImageName }) => {
+    // const handleImageName = (e) => {
+    //     e.preventDefault()
 
+    // }
 
     return (
         <div className="imageInfo">
@@ -12,10 +15,7 @@ const ImageInfo = ({ imageFile, imageName, setImageName }) => {
             <input 
                 type="text"
                 value={imageName}
-                onChange={(event) => {
-                    setImageName(event.target.value)
-                    // .replace(/\s/g,'')
-                }}
+                onChange={(e) => {setImageName(e.target.value)}}
             />
             <p>new file name: {imageName}</p>
             {/* <AddMeta metaUploadRef={props.metaUploadRef} imageInfo={props.imageFile}/> */}

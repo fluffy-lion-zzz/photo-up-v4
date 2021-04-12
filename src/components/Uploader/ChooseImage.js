@@ -1,46 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import app from 'firebase/app'
+import React, { useState } from 'react'
 import 'firebase/storage'
 import './ChooseImage.css'
 import ImageInfo from './ImageInfo'
+import ImagePop from './ImagePop'
 // import ImageInfo from './ImageInfo'
 
 
-const ChooseImage = ({ imageFile, setImageFile, setImageName, handleUpload}) => {
+const ChooseImage = ({ 
+    imageFile, 
+    setImageFile, 
+    setImageName,
+    imageName, 
+    handleUpload,
+    handleImageFile,
+    imagePreview
+    }) => {
     // const [imageFile, setImageFile] = useState("")
-    const [imagePreview, setImagePreview] = useState("")
-
-    const handleImageFile = (event) => {
-        const image = event.target.files[0]
-        let reader = new FileReader()
-        let url = reader.readAsDataURL(image)
-        reader.onloadend = (e) => {
-            setImagePreview(reader.result)
-        }
-        setImageFile(imageFile => (image))
-    }
+    
     
     return (
         <div className="chooseImg">
             <form onSubmit={handleUpload}>
-            <label for="file">choose image to upload</label>
-                <input
-
-                name="file"
-                type="file"
-                accept="image/*"
-                
-                onChange={handleImageFile}
-                >
-                    
-                </input>
-                <p>image</p>
+                <label for="file">select a new image</label>
+                {/* <input  name="file"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageFile}
+                /> */}
+                <ImagePop handleImageFile={handleImageFile} />
                 <img id="imagePreview" src={imagePreview} />
                 {/* <ImageInfo imageFile={imageFile}/> */}
                 <ImageInfo 
                     imageFile={imageFile}
                     setImageFile={setImageFile}
                     setImageName={setImageName}
+                    imageName={imageName}
                 />
                 <button type="submit">upload</button>
             </form>

@@ -11,6 +11,7 @@ import ImageLocation from './ImageLocation'
 // import * as ROUTES from '../../services/routes'
 // import AddMetaV2 from '../AddMeta/AddMetaV2'
 import UpdateMeta from '../UpdateMeta/UpdateMeta'
+import ImagePop from './ImagePop'
 // import ViewPhotos from '../ViewPhotos/ViewPhotos'
 // import metaHandler from '../AddMeta/AddMeta'
 // import AddMeta from '../AddMeta/AddMeta'
@@ -19,7 +20,7 @@ const Uploader = ({ storageRef }) => {
     const [imageName, setImageName] = useState("")
     const [imageFile, setImageFile] = useState("")
     const [metaUploadRef, setMetaUploadRef] = useState("")
-
+    const [imagePreview, setImagePreview] = useState("")
     const [currentFolder, setCurrentFolder] = useState("--")
 
     const handleUpload = (event) => {
@@ -39,11 +40,16 @@ const Uploader = ({ storageRef }) => {
         })
 
     }
-
     const handleImageFile = (event) => {
         const image = event.target.files[0]
+        let reader = new FileReader()
+        let url = reader.readAsDataURL(image)
+        reader.onloadend = (e) => {
+            setImagePreview(reader.result)
+        }
         setImageFile(imageFile => (image))
     }
+
 
     return (
         <Router>
@@ -54,15 +60,23 @@ const Uploader = ({ storageRef }) => {
                     currentFolder={currentFolder}
                     setCurrentFolder={setCurrentFolder}
                 />
-                <h1>{currentFolder}</h1>
             </div>
-            
+            <div>
+                <h3>being saved in...</h3>
+                <h2>{currentFolder}</h2>
+            </div>
+            <div>
+                <ImagePop handleImageFile={handleImageFile} />
+            </div>    
             <div>
                 <ChooseImage 
                     imageFile={imageFile}
                     setImageFile={setImageFile}
                     setImageName={setImageName}
+                    imageName={imageName}
                     handleUpload={handleUpload}
+                    handleImageFile={handleImageFile}
+                    imagePreview={imagePreview}
                 />
                 <UpdateMeta metaUploadRef={metaUploadRef}/>
             </div>

@@ -4,21 +4,23 @@
     flex-direction: column;
     align-items: center;
 }
-#individualImgWrapper{
+/* #individualImgWrapper{
     border: solid rgb(148, 251, 161) 4px;
     width: 80%;
     display: flex;
-}
+} */
 
 .imgWrapper{
-    /* border: solid blue 4px; */
+    border: solid green 4px;
     margin: 12px;
-    width: 300px;
+    width: 90vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.imgWrapper img {
+.imageSep {
+    border: solid blue 3px;
     width: 100%;
     margin: 4px;
 }
