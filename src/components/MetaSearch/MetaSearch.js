@@ -56,37 +56,7 @@ const MetaSearch = ({ storage }) => {
                 console.log(error)
             })
         })
-        // folders.forEach(folder => storage.ref(folder + "/akira.jpg")
-        // folders.forEach(folder => storage.ref(folder)
-        //     .list()
-        //     .then((res)=> {
-        //         res.items.map((item)=> {
-        //         let path = folder+'/'+item.name
-        //         setItemRef(itemRef => [...itemRef, path])
-        //     })
-          
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // }))
-        
 
-        //     .getMetadata()
-        //     .then((metadata) => {
-        //         console.log(metadata)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error)
-        //     })
-        // )
-        
-        // .getMetadata()
-        //     .then((metadata) => {
-        //         console.log(metadata)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error)
-        //     })
         setInput("")
     }
     return (
@@ -100,12 +70,6 @@ const MetaSearch = ({ storage }) => {
                 />
                 <button type="submit">search</button>
             </form>
-            {/* <div>
-                <h2>folders</h2>
-                {folders.map((item)=> {
-                    return <p>{item}</p>
-                })}
-            </div> */}
             <div>
                 <h2>files</h2>
                 
