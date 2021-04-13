@@ -15,6 +15,7 @@ import 'firebase/auth'
 import app from 'firebase/app'
 import PrivateRoute from './services/PrivateRoute'
 import Uploader from './components/Uploader/Uploader'
+import MetaSearch from './components/MetaSearch/MetaSearch'
 
 const onAuthStateChange = (callback) => {
   return app.auth().onAuthStateChanged(user => {
@@ -77,6 +78,10 @@ const App = () => {
       <PrivateRoute 
         path={ROUTES.UPLOAD} 
         component={() => <Uploader storageRef={storageRef} />}
+      />
+      <PrivateRoute
+        path={ROUTES.SEARCH}
+        component={() => <MetaSearch storage={storage} />}
       />
       <PrivateRoute path={ROUTES.ACCOUNT} component={Account} />
       </div>

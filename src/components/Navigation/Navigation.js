@@ -24,6 +24,9 @@ const Navigation = () => {
             <li>
                 <Link to={ROUTES.UPLOAD}>upload</Link>
             </li>
+            <li>
+                <Link to={ROUTES.SEARCH}>search</Link>
+            </li>
         </ul>
     </div>
     )
