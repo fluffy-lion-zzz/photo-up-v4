@@ -33,6 +33,7 @@ const Uploader = ({ storageRef }) => {
         setMetaUploadRef(uploadRef)
         uploadRef.put(imageFile).then((snapshot) => {
             console.log(imageFile)
+            setImageFile(null)
         })
         
         .catch((error) => {

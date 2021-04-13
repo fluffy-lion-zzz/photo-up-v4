@@ -5,11 +5,11 @@ const UpdateMeta = (props) => {
     let ref = props.metaUploadRef
     
     const [metas, setMetas] = useState({
-        tag1: "1",
-        tag2: "2",
-        tag3: "3",
-        tag4: "4",
-        tag5: "5",
+        tag1: "",
+        tag2: "",
+        tag3: "",
+        tag4: "",
+        tag5: "",
       });
       const [currentMeta, setCurrentMeta] = useState("tag1");
       const [input, setInput] = useState("");

@@ -27,7 +27,7 @@ const ChooseImage = ({
                         accept="image/*"
                         onChange={handleImageFile}
                 /> */}
-                <ImagePop handleImageFile={handleImageFile} />
+                <ImagePop handleImageFile={handleImageFile} imageFile={imageFile} />
                 <img id="imagePreview" src={imagePreview} />
                 {/* <ImageInfo imageFile={imageFile}/> */}
                 <ImageInfo 

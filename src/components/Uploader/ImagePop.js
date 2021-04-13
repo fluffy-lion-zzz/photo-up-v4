@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ImagePop = ({ handleImageFile }) => {
+const ImagePop = ({ handleImageFile, imageFile }) => {
  return(
      <div>
           <input 
@@ -8,6 +8,7 @@ const ImagePop = ({ handleImageFile }) => {
             type="file"
             accept="image/*"
             onChange={handleImageFile}
+            value={imageFile}
         />
      </div>
  )   
