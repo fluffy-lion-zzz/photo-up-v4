@@ -6,31 +6,106 @@ import 'firebase/storage'
 const MetaSearch = ({ storage }) => {
 
     const [input, setInput] = useState("")
-    const [folders, setFolders] = useState([])
+    // const [folders, setFolders] = useState([])
+    const [itemRef, setItemRef] = useState([])
+    const [url , setUrl] = useState([])
 
-    const collect = () => {
+    const loadFolders = () => {
         storage.ref().list().then(arr => {
-            console.log(arr)
             arr.prefixes.map((folder) => {
-                setFolders(folders => [...folders, folder.name])
+                folder.list().then((res) => {
+                    res.items.map((item) => {
+                        setItemRef(itemRef => [...itemRef, item.fullPath])
+                    })
+                })
             })
         })
-        
     }
-    console.log(folders)
+
+    // const loadItems =  () => {
+    //     // collect()
+    //     folders.forEach(folder => storage.ref(folder)
+    //     .list()
+    //     .then((res)=> {
+    //         res.items.map((item)=> {
+    //         let path = folder+'/'+item.name
+    //         setItemRef(itemRef => [...itemRef, path])
+    //     })
+    // })
+    // .catch((error) => {
+    //     console.log(error)
+    // }))
+    // }
+    const collect =  () => {
+        loadFolders()
+        // loadItems()
+    }
+
+
     useEffect(() => {
         collect()
+        
     },[])
 
-    const handleSearch = () => {
-        // search meta tags of all
+    const handleSearch = (e) => {
+        e.preventDefault()
+
+        console.log("item : ", itemRef)
+        // folders.forEach(folder => storage.ref(folder + "/akira.jpg")
+        // folders.forEach(folder => storage.ref(folder)
+        //     .list()
+        //     .then((res)=> {
+        //         res.items.map((item)=> {
+        //         let path = folder+'/'+item.name
+        //         setItemRef(itemRef => [...itemRef, path])
+        //     })
+          
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // }))
+        
+
+        //     .getMetadata()
+        //     .then((metadata) => {
+        //         console.log(metadata)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error)
+        //     })
+        // )
+        
+        // .getMetadata()
+        //     .then((metadata) => {
+        //         console.log(metadata)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error)
+        //     })
     }
     return (
         <div className="metaWrapper">
             <h1>meta search</h1>
             <form onSubmit={handleSearch}>
-
+                <input 
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                />
+                <button type="submit">search</button>
             </form>
+            {/* <div>
+                <h2>folders</h2>
+                {folders.map((item)=> {
+                    return <p>{item}</p>
+                })}
+            </div> */}
+            <div>
+                <h2>files</h2>
+                {itemRef.map((path) => {
+                    return <p>{path}</p>
+                })}
+            </div>
         </div>
     )
 }
