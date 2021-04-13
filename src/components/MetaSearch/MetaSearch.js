@@ -8,9 +8,9 @@ const MetaSearch = ({ storage }) => {
     const [input, setInput] = useState("")
     // const [folders, setFolders] = useState([])
     const [itemRef, setItemRef] = useState([])
-    const [url , setUrl] = useState([])
+    const [urls , setUrls] = useState([])
 
-    const loadFolders = () => {
+    const loadFiles = () => {
         storage.ref().list().then(arr => {
             arr.prefixes.map((folder) => {
                 folder.list().then((res) => {
@@ -22,35 +22,40 @@ const MetaSearch = ({ storage }) => {
         })
     }
 
-    // const loadItems =  () => {
-    //     // collect()
-    //     folders.forEach(folder => storage.ref(folder)
-    //     .list()
-    //     .then((res)=> {
-    //         res.items.map((item)=> {
-    //         let path = folder+'/'+item.name
-    //         setItemRef(itemRef => [...itemRef, path])
-    //     })
-    // })
-    // .catch((error) => {
-    //     console.log(error)
-    // }))
-    // }
-    const collect =  () => {
-        loadFolders()
-        // loadItems()
-    }
-
-
     useEffect(() => {
-        collect()
-        
+        loadFiles()
     },[])
 
     const handleSearch = (e) => {
         e.preventDefault()
-
-        console.log("item : ", itemRef)
+        setUrls([])
+        console.log("hit")
+        itemRef.map((item) => {
+            storage.ref(item).getMetadata()
+            .then((metadata) => {
+                console.log(metadata)
+                let custom = metadata.customMetadata
+                    if(custom === undefined){
+                        console.log("no custom")
+                    }else if (
+                    input === custom.tag1 ||
+                    input === custom.tag2 ||
+                    input === custom.tag3 ||
+                    input === custom.tag4 ||
+                    input === custom.tag5 ){
+                        let url = metadata.fullPath
+                        console.log("match : ", url)
+                        storage.ref(url).getDownloadURL().then((path) => {
+                            setUrls(urls => [...urls, path])
+                        })
+                    } else {
+                        console.log("no match")
+                    }
+            })
+            .catch((error) =>{
+                console.log(error)
+            })
+        })
         // folders.forEach(folder => storage.ref(folder + "/akira.jpg")
         // folders.forEach(folder => storage.ref(folder)
         //     .list()
@@ -82,6 +87,7 @@ const MetaSearch = ({ storage }) => {
         //     .catch((error) => {
         //         console.log(error)
         //     })
+        setInput("")
     }
     return (
         <div className="metaWrapper">
@@ -102,8 +108,13 @@ const MetaSearch = ({ storage }) => {
             </div> */}
             <div>
                 <h2>files</h2>
-                {itemRef.map((path) => {
-                    return <p>{path}</p>
+                
+                {urls.map((url) => {
+                    return (
+                        <div>
+                            <img src={url} />
+                        </div>
+                    )
                 })}
             </div>
         </div>
