@@ -13,7 +13,7 @@ const ChooseImage = ({
     imageName, 
     handleUpload,
     handleImageFile,
-    imagePreview
+    imagePreview,
     }) => {
     // const [imageFile, setImageFile] = useState("")
     
@@ -27,7 +27,7 @@ const ChooseImage = ({
                         accept="image/*"
                         onChange={handleImageFile}
                 /> */}
-                <ImagePop handleImageFile={handleImageFile} imageFile={imageFile} />
+                {/* <ImagePop handleImageFile={handleImageFile} imageFile={imageFile} setImageFile={setImageFile} /> */}
                 <img id="imagePreview" src={imagePreview} />
                 {/* <ImageInfo imageFile={imageFile}/> */}
                 <ImageInfo 

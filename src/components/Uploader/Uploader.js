@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './Uploader.css'
 // import app from 'firebase/app'
@@ -22,35 +22,56 @@ const Uploader = ({ storageRef }) => {
     const [metaUploadRef, setMetaUploadRef] = useState("")
     const [imagePreview, setImagePreview] = useState("")
     const [currentFolder, setCurrentFolder] = useState("--")
-
+    const [reset, setReset] = useState(false)
+ 
     const handleUpload = (event) => {
         event.preventDefault()
         let name = null
             imageName === "" ?
             name = imageFile.name :
             name = imageName
+
         const uploadRef = storageRef.child(`${currentFolder}/${name}`)
         setMetaUploadRef(uploadRef)
         uploadRef.put(imageFile).then((snapshot) => {
             console.log(imageFile)
-            setImageFile(null)
+            
         })
         
         .catch((error) => {
             console.log(error)
         })
-
+        setImageFile(null)
+        setImageName("")
+        setCurrentFolder("--")
+        setImagePreview("")
     }
+    
     const handleImageFile = (event) => {
-        const image = event.target.files[0]
+        // console.log("handleimagefile hit")
+        event.preventDefault()
+        // if(reset){
+        //     return null
+        // }
+       
+        const image = imageFile
+        // console.log(image)
         let reader = new FileReader()
+        
         let url = reader.readAsDataURL(image)
         reader.onloadend = (e) => {
             setImagePreview(reader.result)
         }
+       
+        // event.target.files[0] = null
+        
         setImageFile(imageFile => (image))
+    
+        
     }
-
+    // useEffect(() => {
+        
+    // },[uploaded])
 
     return (
         <Router>
@@ -67,7 +88,11 @@ const Uploader = ({ storageRef }) => {
                 <h2>{currentFolder}</h2>
             </div>
             <div>
-                <ImagePop handleImageFile={handleImageFile} />
+                <ImagePop 
+                handleImageFile={handleImageFile} 
+                imageFile={imageFile} 
+                setImageFile={setImageFile} 
+                />
             </div>    
             <div>
                 <ChooseImage 

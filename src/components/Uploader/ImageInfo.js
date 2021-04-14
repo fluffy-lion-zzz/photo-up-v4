@@ -10,7 +10,12 @@ const ImageInfo = ({ imageFile, imageName, setImageName }) => {
     return (
         <div className="imageInfo">
             <h1>image info</h1>
-            <p>original name : {imageFile.name}</p>
+            {
+                imageFile ? 
+                <p>original name : {imageFile.name}</p> :
+                <></>
+            }
+            
             <p>do you want to rename?</p>
             <input 
                 type="text"
