@@ -36,7 +36,7 @@ const ViewPhotos = ({ storageRef, storage }) => {
     const [imgData, setImgData] = useState([])
     const [loading, setLoading] = useState(true)
     const [folders, setFolders] = useState([])
-    const [currentFolder, setCurrentFolder] = useState("--")
+    const [currentFolder, setCurrentFolder] = useState("")
 
     const loader = () => {
         setImgData([])

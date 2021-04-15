@@ -29,6 +29,14 @@ const UpdateMeta = (props) => {
           
           // props.setReset(true)
           props.setImagePreview("")
+          setMetas({
+            tag1: "",
+            tag2: "",
+            tag3: "",
+            tag4: "",
+            tag5: "",
+          })
+          setCurrentMeta("tag1")
       }
 
       const handleState = (e) => {

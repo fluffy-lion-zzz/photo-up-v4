@@ -8,7 +8,9 @@ const [newFolder, setNewFolder] = useState("")
  const isInvalid = 
         newFolder === String ||
         newFolder === "" ||
-        newFolder === "--"
+        newFolder === "--" ||
+        currentFolder === "--" ||
+        currentFolder === ""
         
     const newFolderHandler = (e) => {
         e.preventDefault()
@@ -40,8 +42,12 @@ const [newFolder, setNewFolder] = useState("")
                     onChange={(e) => setNewFolder(e.target.value)}
                 />
                 <button type="submit" disabled={isInvalid}>
+                    
                 add folder
                 </button>
+                {currentFolder === "" ?
+                    <p>you have to select a folder yo</p> :
+                    <></>}
             </form>
         </div>
     )

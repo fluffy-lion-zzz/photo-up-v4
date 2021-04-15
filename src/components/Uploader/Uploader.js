@@ -16,7 +16,7 @@ const Uploader = ({ storageRef }) => {
     const [imageFile, setImageFile] = useState("")
     const [metaUploadRef, setMetaUploadRef] = useState("")
     const [imagePreview, setImagePreview] = useState("")
-    const [currentFolder, setCurrentFolder] = useState("--")
+    const [currentFolder, setCurrentFolder] = useState("")
     const [reset, setReset] = useState(false)
  
     const handleUpload = (event) => {
@@ -38,7 +38,7 @@ const Uploader = ({ storageRef }) => {
         })
         setImageFile(null)
         setImageName("")
-        setCurrentFolder("--")
+        setCurrentFolder("")
     }
     
     const handleImageFile = (event) => {
