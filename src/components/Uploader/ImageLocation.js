@@ -19,8 +19,7 @@ const [newFolder, setNewFolder] = useState("")
             console.log("folder already exists")
         } else {
             setCurrentFolder(newFolder)
-        }
-        
+        }        
     }
 
     return (
@@ -42,7 +41,6 @@ const [newFolder, setNewFolder] = useState("")
                     onChange={(e) => setNewFolder(e.target.value)}
                 />
                 <button type="submit" disabled={isInvalid}>
-                    
                 add folder
                 </button>
                 {currentFolder === "" ?
@@ -55,7 +53,6 @@ const [newFolder, setNewFolder] = useState("")
 const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder }) => {
     const [name, setName] = useState("")
     const [folders, setFolders] = useState([])
-    
 
     const collect = () => {
         storageRef.list().then(res => {
@@ -69,64 +66,6 @@ const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder }) => {
     useEffect(()=> {
         collect()
     },[])
-    // console.log("fold array : ",folders)
-    // const FolderName = () => {
-    //     // event.preventDefault()
-    //     console.log("selected: ", name)
-    //     setNewFolder(name)
-    //     // setFolderSelected(true)
-    //     return (
-    //         <div>
-    //         {name === "" ||
-    //         name === " " ||
-    //         name === undefined ?
-    //         <div><p>please select a folder</p></div> :
-    //         <div><p>you selected {name}</p></div> 
-    //         }
-    //         </div>
-    //     )
-        
-    // }
-
-    // const FolderForm = () => {
-    //     return (
-    //     <form onSubmit={newFolderHandler}>
-    //         <input
-    //             value={newFolder}
-    //             onChange={(event) => {
-    //                 setNewFolder(event.target.value)
-                    
-    //             }}
-    //             >
-    //             </input>
-    //             <h3>your creating a new folder called {newFolder}</h3>
-    //                 {folder.includes(newFolder) ? 
-    //                 <p>this folder has already been created</p> :
-    //                 <></>
-    //                 }
-    //             <button  disabled={isInvalid}>create new folder</button>
-    //             <p>or...</p><button onClick={handleFolderView}>add to existing folder</button>
-    //         </form>
-    //     )
-    // }
-
-
-    // const FolderArrItems = () => {
-    //     return (
-    //         <div onClick={(event) => {
-    //             setName(event.target.value)
-    //             setFolderDisplay(event.target.value)
-    //         }} >{folder.map((item, index) => 
-    //         <button type="text" value={item} key={index}>{item}</button>
-    //         )}
-    //     </div>
-    //     )
-    // }
-
-    // const isInvalid = 
-    //     newFolder === String ||
-    //     newFolder === "" ||
-    //     folder.includes(newFolder)
 
     return(
 
