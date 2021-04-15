@@ -16,6 +16,8 @@ import app from 'firebase/app'
 import PrivateRoute from './services/PrivateRoute'
 import Uploader from './components/Uploader/Uploader'
 import MetaSearch from './components/MetaSearch/MetaSearch'
+import HowTo from './components/HowTo/HowTo'
+
 
 const onAuthStateChange = (callback) => {
   return app.auth().onAuthStateChanged(user => {
@@ -69,6 +71,7 @@ const App = () => {
         {/* </UserConsumer> */}
       <Route path={ROUTES.SIGN_UP} component={SignUp} />
       {/* <Route path={ROUTES.HOME} component={Home} /> */}
+      <Route path={ROUTES.HOWTO} component={HowTo} />
       <PrivateRoute  
         exact path={ROUTES.HOME}
         component={() => <Home 

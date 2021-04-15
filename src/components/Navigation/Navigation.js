@@ -27,6 +27,9 @@ const Navigation = () => {
             <li>
                 <Link to={ROUTES.SEARCH}>search</Link>
             </li>
+            <li>
+                <Link to={ROUTES.HOWTO}>how to</Link>
+            </li>
         </ul>
     </div>
     )
