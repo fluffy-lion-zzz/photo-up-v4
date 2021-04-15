@@ -15,6 +15,32 @@ const HowTo = () => {
                     <Link to={ROUTES.SIGN_UP}>sign up</Link>
                 </p>
             </div>
+            <div>
+                <h3>when your logged in</h3>
+                <div>
+                    <p>
+                        you can now have a look at our photos stored
+                        from other members of the team
+                    </p>
+                    
+                    <Link to={ROUTES.HOME}>view</Link>
+                    <br />
+                </div>
+                <div>
+                    <br />
+                    <h3>upload your own</h3>
+                    <p>when you can see the preview of the image, great. UPLOAD IT</p>
+                    <Link to={ROUTES.UPLOAD}>upload</Link>
+                    <p>(after you've uploaded, dont forget to add some tags to let other members 
+                        see if that photo can be used for their projects / marketing)
+                    </p>
+                </div>
+                <div>
+                    <h3>what do you want?</h3>
+                    <p>search a tag to see what images we have for that...eg "virtual" , "student", "presentation"</p>
+                    <Link to={ROUTES.SEARCH}>search</Link>
+                </div>
+            </div>
         </div>
     )
 }
