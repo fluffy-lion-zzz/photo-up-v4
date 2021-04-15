@@ -23,6 +23,12 @@ const UpdateMeta = (props) => {
           }).catch((error) => {
               console.log("error: ", error)
           })
+          props.reset ? 
+          props.setReset(false) :
+          props.setReset(true)
+          
+          // props.setReset(true)
+          props.setImagePreview("")
       }
 
       const handleState = (e) => {

@@ -12,22 +12,14 @@ const ChooseImage = ({
     setImageName,
     imageName, 
     handleUpload,
-    handleImageFile,
+    // handleImageFile,
     imagePreview,
     }) => {
-    // const [imageFile, setImageFile] = useState("")
-    
     
     return (
         <div className="chooseImg">
             <form onSubmit={handleUpload}>
                 <label for="file">select a new image</label>
-                {/* <input  name="file"
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageFile}
-                /> */}
-                {/* <ImagePop handleImageFile={handleImageFile} imageFile={imageFile} setImageFile={setImageFile} /> */}
                 <img id="imagePreview" src={imagePreview} />
                 {/* <ImageInfo imageFile={imageFile}/> */}
                 <ImageInfo 

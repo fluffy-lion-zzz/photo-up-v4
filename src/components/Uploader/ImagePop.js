@@ -1,28 +1,40 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const ImagePop = ({ handleImageFile, imageFile, setImageFile }) => {
-    const [file, setFile] = useState(null)
+const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
+    
 
-    // const sender = (event) => {
-    //     handleImageFile(event)
-    //     setImageFile(file)
-    // }
-    // useEffect(()=> {
-    //     setFile(null)
-    // },[])
+    const handleEvent = (e) => {
+        setImageFile(e.target.files[0])
+    }
+ 
     console.log("image pop : ", imageFile)
  return(
      <div>
          <form 
          onSubmit={handleImageFile}
          >
-          <input 
+        {
+             reset === false ? 
+             <input 
             name="file"
             type="file"
             accept="image/*"
             // onChange={(e)=> setFile(e.target.files[0])}
-            onChange={(e)=> setImageFile(e.target.files[0])}
-        />
+            onChange={handleEvent}
+            /> 
+        :
+        <div>
+            <p>you just uploaded, select another?</p>
+            <input 
+            name="file"
+            type="file"
+            accept="image/*"
+            // onChange={(e)=> setFile(e.target.files[0])}
+            onChange={handleEvent}
+            /> 
+        </div>
+         }
+          
         <button type="submit">submit</button>
         </form>
      </div>

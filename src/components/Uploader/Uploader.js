@@ -6,15 +6,10 @@ import 'firebase/storage'
 import ChooseImage from './ChooseImage'
 // import ImageInfo from './ImageInfo'
 import ImageLocation from './ImageLocation'
-// import AddMeta from '../AddMeta/AddMeta'
 
-// import * as ROUTES from '../../services/routes'
-// import AddMetaV2 from '../AddMeta/AddMetaV2'
 import UpdateMeta from '../UpdateMeta/UpdateMeta'
 import ImagePop from './ImagePop'
-// import ViewPhotos from '../ViewPhotos/ViewPhotos'
-// import metaHandler from '../AddMeta/AddMeta'
-// import AddMeta from '../AddMeta/AddMeta'
+
 
 const Uploader = ({ storageRef }) => {
     const [imageName, setImageName] = useState("")
@@ -44,34 +39,24 @@ const Uploader = ({ storageRef }) => {
         setImageFile(null)
         setImageName("")
         setCurrentFolder("--")
-        setImagePreview("")
     }
     
     const handleImageFile = (event) => {
-        // console.log("handleimagefile hit")
+
         event.preventDefault()
-        // if(reset){
-        //     return null
-        // }
-       
+
         const image = imageFile
-        // console.log(image)
         let reader = new FileReader()
         
         let url = reader.readAsDataURL(image)
         reader.onloadend = (e) => {
             setImagePreview(reader.result)
         }
-       
-        // event.target.files[0] = null
         
         setImageFile(imageFile => (image))
     
         
     }
-    // useEffect(() => {
-        
-    // },[uploaded])
 
     return (
         <Router>
@@ -92,6 +77,7 @@ const Uploader = ({ storageRef }) => {
                 handleImageFile={handleImageFile} 
                 imageFile={imageFile} 
                 setImageFile={setImageFile} 
+                reset={reset}
                 />
             </div>    
             <div>
@@ -103,8 +89,13 @@ const Uploader = ({ storageRef }) => {
                     handleUpload={handleUpload}
                     handleImageFile={handleImageFile}
                     imagePreview={imagePreview}
+                    
                 />
-                <UpdateMeta metaUploadRef={metaUploadRef}/>
+                <UpdateMeta metaUploadRef={metaUploadRef}
+                setReset={setReset}
+                setImagePreview={setImagePreview}
+                reset={reset}
+                />
             </div>
             </div>
         </Router>  
