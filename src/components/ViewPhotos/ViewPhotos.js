@@ -15,7 +15,7 @@ const Selecter = ({ currentFolder, setCurrentFolder, setFolders, folders, storag
     }
     useEffect(() => {
         collect()
-        setCurrentFolder("test")
+        setCurrentFolder("general")
     },[])
     return (
         <div>
