@@ -3,10 +3,9 @@ import "firebase/storage"
 import './ImageLocation.css'
 
 
-const SelectFolder = ({ folders, setCurrentFolder, currentFolder }) => {
+const SelectFolder = ({ folders, setCurrentFolder, currentFolder, setShowLocation }) => {
 const [newFolder, setNewFolder] = useState("")
  const isInvalid = 
-        newFolder === String ||
         newFolder === "" ||
         newFolder === "--" ||
         currentFolder === "--" ||
@@ -19,8 +18,10 @@ const [newFolder, setNewFolder] = useState("")
             console.log("folder already exists")
         } else {
             setCurrentFolder(newFolder)
+            
         }        
     }
+    
 
     return (
         <div>
@@ -43,14 +44,14 @@ const [newFolder, setNewFolder] = useState("")
                 <button type="submit" disabled={isInvalid}>
                 add folder
                 </button>
-                {currentFolder === "" ?
+                {currentFolder === "" || currentFolder ==="--" ?
                     <p>you have to select a folder yo</p> :
                     <></>}
             </form>
         </div>
     )
 }
-const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder }) => {
+const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder, setShowLocation, setShowImage }) => {
     const [name, setName] = useState("")
     const [folders, setFolders] = useState([])
 
@@ -66,6 +67,13 @@ const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder }) => {
     useEffect(()=> {
         collect()
     },[])
+    const next = () => {
+        setShowLocation(false)
+        setShowImage(true)
+    }
+    const isInvalid = 
+    currentFolder === "--" ||
+    currentFolder === ""
 
     return(
 
@@ -76,38 +84,12 @@ const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder }) => {
                 folders={folders} 
                 setCurrentFolder={setCurrentFolder}
                 currentFolder={currentFolder}
+                setShowLocation={setShowLocation}
             />
             <p>{currentFolder}</p>
+            <h3>uploading to {currentFolder}</h3>
+            <button disabled={isInvalid} onClick={() => next()}>next</button>
         </div>
-        // <div>
-            
-        //     <div className="imageLocation">
-        //     <h1>image location</h1>
-        //         {folderOption ?
-        //         <div> 
-        //             <FolderForm />
-        //             {newFolder === "" ?
-        //             <p>no value</p> :
-        //             <p>{newFolder}</p>
-        //             }
-        //         </div>
-        //         :
-        //         <div>
-        //             <FolderArrItems />
-        //             <FolderName />
-        //             <div>
-        //                 <p>or...</p>
-        //                 <button onClick={handleFolderView}>create new folder</button>
-        //             </div>
-        //         </div>
-        //         }
-        //         {/* {name !== "" ?
-        //         <FolderConfirm /> :
-        //         <></>
-        //         } */}
-
-        //     </div>
-        // </div>
     )
 }
 

@@ -37,6 +37,7 @@ const UpdateMeta = (props) => {
             tag5: "",
           })
           setCurrentMeta("tag1")
+          props.reseter()
       }
 
       const handleState = (e) => {
@@ -56,8 +57,16 @@ const UpdateMeta = (props) => {
           setInput("")
         }
       };
+      const backHandler = () => {
+        props.setShowAddMeta(false)
+        props.setShowImage(true)
+      }
     return (
         <div className="updateCont">
+          <button onClick={backHandler}>go back</button>
+          <div>
+            <img src={props.imagePreview} />
+          </div>
             <select
                 value={currentMeta}
                 onChange={(e) => setCurrentMeta(e.target.value)}
