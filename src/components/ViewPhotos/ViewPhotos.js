@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
-import app from 'firebase/app'
 import "firebase/storage"
 import './ViewPhotos.css'
 import Loading from '../Loading/Loading'
@@ -55,10 +53,6 @@ const ViewPhotos = ({ storageRef, storage }) => {
         loader()
         console.log(imgData.length)
     }, [currentFolder])
-
-    useEffect(()=> {
-
-    },[])
 
     return (
         <div className="imgWrapper">
