@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
-    
+    let isInvalid = imageFile === "" || imageFile === " null"
 
     const handleEvent = (e) => {
         setImageFile(e.target.files[0])
@@ -35,7 +35,7 @@ const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
         </div>
          }
           
-        <button type="submit">submit</button>
+        <button disabled={isInvalid} type="submit">submit</button>
         </form>
      </div>
  )   

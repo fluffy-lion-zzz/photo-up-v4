@@ -18,6 +18,8 @@ const ChooseImage = ({
     loading
     }) => {
     
+    const isInvalid = imageFile === "" || imageFile === null
+
     return (
         <div className="chooseImg">
             <form onSubmit={handleUpload}>
@@ -33,7 +35,7 @@ const ChooseImage = ({
                     setImageName={setImageName}
                     imageName={imageName}
                 />
-                <button type="submit">upload</button>
+                <button disabled={isInvalid} type="submit">upload</button>
             </form>
         </div>
     )
