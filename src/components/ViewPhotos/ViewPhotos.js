@@ -39,6 +39,7 @@ const ViewPhotos = ({ storageRef, storage }) => {
     const [currentFolder, setCurrentFolder] = useState("")
 
     const loader = () => {
+        setLoading(true)
         setImgData([])
         storage.ref(currentFolder+'/').list().then(res => {
             res.items.map((item) => {
@@ -46,12 +47,18 @@ const ViewPhotos = ({ storageRef, storage }) => {
                     setImgData(imgData => [...imgData, url])
                 })
             })
+            setLoading(false)
         })
+        // setLoading(false)
     }
     useEffect(() => {
         loader()
         console.log(imgData.length)
     }, [currentFolder])
+
+    useEffect(()=> {
+
+    },[])
 
     return (
         <div className="imgWrapper">
@@ -65,7 +72,10 @@ const ViewPhotos = ({ storageRef, storage }) => {
             />
             {/* <ViewImages /> */}
             <br/>
-            {imgData.map(url => {
+            { 
+            loading ?
+            <Loading/> :
+            imgData.map(url => {
             return (
                 <div className="imagesContainer">
                     <img className="imageSep" src={url} />
