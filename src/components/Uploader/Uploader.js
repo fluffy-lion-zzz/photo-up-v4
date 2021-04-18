@@ -19,6 +19,8 @@ const Uploader = ({ storageRef }) => {
     const [currentFolder, setCurrentFolder] = useState("")
     const [reset, setReset] = useState(false)
 
+    const [loading, setLoading] = useState(false)
+    const [uploadComplete, setUploadComplete] = useState(false)
     const [showLocation, setShowLocation] = useState(true)
     const [showImage, setShowImage] = useState(false)
     const [showAddMeta, setShowAddMeta] = useState(false)
@@ -29,15 +31,17 @@ const Uploader = ({ storageRef }) => {
     }
     const handleUpload = (event) => {
         event.preventDefault()
+        
         let name = null
             imageName === "" ?
             name = imageFile.name :
             name = imageName
-
+      
         const uploadRef = storageRef.child(`${currentFolder}/${name}`)
         setMetaUploadRef(uploadRef)
         uploadRef.put(imageFile).then((snapshot) => {
             console.log(imageFile)
+            setUploadComplete(true)
             
         })
         
@@ -49,7 +53,11 @@ const Uploader = ({ storageRef }) => {
         setCurrentFolder("")
         setShowImage(false)
         setShowAddMeta(true)
+        
     }
+    // useEffect(()=> {
+    //     setLoading(true)
+    // },[imageFile])
     
     const handleImageFile = (event) => {
 
@@ -115,6 +123,7 @@ const Uploader = ({ storageRef }) => {
                         handleUpload={handleUpload}
                         handleImageFile={handleImageFile}
                         imagePreview={imagePreview} 
+                        loading={loading}
                     />
                 </div>
             </div>  
@@ -123,7 +132,7 @@ const Uploader = ({ storageRef }) => {
         }
 
         
-        { showAddMeta ? 
+        { showAddMeta &&  uploadComplete ? 
             <div className="addMeta">
                 <UpdateMeta metaUploadRef={metaUploadRef}
                 setReset={setReset}
