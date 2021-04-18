@@ -63,20 +63,25 @@ const UpdateMeta = (props) => {
       }
     return (
         <div className="updateCont">
-          <button onClick={backHandler}>go back</button>
           <div>
-            <img src={props.imagePreview} />
+            <button onClick={backHandler}>go back</button>
           </div>
-            <select
-                value={currentMeta}
-                onChange={(e) => setCurrentMeta(e.target.value)}
-            >
-                <option value="tag1">tag 1</option>
-                <option value="tag2">tag 2</option>
-                <option value="tag3">tag 3</option>
-                <option value="tag4">tag 4</option>
-                <option value="tag5">tag 5</option>
-            </select>
+          
+          <div className="imageContainer">
+            <img className="individualImages" src={props.imagePreview} />
+          </div>
+          <div>
+              <select
+                  value={currentMeta}
+                  onChange={(e) => setCurrentMeta(e.target.value)}
+              >
+                  <option value="tag1">tag 1</option>
+                  <option value="tag2">tag 2</option>
+                  <option value="tag3">tag 3</option>
+                  <option value="tag4">tag 4</option>
+                  <option value="tag5">tag 5</option>
+              </select>
+            </div>
             <form onSubmit={handleState}>
                 <input
                 type="text"

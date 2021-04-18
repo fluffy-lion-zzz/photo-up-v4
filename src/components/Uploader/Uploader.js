@@ -9,6 +9,7 @@ import ImageLocation from './ImageLocation'
 
 import UpdateMeta from '../UpdateMeta/UpdateMeta'
 import ImagePop from './ImagePop'
+import Loading from '../Loading/Loading'
 
 
 const Uploader = ({ storageRef }) => {
@@ -132,22 +133,31 @@ const Uploader = ({ storageRef }) => {
         }
 
         
-        { showAddMeta &&  uploadComplete ? 
-            <div className="addMeta">
-                <UpdateMeta metaUploadRef={metaUploadRef}
-                setReset={setReset}
-                setImagePreview={setImagePreview}
-                reset={reset}
-                reseter={reseter}
-                imagePreview={imagePreview}
-                setShowAddMeta={setShowAddMeta}
-                setShowImage={setShowImage}
-                />
-            </div>
+        { showAddMeta ?
+
+        <div>
+            {uploadComplete ?
+                <div className="addMeta">
+                    <UpdateMeta metaUploadRef={metaUploadRef}
+                    setReset={setReset}
+                    setImagePreview={setImagePreview}
+                    reset={reset}
+                    reseter={reseter}
+                    imagePreview={imagePreview}
+                    setShowAddMeta={setShowAddMeta}
+                    setShowImage={setShowImage}
+                    />
+                </div>
+                :
+                <Loading />
+            }
+
+        </div>
             :
             <></>
         }
         </div>
+        
         </Router>  
     )
 }

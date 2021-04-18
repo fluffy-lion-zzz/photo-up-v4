@@ -1,3 +1,15 @@
 .updateCont{
     border:solid green 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imageContainer{
+    width: 90%;
+    display: flex;
+    border: solid 4px lime;
+}
+
+.individualImages {
+    width: 50%;
 }
