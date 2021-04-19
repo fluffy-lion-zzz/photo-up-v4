@@ -12,13 +12,15 @@ const SignUpForm = () => {
     const [newUser, setNewUser] = useState("")
 
     // const [error, setError] = useState(null)
-
+    const reg = new RegExp("^[A-Za-z0-9._%+-]+@wearecodenation.com$")
     const isInvalid = 
         newPassword !== newPasswordTwo ||
         newPassword === "" ||
-        newEmail === "" 
+        newEmail === "" ||
+        reg.test(newEmail) === false
+        
 
-
+    
     const handleSignUp = (event) => {
         event.preventDefault()
         console.log(newEmail, newPassword)

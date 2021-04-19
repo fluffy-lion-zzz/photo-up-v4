@@ -18,9 +18,9 @@ const Navigation = () => {
             <li>
                 <Link to={ROUTES.SIGN_UP}>sign up</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link to={ROUTES.ACCOUNT}>account</Link>
-            </li>
+            </li> */}
             <li>
                 <Link to={ROUTES.UPLOAD}>upload</Link>
             </li>
