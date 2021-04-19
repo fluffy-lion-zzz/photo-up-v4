@@ -30,49 +30,66 @@ const SignUpForm = () => {
        
     }
         return (
+            <div className="signUpFormCont">
                 <form onSubmit={handleSignUp}>
-                    <div>
+                    {/* <div>
                         <input 
                         type="text"
                         value={newUser}
-                        placeholder="you username"
+                        placeholder="your username"
                         onChange={(event) => {
                             setNewUser(event.target.value)
                         }}>
                         </input>
                         <p>{newUser}</p>
+                    </div> */}
+                    <div className="formSection">
+                        <div className="formHeader">
+                            <h2>enter your email...</h2>
+                        </div>
+                        <h4>"wearecodenation.com" only permitted</h4>
+                        <input 
+                        placeholder="enter your email"
+                        type="text"
+                        value={newEmail}
+                        onChange={(event) => {
+                            setNewEmail(event.target.value)
+                        }}
+                        ></input>
+                        <div>
+                            <p>signing up with...</p>
+                            <h4>{newEmail}</h4>
+                        </div>
                     </div>
+                    <div className="formSection">
+                        <div className="formHeader">
+                            <h2>enter a password</h2>
+                        </div>
+                        <p>password</p>
+                        <input 
+                        type="password"
+                        value={newPassword}
+                        onChange={(event) => {
+                            setNewPassword(event.target.value)
+                        }}
+                        placeholder="password"
+                        ></input>
+                        
+                    <p>confirm password...</p>
                     <input 
-                    type="text"
-                    value={newEmail}
-                    onChange={(event) => {
-                        setNewEmail(event.target.value)
-                    }}
-                    ></input>
-                    <div>
-                        {newEmail}
-                    </div>
-                    <input 
-                    type="text"
-                    value={newPassword}
-                    onChange={(event) => {
-                        setNewPassword(event.target.value)
-                    }}
-                    placeholder="password"
-                    ></input>
-                    <div>
-                        {newPassword}
-                    </div>
-                    <input 
-                    type="text"
+                    type="password"
                     value={newPasswordTwo}
                     onChange={(event) => {
                         setNewPasswordTwo(event.target.value)
                     }}
                     placeholder="password two">
                     </input>
-                    <button disabled={isInvalid}>submit</button>
+                    </div>
+                    <div className="signUpSubmit">
+                        <button disabled={isInvalid}>submit</button>
+                    </div>
                 </form>
+            </div>
         )
 }
 
