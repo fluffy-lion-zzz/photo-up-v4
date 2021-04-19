@@ -125,6 +125,8 @@ const Uploader = ({ storageRef }) => {
                         handleImageFile={handleImageFile}
                         imagePreview={imagePreview} 
                         loading={loading}
+                        storageRef={storageRef}
+                        currentFolder={currentFolder}
                     />
                 </div>
             </div>  

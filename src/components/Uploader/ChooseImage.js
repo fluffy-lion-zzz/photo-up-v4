@@ -14,8 +14,10 @@ const ChooseImage = ({
     imageName, 
     handleUpload,
     // handleImageFile,
+    storageRef,
     imagePreview,
-    loading
+    loading,
+    currentFolder
     }) => {
     
     const isInvalid = imageFile === "" || imageFile === null
@@ -35,6 +37,8 @@ const ChooseImage = ({
                     setImageFile={setImageFile}
                     setImageName={setImageName}
                     imageName={imageName}
+                    storageRef={storageRef}
+                    currentFolder={currentFolder}
                 />
                 <button disabled={isInvalid} type="submit">upload</button>
             </form>
