@@ -5,11 +5,15 @@ import './ImageInfo.css'
 const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFolder}) => {
     const [imageNames, setImageNames] = useState([])
     const [nameInput, setNameInput] = useState("")
+    const [display, setDisplay] = useState("")
+
+    const isInvalid = imageNames.includes(nameInput) || nameInput === ""
+   
 
     const handleName = (e) => {
         e.preventDefault()
+        setDisplay(nameInput)
         setImageName(nameInput)
-        // setImageName(nameInput)
     }
     const collect = () => {
         storageRef.child(`${currentFolder}`)
@@ -18,9 +22,7 @@ const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFold
             res.items.map((item) => {
                 setImageNames(imageNames => [...imageNames, item.name])
             })
-
         })
-        
     }
 
     useEffect(()=> {
@@ -40,31 +42,30 @@ const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFold
                 <p>original name : {imageFile.name}</p> :
                 <></>
             }
-            
-            <p>do you want to rename?</p>
-           
+                {imageNames.includes(imageFile.name) ?
+                <div>
+                    <p>the original file name is taken</p>
+
+                </div>
+                :
+                <></>
+                }
+                <p>do you want to enter a new name?</p>
+                <p>if you dont the original file will be overwritten...just sayin</p>
                 <input 
                     type="text"
                     value={nameInput}
                     onChange={(e) => {setNameInput(e.target.value)}}
                 />
-                <button onClick={handleName}>submit new name</button>
-            
-            {
-            //    return <p>{name}</p>
-                imageNames.includes(imageName) || imageNames.includes(imageFile.name)  ?
-                
+                <button disabled={isInvalid} onClick={handleName}>submit new name</button>
+                {display !== "" ?
                 <div>
-                    <p>there's already an image with this name</p>
-                    <p>if you upload with this name it with overwrite the original with that name image</p>
-                    <p>are you gonna do it?</p>
+                    <p>new file name: {display}</p>
                 </div>
-                
                 :
-                <p>huh?</p>
-
-            }
-            <p>new file name: {nameInput}</p>
+                <div></div>
+                }
+            
             {/* <AddMeta metaUploadRef={props.metaUploadRef} imageInfo={props.imageFile}/> */}
         </div>
     )
