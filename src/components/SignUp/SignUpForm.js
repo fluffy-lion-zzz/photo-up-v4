@@ -32,6 +32,7 @@ const SignUpForm = () => {
         return (
             <div className="signUpFormCont">
                 <form onSubmit={handleSignUp}>
+                    {/* for username, not supported yet */}
                     {/* <div>
                         <input 
                         type="text"
