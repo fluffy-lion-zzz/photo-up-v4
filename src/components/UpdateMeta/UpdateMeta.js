@@ -63,7 +63,7 @@ const UpdateMeta = (props) => {
       }
     return (
         <div className="updateCont">
-          <div>
+          <div className="backCont">
             <button onClick={backHandler}>go back</button>
           </div>
           
@@ -71,32 +71,40 @@ const UpdateMeta = (props) => {
             <img className="individualImages" src={props.imagePreview} />
           </div>
           <div>
-              <select
-                  value={currentMeta}
-                  onChange={(e) => setCurrentMeta(e.target.value)}
-              >
-                  <option value="tag1">tag 1</option>
-                  <option value="tag2">tag 2</option>
-                  <option value="tag3">tag 3</option>
-                  <option value="tag4">tag 4</option>
-                  <option value="tag5">tag 5</option>
-              </select>
-            </div>
-            <form onSubmit={handleState}>
-                <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                />
-                <button type="submit">Submit meta</button>
-            </form>
-                {metas &&
-                    Object.keys(metas).map((item) => (
-                    <li>
-                        {item} = {metas[item]}
-                    </li>
-                    ))}
-            <button onClick={handleSubmit}>finish</button>
+            <div className="tagSelectCont">
+                <select
+                    value={currentMeta}
+                    onChange={(e) => setCurrentMeta(e.target.value)}
+                >
+                    <option value="tag1">tag 1</option>
+                    <option value="tag2">tag 2</option>
+                    <option value="tag3">tag 3</option>
+                    <option value="tag4">tag 4</option>
+                    <option value="tag5">tag 5</option>
+                </select>
+              </div>
+              <div className="metaContainer">
+                <div className="formCont">
+                  <form onSubmit={handleState}>
+                      <input
+                      type="text"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      />
+                      <button type="submit">Submit Tag</button>
+                  </form>
+                </div>
+                  {metas &&
+                      Object.keys(metas).map((item) => (
+                      <li>
+                          {item} = {metas[item]}
+                      </li>
+                      ))}
+              </div>
+              <div className="finishButtonCont">
+                  <button onClick={handleSubmit}>finish</button>
+              </div>
+        </div>
         </div>
     )
 }

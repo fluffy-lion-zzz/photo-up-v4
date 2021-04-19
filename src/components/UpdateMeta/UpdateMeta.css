@@ -14,3 +14,36 @@
 .individualImages {
     width: 50%;
 }
+.backCont{
+    width: 100%;
+    border: solid blue 4px;
+}
+.metaContainer {
+    border: purple solid 4px;
+    display: flex;
+    flex-direction: column;
+}
+.metaContainer li {
+    list-style-type: none;
+}
+.formCont {
+    width: 100%;
+    display: flex;
+    border: solid orange 4px;
+}
+
+.finishButtonCont {
+    width: 100%;
+    border: solid fuchsia 4px;
+    display: flex;
+    justify-content: center;
+}
+.tagSelectCont {
+    width: 100%;
+    border: wheat solid 4px;
+    display: flex;
+    justify-content: center;
+}
+.tagSelectCont select {
+    width: 90%;
+}
