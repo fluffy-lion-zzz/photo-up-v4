@@ -1,3 +1,25 @@
 .metaWrapper{
     border: solid plum 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imageCont {
+    width: 90%;
+    border: solid green 4px;
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+}
+
+.imageCont img {
+    width: 100%;
+    border: orange 4px solid;
+}
+
+.searchResCont{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

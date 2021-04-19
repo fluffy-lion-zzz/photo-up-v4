@@ -61,7 +61,7 @@ const MetaSearch = ({ storage }) => {
     }
     return (
         <div className="metaWrapper">
-            <h1>meta search</h1>
+            <h1>tag search</h1>
             <form onSubmit={handleSearch}>
                 <input 
                 type="text"
@@ -70,12 +70,11 @@ const MetaSearch = ({ storage }) => {
                 />
                 <button type="submit">search</button>
             </form>
-            <div>
-                <h2>files</h2>
+            <div className="searchResCont">
                 
                 {urls.map((url) => {
                     return (
-                        <div>
+                        <div className="imageCont">
                             <img src={url} />
                         </div>
                     )
