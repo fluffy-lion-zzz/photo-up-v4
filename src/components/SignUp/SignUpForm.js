@@ -64,7 +64,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="formSection">
                         <div className="formHeader">
-                            <h2>enter a password</h2>
+                            <h2>enter a password...</h2>
                         </div>
                         <p>password</p>
                         <input 
@@ -76,7 +76,7 @@ const SignUpForm = () => {
                         placeholder="password"
                         ></input>
                         
-                    <p>confirm password...</p>
+                    <p>confirm password</p>
                     <input 
                     type="password"
                     value={newPasswordTwo}
