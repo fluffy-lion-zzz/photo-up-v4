@@ -1,3 +1,18 @@
 .loginWrapper {
     border: solid 2px blue;
 }
+.loginHeader {
+    border: solid 4px green;
+}
+
+.inputSection {
+    border: solid 4px red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.submitCont {
+    border:rosybrown 4px solid;
+    display: flex;
+    justify-content: center;
+}

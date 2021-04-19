@@ -32,31 +32,40 @@ const Login = () => {
     return (
         // <UserConsumer>
         <div className="loginWrapper">
-
-            <h1>login</h1>
-            
+            <div className="loginHeader">
+                <h1>login</h1>
+            </div>
             {/* {props.value.user.email} */}
             
             <form onSubmit={handleLogIn}>
-                <input 
-                type="text"
-                value={email}
-                onChange={(event) => {
-                    setEmail(event.target.value)
-                }}
-                >
-                </input>
-                <div>{email}</div>
-                
-                <input
-                type="text"
-                value={password}
-                onChange={(event) => {
-                    setPassword(event.target.value)
-                }}
-                placeholder="password"
-                ></input>
-                <button>fire</button>
+                <div className="inputSection">
+                    <h3>email...</h3>
+                    <input 
+                    placeholder="enter email"
+                    type="text"
+                    value={email}
+                    onChange={(event) => {
+                        setEmail(event.target.value)
+                    }}
+                    >
+                    </input>
+                    <div>{email}</div>
+                </div>
+                <div className="inputSection">
+                    <h3>password...</h3>
+                    <input
+                    placeholder="enter password"
+                    type="text"
+                    value={password}
+                    onChange={(event) => {
+                        setPassword(event.target.value)
+                    }}
+                    placeholder="password"
+                    ></input>
+                </div>
+                <div className="submitCont">
+                    <button type="submit">login</button>
+                </div>
             </form>
             {/* <div>
                 <button onClick={Logout}>log out</button>
