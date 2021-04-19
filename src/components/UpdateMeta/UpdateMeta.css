@@ -7,6 +7,7 @@
 .imageContainer{
     width: 90%;
     display: flex;
+    justify-content: center;
     border: solid 4px lime;
 }
 

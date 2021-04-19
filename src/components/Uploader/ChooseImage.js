@@ -23,11 +23,12 @@ const ChooseImage = ({
     return (
         <div className="chooseImg">
             <form onSubmit={handleUpload}>
-                <label for="file">select a new image</label>
-                { loading ?
-                <Loading /> :
-                <img id="imagePreview" src={imagePreview} />
-                }
+                <div>
+                    { loading ?
+                    <Loading /> :
+                    <img id="imagePreview" src={imagePreview} />
+                    }
+                </div>
                 {/* <ImageInfo imageFile={imageFile}/> */}
                 <ImageInfo 
                     imageFile={imageFile}

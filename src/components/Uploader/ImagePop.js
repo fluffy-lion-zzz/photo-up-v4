@@ -10,6 +10,7 @@ const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
     console.log("image pop : ", imageFile)
  return(
      <div>
+         <label for="file">select an image</label>
          <form 
          onSubmit={handleImageFile}
          >
@@ -34,7 +35,10 @@ const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
             /> 
         </div>
          }
-          
+        {imageFile !== "" || imageFile ? 
+        <p>submit to use this image</p>
+        :
+        <></>}
         <button disabled={isInvalid} type="submit">submit</button>
         </form>
      </div>
