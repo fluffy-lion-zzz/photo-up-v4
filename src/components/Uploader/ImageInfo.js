@@ -38,13 +38,13 @@ const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFold
             {imageNames.includes(imageFile.name) ?
             <div>
                 <p>the original file name is taken</p>
-
+                <p>if you dont the original file will be overwritten...just sayin</p>
             </div>
             :
             <></>
             }
             <p>do you want to enter a new name?</p>
-            <p>if you dont the original file will be overwritten...just sayin</p>
+            {/* <p>if you dont the original file will be overwritten...just sayin</p> */}
             <input 
                 type="text"
                 value={nameInput}

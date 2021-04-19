@@ -25,9 +25,11 @@ const Uploader = ({ storageRef }) => {
     const [showLocation, setShowLocation] = useState(true)
     const [showImage, setShowImage] = useState(false)
     const [showAddMeta, setShowAddMeta] = useState(false)
+    const [showImageInfo, setShowImageInfo] = useState(false)
  
     const reseter = () => {
         setShowLocation(true)
+        setShowAddMeta(false)
         setShowAddMeta(false)
     }
     const handleUpload = (event) => {
@@ -73,7 +75,7 @@ const Uploader = ({ storageRef }) => {
         }
         
         setImageFile(imageFile => (image))
-    
+        setShowImageInfo(true)
         
     }
 
@@ -106,15 +108,17 @@ const Uploader = ({ storageRef }) => {
                 <div>
                     <button onClick={() => setShowLocation(true)}>select a new folder</button>
                 </div>
-             
+                {!showImageInfo ? 
                 <div>
                     <ImagePop 
                     handleImageFile={handleImageFile} 
                     imageFile={imageFile} 
                     setImageFile={setImageFile} 
                     reset={reset}
+                    setShowImageInfo={setShowImageInfo}
                     />
-                </div> 
+                </div>
+                :
                 <div>
                     <ChooseImage 
                         imageFile={imageFile}
@@ -127,8 +131,11 @@ const Uploader = ({ storageRef }) => {
                         loading={loading}
                         storageRef={storageRef}
                         currentFolder={currentFolder}
+                        setShowImageInfo={setShowImageInfo}
                     />
                 </div>
+                
+                }
             </div>  
             :
             <></>

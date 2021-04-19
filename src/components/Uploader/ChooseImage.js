@@ -17,13 +17,18 @@ const ChooseImage = ({
     storageRef,
     imagePreview,
     loading,
-    currentFolder
+    currentFolder,
+    setShowImageInfo
     }) => {
     
     const isInvalid = imageFile === "" || imageFile === null
 
     return (
         <div className="chooseImg">
+            <div>
+                <p>select a differnt image?</p>
+                <button onClick={()=> setShowImageInfo(false)}>change image</button>
+            </div>
             <form onSubmit={handleUpload}>
                 <div>
                     { loading ?
@@ -40,7 +45,9 @@ const ChooseImage = ({
                     storageRef={storageRef}
                     currentFolder={currentFolder}
                 />
-                <button disabled={isInvalid} type="submit">upload</button>
+                <div className="uploadCont">
+                    <button disabled={isInvalid} type="submit">upload</button>
+                </div>
             </form>
         </div>
     )

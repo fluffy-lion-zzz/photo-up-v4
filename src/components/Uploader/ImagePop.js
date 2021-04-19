@@ -1,21 +1,30 @@
 import React from 'react'
-
-const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
-    let isInvalid = imageFile === "" || imageFile === " null"
+import './ImagePop.css'
+const ImagePop = ({ 
+    handleImageFile, 
+    imageFile, 
+    setImageFile, 
+    reset,
+    setShowImageInfo
+    }) => {
+    let isInvalid = imageFile === "" || imageFile === null
 
     const handleEvent = (e) => {
         setImageFile(e.target.files[0])
+        
     }
  
     console.log("image pop : ", imageFile)
  return(
-     <div>
+     <div className="imagePopCont">
          <label for="file">select an image</label>
          <form 
          onSubmit={handleImageFile}
+
          >
-        {
-             reset === false ? 
+        {reset === false ? 
+        <div className="inputCont">
+            
              <input 
             name="file"
             type="file"
@@ -23,9 +32,9 @@ const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
             // onChange={(e)=> setFile(e.target.files[0])}
             onChange={handleEvent}
             /> 
+        </div>
         :
         <div>
-            <p>you just uploaded, select another?</p>
             <input 
             name="file"
             type="file"
@@ -35,11 +44,14 @@ const ImagePop = ({ handleImageFile, imageFile, setImageFile, reset }) => {
             /> 
         </div>
          }
+         <div>
         {imageFile !== "" || imageFile ? 
         <p>submit to use this image</p>
         :
-        <></>}
+        <></>
+        }
         <button disabled={isInvalid} type="submit">submit</button>
+        </div>
         </form>
      </div>
  )   

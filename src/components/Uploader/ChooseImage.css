@@ -5,3 +5,9 @@
 #imagePreview {
     width: 20%;
 }
+.uploadCont {
+    width: 100%;
+    border: lime solid 4px;
+    display: flex;
+    justify-content: center;
+}
