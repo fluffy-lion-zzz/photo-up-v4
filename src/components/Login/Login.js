@@ -33,7 +33,7 @@ const Login = () => {
         // <UserConsumer>
         <div className="loginWrapper">
             <div className="loginHeader">
-                <h1>login</h1>
+                <h1>login...</h1>
             </div>
             {/* {props.value.user.email} */}
             

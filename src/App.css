@@ -2,10 +2,11 @@
   border: 4px solid orange;
   /* display: flex;
   height: 100vh; */
+  background: linear-gradient(135deg, #F5B32E 49%, rgb(243, 243, 243) 49%)
   
 }
 .navContainer{
-  border: solid 4px hotpink;
+  /* border: solid 4px hotpink; */
   position: sticky;
   top: 0;
   background-color: #fcfcfc;
@@ -15,13 +16,29 @@
   justify-content: space-between;
   align-items: center;
 }
+.navComponentWrap {
+  /* border: rgb(216, 216, 111) solid 4px; */
+  width: 50%;
+}
+.topImageWrap {
+  /* border: lime 4px solid; */
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
 .navContainer img {
   width: 80%;
+  /* border: solid grey 4px; */
 }
-
+#titleHead{
+  text-align: center;
+  font-size: 4em;
+  color: #264E9A;
+  font-weight: bolder;
+}
 #mainBody{
   /* margin-top: 10%; */
-  border: 4px solid rgb(0, 0, 0);
+  /* border: 4px solid rgb(0, 0, 0); */
   height: 90vh;
   display: flex;
   flex-direction: column;

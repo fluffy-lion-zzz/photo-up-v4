@@ -6,11 +6,13 @@
     /* justify-content: space-around; */
 }
 .loginHeader {
-    /* border: solid 4px green; */
+    
     margin: 20px 0;
 }
 .loginHeader h1 {
-    font-size: 35px;;
+    padding: 5px;
+    color: #264E9A;
+    font-size: 2.5em;
 }
 
 .inputSection {

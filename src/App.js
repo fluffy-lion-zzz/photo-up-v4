@@ -63,15 +63,16 @@ const App = () => {
       <div>
         {user.loggedIn  ? <Logout /> : <></>}
       <div className="navContainer">
-        <div>
+        <div className="navComponentWrap">
           <Navigation  />
         </div>
-        <div>
+        <div className="topImageWrap">
           <img  src={logo}/>
         </div>
       </div>
         <div id="mainBody">
-          <h1>photoUp</h1>
+          <h1 id="titleHead">photo-up</h1>
+          
           {/* <AuthStatus /> */}
           {/* <button onClick={doSignOut}>sign out</button> */}
           <Route exact path={ROUTES.LANDING} componet={Landing}/>
