@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import "firebase/storage"
 import './ViewPhotos.css'
 import Loading from '../Loading/Loading'
+// import Modal from 'react-bootstrap/Modal'
+// import ModalDialog from 'react-bootstrap/ModalDialog'
 const Selecter = ({ currentFolder, setCurrentFolder, setFolders, folders, storageRef }) => {
 
     const collect = () => {

@@ -6,7 +6,7 @@ import UserContext  from './AuthContext'
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     const user = useContext(UserContext)
     //WARNING DELETE LINE 9, HERE FOR TESTING
-    // user.loggedIn = true
+    user.loggedIn = true
     //WARNING DELETE LINE 9, HERE FOR TESTING
     return (
         <Route

@@ -57,7 +57,7 @@ const App = () => {
 {/* <AuthProvider> */}
 <UserProvider value={user}>
     <Router> 
-      <p>auth provider</p>
+      {/* <p>auth provider</p> */}
       <div>
         {user.loggedIn  ? <Logout /> : <></>}
         
