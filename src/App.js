@@ -19,6 +19,8 @@ import MetaSearch from './components/MetaSearch/MetaSearch'
 import HowTo from './components/HowTo/HowTo'
 
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 const onAuthStateChange = (callback) => {
   return app.auth().onAuthStateChanged(user => {
     if(user) {
@@ -52,7 +54,7 @@ const App = () => {
   }, [])
 
   return (
-    <div>
+    <div id="app">
       
 {/* <AuthProvider> */}
 <UserProvider value={user}>
@@ -60,35 +62,37 @@ const App = () => {
       {/* <p>auth provider</p> */}
       <div>
         {user.loggedIn  ? <Logout /> : <></>}
-        
-      <Navigation />
-      <h1>photoUpV4</h1>
-      {/* <AuthStatus /> */}
-      {/* <button onClick={doSignOut}>sign out</button> */}
-      <Route exact path={ROUTES.LANDING} componet={Landing}/>
-        {/* <UserConsumer> */}
-      <Route path={ROUTES.LOG_IN} component={Login}/>
-        {/* </UserConsumer> */}
-      <Route path={ROUTES.SIGN_UP} component={SignUp} />
-      {/* <Route path={ROUTES.HOME} component={Home} /> */}
-      <Route path={ROUTES.HOWTO} component={HowTo} />
-      <PrivateRoute  
-        exact path={ROUTES.HOME}
-        component={() => <Home 
-          storage={storage}
-          storageRef={storageRef}/>}
-      />
-      <PrivateRoute 
-        path={ROUTES.UPLOAD} 
-        component={() => <Uploader storageRef={storageRef} />}
-      />
-      <PrivateRoute
-        path={ROUTES.SEARCH}
-        component={() => <MetaSearch storage={storage} />}
-      />
-      <PrivateRoute path={ROUTES.ACCOUNT} component={Account} />
+      <div className="navContainer">
+        <Navigation  />
       </div>
-      
+        <div id="mainBody">
+          <h1>photoUpV4</h1>
+          {/* <AuthStatus /> */}
+          {/* <button onClick={doSignOut}>sign out</button> */}
+          <Route exact path={ROUTES.LANDING} componet={Landing}/>
+            {/* <UserConsumer> */}
+          <Route path={ROUTES.LOG_IN} component={Login}/>
+            {/* </UserConsumer> */}
+          <Route path={ROUTES.SIGN_UP} component={SignUp} />
+          {/* <Route path={ROUTES.HOME} component={Home} /> */}
+          <Route path={ROUTES.HOWTO} component={HowTo} />
+          <PrivateRoute  
+            exact path={ROUTES.HOME}
+            component={() => <Home 
+              storage={storage}
+              storageRef={storageRef}/>}
+          />
+          <PrivateRoute 
+            path={ROUTES.UPLOAD} 
+            component={() => <Uploader storageRef={storageRef} />}
+          />
+          <PrivateRoute
+            path={ROUTES.SEARCH}
+            component={() => <MetaSearch storage={storage} />}
+          />
+          <PrivateRoute path={ROUTES.ACCOUNT} component={Account} />
+          </div>
+      </div>
     </Router>
     
       
