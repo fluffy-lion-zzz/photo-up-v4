@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import "firebase/storage"
 import './ViewPhotos.css'
 import Loading from '../Loading/Loading'
+import { animateScroll as scroll } from 'react-scroll'
 // import Modal from 'react-bootstrap/Modal'
 // import ModalDialog from 'react-bootstrap/ModalDialog'
 const Selecter = ({ currentFolder, setCurrentFolder, setFolders, folders, storageRef }) => {
-
+    
     const collect = () => {
         storageRef.list().then(res => {
             res.prefixes.map(name => {
@@ -37,6 +38,13 @@ const ViewPhotos = ({ storageRef, storage }) => {
     const [loading, setLoading] = useState(true)
     const [folders, setFolders] = useState([])
     const [currentFolder, setCurrentFolder] = useState("")
+
+
+    // const scroll = Scroll.animateScroll
+
+    //  const scrollTop = () => {
+    //      scroll.scrollToTop()
+    //  }
 
     const loader = () => {
         setLoading(true)
@@ -78,6 +86,7 @@ const ViewPhotos = ({ storageRef, storage }) => {
                 </div>
             )
             })}
+            <button onClick={() => scroll.scrollToTop()}>top</button>
         </div>
     )
 }

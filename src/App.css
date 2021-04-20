@@ -1,15 +1,47 @@
 #app {
   border: 4px solid orange;
+  /* display: flex;
+  height: 100vh; */
+  
 }
 .navContainer{
   border: solid 4px hotpink;
   position: sticky;
   top: 0;
-  background-color: rgb(253, 186, 60);
+  background-color: #fcfcfc;
+  width: 100%;
+  display: flex;
   /* margin: 20px; */
+  justify-content: space-between;
+  align-items: center;
+}
+.navContainer img {
+  width: 80%;
 }
 
 #mainBody{
   /* margin-top: 10%; */
-  border: 4px solid lime;
+  border: 4px solid rgb(0, 0, 0);
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* display: flex;
+  justify-content: center;
+  margin: 135px 0px;
+  padding: 5em; */
 }
+.appCnLogo {
+  border: solid 4px blue;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+  /* position: sticky;
+  bottom: 0; */
+}
+.appCnLogo img {
+  width: 100%;
+  
+}
+/* cn yellow - F5B32E */
+/* cn blue 264E9A */

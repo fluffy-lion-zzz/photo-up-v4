@@ -11,21 +11,25 @@
 } */
 
 .imgWrapper{
-    border: solid green 4px;
-    margin: 12px;
+    border: solid rgb(11, 255, 255) 4px;
+    /* margin: 12px; */
+    margin: 2px;
     width: 90vw;
+    height: inherit;
+    /* overflow-y: inherit; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .imageSep {
-    border: solid blue 3px;
+    /* border: solid blue 3px; */
     width: 100%;
     margin: 4px;
 }
 .imagesContainer{
-    border: solid pink 4px;
+    /* border: solid pink 4px; */
+    margin: 3px;
     display: flex;
     justify-content: center;
     width: 80%;

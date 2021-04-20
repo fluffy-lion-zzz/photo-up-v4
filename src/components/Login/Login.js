@@ -70,8 +70,8 @@ const Login = () => {
             {/* <div>
                 <button onClick={Logout}>log out</button>
             </div> */}
-            <div>
-                <p>member of the team but not signed up yet? <Link to={ROUTES.SIGN_UP}>sign up</Link></p>
+            <div className="loginSignUp">
+                <p>member of the team but not signed up yet? <br/><Link to={ROUTES.SIGN_UP}>sign up</Link></p>
             </div>
         </div>
         // </UserConsumer>

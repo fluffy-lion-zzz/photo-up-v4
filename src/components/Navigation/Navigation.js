@@ -5,36 +5,36 @@ import * as ROUTES from '../../services/routes'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import './Navigation.css'
 const Navigation = () => {
     return (
     <div>
         {/* <NavAuthTest /> */}
         <Nav>
-            <NavDropdown title="Menu" id="nav-dropdown">
+            <NavDropdown className="btn-lg" title="Menu" id="nav-dropdown">
 
                 <NavDropdown.Item>
-                    <Link to={ROUTES.HOME}>home</Link>
+                    <Link className="dropItem" to={ROUTES.HOME}>home</Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-                    <Link to={ROUTES.LOG_IN}>log in</Link>
+                    <Link className="dropItem" to={ROUTES.LOG_IN}>log in</Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-                    <Link to={ROUTES.SIGN_UP}>sign up</Link>
+                    <Link className="dropItem" to={ROUTES.SIGN_UP}>sign up</Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-                    <Link to={ROUTES.UPLOAD}>upload</Link>
+                    <Link className="dropItem" to={ROUTES.UPLOAD}>upload</Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-                    <Link to={ROUTES.SEARCH}>search</Link>
+                    <Link className="dropItem" to={ROUTES.SEARCH}>search</Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-                    <Link to={ROUTES.HOWTO}>how to</Link>
+                    <Link className="dropItem" to={ROUTES.HOWTO}>how to</Link>
                 </NavDropdown.Item>
 
             </NavDropdown>

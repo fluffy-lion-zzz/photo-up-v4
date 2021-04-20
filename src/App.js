@@ -17,7 +17,7 @@ import PrivateRoute from './services/PrivateRoute'
 import Uploader from './components/Uploader/Uploader'
 import MetaSearch from './components/MetaSearch/MetaSearch'
 import HowTo from './components/HowTo/HowTo'
-
+import logo from './css-images/logo.png'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -63,10 +63,15 @@ const App = () => {
       <div>
         {user.loggedIn  ? <Logout /> : <></>}
       <div className="navContainer">
-        <Navigation  />
+        <div>
+          <Navigation  />
+        </div>
+        <div>
+          <img  src={logo}/>
+        </div>
       </div>
         <div id="mainBody">
-          <h1>photoUpV4</h1>
+          <h1>photoUp</h1>
           {/* <AuthStatus /> */}
           {/* <button onClick={doSignOut}>sign out</button> */}
           <Route exact path={ROUTES.LANDING} componet={Landing}/>
@@ -91,7 +96,11 @@ const App = () => {
             component={() => <MetaSearch storage={storage} />}
           />
           <PrivateRoute path={ROUTES.ACCOUNT} component={Account} />
+          {/* <div className="appCnLogo">
+            <img  src={logo}/>
+          </div> */}
           </div>
+          
       </div>
     </Router>
     
