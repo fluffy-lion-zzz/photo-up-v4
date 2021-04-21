@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './MetaSearch.css'
 import 'firebase/storage'
-
+import Button from 'react-bootstrap/Button'
+import { animateScroll as scroll } from 'react-scroll'
 
 const MetaSearch = ({ storage }) => {
 
@@ -61,24 +62,36 @@ const MetaSearch = ({ storage }) => {
     }
     return (
         <div className="metaWrapper">
-            <h1>tag search</h1>
-            <form onSubmit={handleSearch}>
-                <input 
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                />
-                <button type="submit">search</button>
-            </form>
-            <div className="searchResCont">
-                
-                {urls.map((url) => {
-                    return (
-                        <div className="imageCont">
-                            <img src={url} />
-                        </div>
-                    )
-                })}
+            <div id="searchTop">
+                <h1>tag search</h1>
+                <form onSubmit={handleSearch}>
+                    <div id="searchInput">
+                        <input 
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        />
+                        <Button type="submit">search</Button>
+                    </div>
+                </form>
+            </div>
+            <div id="searchBottom">
+                <div className="itemsCont">
+                    <div className="searchResCont">
+                        {urls.map((url) => {
+                            return (
+                                <div className="imageCont">
+                                    <img src={url} />
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div>{urls.length > 3 ?
+                    <Button onClick={() => scroll.scrollToTop()}>top</Button>
+                    :
+                    <></>}
+                </div>
             </div>
         </div>
     )
