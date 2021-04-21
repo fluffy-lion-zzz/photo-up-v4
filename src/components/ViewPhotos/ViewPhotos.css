@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 /* #individualImgWrapper{
     border: solid rgb(148, 251, 161) 4px;
@@ -15,11 +16,18 @@
     /* margin: 12px; */
     margin: 2px;
     width: 90vw;
-    height: inherit;
-    /* overflow-y: inherit; */
-    display: flex;
+    height: 90%;
+    overflow-y: scroll;
+    display: block;
+   
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
+}
+#viewImages {
+    border: rgb(255, 94, 94) 4px solid;
+    height:inherit;
+    overflow-y: scroll;
 }
 
 .imageSep {
@@ -28,10 +36,10 @@
     margin: 4px;
 }
 .imagesContainer{
-    /* border: solid pink 4px; */
+    border: solid pink 4px;
     margin: 3px;
-    display: flex;
+    /* display: flex;
     justify-content: center;
     width: 80%;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
 }

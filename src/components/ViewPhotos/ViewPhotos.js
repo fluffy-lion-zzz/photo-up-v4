@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import "firebase/storage"
 import './ViewPhotos.css'
 import Loading from '../Loading/Loading'
-import { animateScroll as scroll } from 'react-scroll'
+import * as Scroll from 'react-scroll'
+import Button from 'react-bootstrap/Button'
 // import Modal from 'react-bootstrap/Modal'
 // import ModalDialog from 'react-bootstrap/ModalDialog'
 const Selecter = ({ currentFolder, setCurrentFolder, setFolders, folders, storageRef }) => {
@@ -40,11 +41,8 @@ const ViewPhotos = ({ storageRef, storage }) => {
     const [currentFolder, setCurrentFolder] = useState("")
 
 
-    // const scroll = Scroll.animateScroll
-
-    //  const scrollTop = () => {
-    //      scroll.scrollToTop()
-    //  }
+    const myRef = useRef(null)
+    const toTop = () => myRef.current.scrollIntoView()
 
     const loader = () => {
         setLoading(true)
@@ -76,17 +74,23 @@ const ViewPhotos = ({ storageRef, storage }) => {
             />
             {/* <ViewImages /> */}
             <br/>
-            { 
-            loading ?
-            <Loading/> :
-            imgData.map(url => {
-            return (
-                <div className="imagesContainer">
-                    <img className="imageSep" src={url} />
-                </div>
-            )
-            })}
-            <button onClick={() => scroll.scrollToTop()}>top</button>
+            <div id="viewImages">
+                <div ref={myRef}></div>
+                { 
+                loading ?
+                <Loading/> :
+                
+                imgData.map(url => {
+                    
+                return (
+                    <div className="imagesContainer">
+                        <img className="imageSep" src={url} />
+                    </div>
+                )
+                })}
+                <Button onClick={toTop}>to top</Button>
+                {/* <Button onClick={() => scroll.scrollToTop()}>top</Button> */}
+            </div>
         </div>
     )
 }

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
-// import {AuthContext} from '../../services/AuthContext'
 import app from 'firebase/app'
 import 'firebase/auth'
-// import { doLogIn, doLogOut } from '../../services/userAccount'
 import * as ROUTES from '../../services/routes'
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -20,10 +19,7 @@ const Login = () => {
         app.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
             console.log(user)
-            
-    
         }).catch((error) => {
-            // alert("denied")
             console.log(error)
         })
         setEmail("")
@@ -64,7 +60,7 @@ const Login = () => {
                     ></input>
                 </div>
                 <div className="submitCont">
-                    <button type="submit">login</button>
+                    <Button type="submit">login</Button>
                 </div>
             </form>
             {/* <div>

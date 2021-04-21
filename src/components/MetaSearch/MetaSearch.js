@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './MetaSearch.css'
 import 'firebase/storage'
 import Button from 'react-bootstrap/Button'
-import { animateScroll as scroll } from 'react-scroll'
+import * as Scroll from 'react-scroll'
 
 const MetaSearch = ({ storage }) => {
-
+    
     const [input, setInput] = useState("")
     // const [folders, setFolders] = useState([])
     const [itemRef, setItemRef] = useState([])
     const [urls , setUrls] = useState([])
+    
+    const myRef = useRef(null)
+    const toTop = () => myRef.current.scrollIntoView()
 
     const loadFiles = () => {
         storage.ref().list().then(arr => {
@@ -62,7 +65,7 @@ const MetaSearch = ({ storage }) => {
     }
     return (
         <div className="metaWrapper">
-            <div id="searchTop">
+            {/* <div id="searchTop"> */}
                 <h1>tag search</h1>
                 <form onSubmit={handleSearch}>
                     <div id="searchInput">
@@ -74,25 +77,29 @@ const MetaSearch = ({ storage }) => {
                         <Button type="submit">search</Button>
                     </div>
                 </form>
-            </div>
-            <div id="searchBottom">
-                <div className="itemsCont">
+            {/* </div> */}
+            {/* <div id="searchBottom"> */}
+                {/* <div className="itemsCont"> */}
                     <div className="searchResCont">
+                    <div ref={myRef}></div>
                         {urls.map((url) => {
                             return (
                                 <div className="imageCont">
-                                    <img src={url} />
+                                    <img id="imageRes"src={url} />
                                 </div>
                             )
                         })}
-                    </div>
-                </div>
-                <div>{urls.length > 3 ?
-                    <Button onClick={() => scroll.scrollToTop()}>top</Button>
+                        {urls.length > 3 ?
+                    // <Button>
+                    <Button onClick={toTop}>to top</Button>
+                    // </Button>
                     :
                     <></>}
-                </div>
-            </div>
+                            
+                    </div>
+                {/* </div> */}
+                
+            {/* </div> */}
         </div>
     )
 }
