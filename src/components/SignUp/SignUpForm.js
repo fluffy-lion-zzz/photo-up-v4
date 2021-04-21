@@ -2,7 +2,8 @@ import React , { useState } from 'react'
 import './SignUp.css'
 import { doRegister } from '../../services/userAccount'
 // import { Redirect, Route } from 'react-router-dom'
-
+import Button from 'react-bootstrap/Button'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 const SignUpForm = () => {
     
     const [newEmail, setNewEmail] = useState("")
@@ -46,10 +47,11 @@ const SignUpForm = () => {
                     </div> */}
                     <div className="formSection">
                         <div className="formHeader">
-                            <h2>enter your email...</h2>
+                            <h3>enter your email...</h3>
                         </div>
                         <h4>"wearecodenation.com" only permitted</h4>
                         <input 
+                        className="signUpInput"
                         placeholder="enter your email"
                         type="text"
                         value={newEmail}
@@ -57,17 +59,20 @@ const SignUpForm = () => {
                             setNewEmail(event.target.value)
                         }}
                         ></input>
-                        <div>
+                        <div id="displayEmail">
                             <p>signing up with...</p>
-                            <h4>{newEmail}</h4>
+                            <div id="emailEntry">
+                                <h4>{newEmail}</h4>
+                            </div>
                         </div>
                     </div>
                     <div className="formSection">
                         <div className="formHeader">
-                            <h2>enter a password...</h2>
+                            <h3>enter a password...</h3>
                         </div>
-                        <p>password</p>
+                        <h4>password</h4>
                         <input 
+                        className="signUpInput"
                         type="password"
                         value={newPassword}
                         onChange={(event) => {
@@ -76,8 +81,9 @@ const SignUpForm = () => {
                         placeholder="password"
                         ></input>
                         
-                    <p>confirm password</p>
+                    <h4>confirm password</h4>
                     <input 
+                    className="signUpInput"
                     type="password"
                     value={newPasswordTwo}
                     onChange={(event) => {
@@ -87,7 +93,7 @@ const SignUpForm = () => {
                     </input>
                     </div>
                     <div className="signUpSubmit">
-                        <button disabled={isInvalid}>submit</button>
+                        <Button size="lg" disabled={isInvalid}>submit</Button>
                     </div>
                 </form>
             </div>

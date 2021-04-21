@@ -1,25 +1,57 @@
 .signUpWrapper{
-    border: solid lime 3px;
+    /* border: solid lime 3px; */
+    height: 80%;
 }
-
+.signUpWrapper h1 {
+    color: #264E9A;
+    font-size: 2.5em;
+    padding: 5px;
+}
 .signUpFormCont {
-    border: blue solid 4px;
+    /* border: blue solid 4px; */
+    display: flex;
+    justify-content: center;
+    
+    height: 85%;
 }
 .formSection {
-    border: indianred solid 4px;
+    /* border: indianred solid 4px; */
+    background-color: rgba(255, 255, 255, 0.295);
+    border-radius: 5px;
+    margin: 25px 0;
     display: flex;
-    
     flex-direction: column;
     align-items: center;
-
+}
+.formSection h4 {
+    font-size: 18px;;
 }
 .formHeader {
-    border: olivedrab solid 4px;
+    /* border: olivedrab solid 4px; */
     width: 100%;
+}
+.formHeader h2 {
+
+}
+.signUpInput {
+    width:80%;
+}
+#displayEmail{
+    /* border: solid pink 4px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#emailEntry{
+    /* border: solid rgb(188, 233, 188) 4px; */
+    /* box-sizing: border-box; */
+    font-size: 20px;
+    height: 30px;
+    /* width: 40px; */
 }
 .signUpSubmit {
     width: 100%;
     display: flex;
     justify-content: center;
-    border: red solid 4px;
+    /* border: red solid 4px; */
 }

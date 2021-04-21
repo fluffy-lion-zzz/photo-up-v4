@@ -10,7 +10,7 @@ const SignUp = () => {
     
     return (
         <div className="signUpWrapper">
-            <h1>sign up</h1>
+            <h1>sign up...</h1>
             <FirebaseContext.Consumer>{firebase =>
                 <SignUpForm  firebase={firebase} />
                  }
