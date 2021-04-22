@@ -15,7 +15,6 @@ const Login = () => {
 
     const handleLogIn = (event) => {
         event.preventDefault()
-
         app.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
             console.log(user)

@@ -1,9 +1,10 @@
 #app {
-  border: 4px solid orange;
+  /* border: 4px solid orange; */
   /* display: flex;
   height: 100vh; */
   background: linear-gradient(135deg, #F5B32E 49%, rgb(243, 243, 243) 49%);
-  
+  /* padding: 5px; */
+  margin: 5px;
   
 }
 .navContainer{

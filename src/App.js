@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
 import Navigation from './components/Navigation/Navigation'
 import Login from './components//Login/Login'
@@ -20,6 +20,7 @@ import HowTo from './components/HowTo/HowTo'
 import logo from './css-images/logo.png'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import ViewPhotos from './components/ViewPhotos/ViewPhotos'
 
 const onAuthStateChange = (callback) => {
   return app.auth().onAuthStateChanged(user => {
@@ -65,6 +66,7 @@ const App = () => {
       <div className="navContainer">
         <div className="navComponentWrap">
           <Navigation  />
+          
         </div>
         <div className="topImageWrap">
           <img  src={logo}/>
@@ -72,7 +74,15 @@ const App = () => {
       </div>
         <div id="mainBody">
           <h1 id="titleHead">photo-up</h1>
-          
+          {/* {user.loggedIn ?
+          <div>
+          <Link to={ROUTES.LOG_IN}>login</Link>
+          </div>:
+          <div>
+          <Link to={ROUTES.HOME}>home</Link>
+          </div>
+        } */}
+        <Route exact path="/" render={() => <Landing />} />
           {/* <AuthStatus /> */}
           {/* <button onClick={doSignOut}>sign out</button> */}
           <Route exact path={ROUTES.LANDING} componet={Landing}/>
@@ -100,6 +110,7 @@ const App = () => {
           {/* <div className="appCnLogo">
             <img  src={logo}/>
           </div> */}
+          
           </div>
           
       </div>
