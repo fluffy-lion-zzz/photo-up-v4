@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './MetaSearch.css'
 import 'firebase/storage'
 import Button from 'react-bootstrap/Button'
-import * as Scroll from 'react-scroll'
+// import * as Scroll from 'react-scroll'
 
 const MetaSearch = ({ storage }) => {
     

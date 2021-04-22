@@ -1,6 +1,39 @@
 .imagePopCont {
-    border: solid lime 4px;
+    border: solid rgb(0, 0, 0) 4px;
+    margin: 20px;
+    /* width: 60%; */
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column;
+    align-items: center; */
+}
+#popWrapper {
+    border: solid plum 4px;
+    background-color: rgba(255, 255, 255, 0.295);
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imagePopCont label {
+    color: #264E9A;
 }
 .inputCont {
-    border: solid hotpink 4px;
+    border: solid rgb(0, 0, 0) 4px;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+}
+.inputCont input{
+    width: 100%;
+}
+#imageSubmit{
+    color: #264E9A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    text-align: center;
 }

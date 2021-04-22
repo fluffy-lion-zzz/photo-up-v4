@@ -10,6 +10,7 @@ import ImageLocation from './ImageLocation'
 import UpdateMeta from '../UpdateMeta/UpdateMeta'
 import ImagePop from './ImagePop'
 import Loading from '../Loading/Loading'
+import Button from 'react-bootstrap/Button'
 
 
 const Uploader = ({ storageRef }) => {
@@ -31,6 +32,11 @@ const Uploader = ({ storageRef }) => {
         setShowLocation(true)
         setShowAddMeta(false)
         setShowAddMeta(false)
+    }
+
+    const locationImageViewer = () => {
+        setShowLocation(true)
+        setShowImage(false)
     }
     const handleUpload = (event) => {
         event.preventDefault()
@@ -102,12 +108,12 @@ const Uploader = ({ storageRef }) => {
             showImage === true ?
         
             <div className="selectImage">
-                <div>
+                <div id="selectImageHeaders">
                     <h3>being saved in...</h3>
                     <h2>{currentFolder}</h2>
-                </div>
-                <div>
-                    <button onClick={() => setShowLocation(true)}>select a new folder</button>
+                    <div>
+                        <Button size="sm" onClick={() => locationImageViewer()}>select a new folder</Button>
+                    </div>
                 </div>
                 {!showImageInfo ? 
                 <div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './ImagePop.css'
+import Button from 'react-bootstrap/Button'
 const ImagePop = ({ 
     handleImageFile, 
     imageFile, 
@@ -17,42 +18,47 @@ const ImagePop = ({
     console.log("image pop : ", imageFile)
  return(
      <div className="imagePopCont">
-         <label for="file">select an image</label>
-         <form 
-         onSubmit={handleImageFile}
+         <div id="popWrapper">
+            <label for="file"><h3>select an image</h3></label>
+            <form 
+            onSubmit={handleImageFile}
 
-         >
-        {reset === false ? 
-        <div className="inputCont">
-            
-             <input 
-            name="file"
-            type="file"
-            accept="image/*"
-            // onChange={(e)=> setFile(e.target.files[0])}
-            onChange={handleEvent}
-            /> 
+            >
+            <div>
+                {reset === false ? 
+                <div className="inputCont">
+                    
+                    <input 
+                    name="file"
+                    type="file"
+                    accept="image/*"
+                    // onChange={(e)=> setFile(e.target.files[0])}
+                    onChange={handleEvent}
+                    /> 
+                </div>
+                :
+                <div className="inputCont">
+                    <input 
+                    name="file"
+                    type="file"
+                    accept="image/*"
+                    // onChange={(e)=> setFile(e.target.files[0])}
+                    onChange={handleEvent}
+                    /> 
+                </div>
+                }
+            </div>
+            <div id="imageSubmit">
+                {imageFile !== "" || imageFile ? 
+                <h3>submit to use this image</h3>
+                :
+                <></>
+                }
+                
+                <Button disabled={isInvalid} type="submit">submit</Button>
+            </div>
+            </form>
         </div>
-        :
-        <div>
-            <input 
-            name="file"
-            type="file"
-            accept="image/*"
-            // onChange={(e)=> setFile(e.target.files[0])}
-            onChange={handleEvent}
-            /> 
-        </div>
-         }
-         <div>
-        {imageFile !== "" || imageFile ? 
-        <p>submit to use this image</p>
-        :
-        <></>
-        }
-        <button disabled={isInvalid} type="submit">submit</button>
-        </div>
-        </form>
      </div>
  )   
 }

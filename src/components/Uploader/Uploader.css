@@ -10,3 +10,12 @@
 .imageLocationCont {
     border: solid 4px lime;
 }
+.selectImage {
+    border: solid 4px peru;
+}
+#selectImageHeaders{
+    color: #264E9A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
