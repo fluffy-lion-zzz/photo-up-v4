@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './UpdateMeta.css'
 import 'firebase/storage'
+import Button from 'react-bootstrap/Button'
 const UpdateMeta = (props) => {
     let ref = props.metaUploadRef
     
@@ -63,12 +64,16 @@ const UpdateMeta = (props) => {
       }
     return (
         <div className="updateCont">
-          <div className="backCont">
-            <button onClick={backHandler}>go back</button>
-          </div>
+          {/* <div className="backCont">
+            <Button onClick={backHandler}>go back</Button>
+          </div> */}
           
           <div className="imageContainer">
             <img className="individualImages" src={props.imagePreview} />
+          </div>
+          <div id="tagInfo">
+            <h4>add some tags</h4>
+            <p>other members of the team can search these tags to look for your image</p>
           </div>
           <div>
             <div className="tagSelectCont">
@@ -76,11 +81,11 @@ const UpdateMeta = (props) => {
                     value={currentMeta}
                     onChange={(e) => setCurrentMeta(e.target.value)}
                 >
-                    <option value="tag1">tag 1</option>
-                    <option value="tag2">tag 2</option>
-                    <option value="tag3">tag 3</option>
-                    <option value="tag4">tag 4</option>
-                    <option value="tag5">tag 5</option>
+                    <option  value="tag1">tag 1</option>
+                    <option  value="tag2">tag 2</option>
+                    <option  value="tag3">tag 3</option>
+                    <option  value="tag4">tag 4</option>
+                    <option  value="tag5">tag 5</option>
                 </select>
               </div>
               <div className="metaContainer">
@@ -91,18 +96,20 @@ const UpdateMeta = (props) => {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       />
-                      <button type="submit">Submit Tag</button>
+                      <Button size="sm" type="submit">Submit Tag</Button>
                   </form>
                 </div>
                   {metas &&
                       Object.keys(metas).map((item) => (
-                      <li>
-                          {item} = {metas[item]}
+                      <li className="metaList">
+                        <p className="options">{item} = </p>
+                        <p className="tagInputRes">{metas[item]}</p>
+                          
                       </li>
                       ))}
               </div>
               <div className="finishButtonCont">
-                  <button onClick={handleSubmit}>finish</button>
+                  <Button size="lg" onClick={handleSubmit}>finish</Button>
               </div>
         </div>
         </div>

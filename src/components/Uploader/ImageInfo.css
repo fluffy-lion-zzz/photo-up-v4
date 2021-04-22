@@ -1,3 +1,26 @@
 .imageInfo{
     border: palevioletred 5px solid;
 }
+.imageInfo h4 {
+    color: #264E9A;
+    text-align: center;
+}
+#imageFileInfo {
+    border: violet solid 4px;
+    background-color: rgba(255, 255, 255, 0.295);
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#imageFileInfo p {
+    margin: 0;
+    color: #264E9A;
+
+}
+#infoInput {
+    /* border: solid red 4px; */
+    display: flex;
+}

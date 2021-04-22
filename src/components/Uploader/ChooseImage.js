@@ -4,7 +4,7 @@ import './ChooseImage.css'
 import ImageInfo from './ImageInfo'
 import ImagePop from './ImagePop'
 import Loading from '../Loading/Loading'
-// import ImageInfo from './ImageInfo'
+import Button from 'react-bootstrap/Button'
 
 
 const ChooseImage = ({ 
@@ -25,12 +25,12 @@ const ChooseImage = ({
 
     return (
         <div className="chooseImg">
-            <div>
+            <div id="changeImg">
                 <p>select a differnt image?</p>
-                <button onClick={()=> setShowImageInfo(false)}>change image</button>
+                <Button size="sm" onClick={()=> setShowImageInfo(false)}>change image</Button>
             </div>
             <form onSubmit={handleUpload}>
-                <div>
+                <div id="previewCont">
                     { loading ?
                     <Loading /> :
                     <img id="imagePreview" src={imagePreview} />
@@ -46,7 +46,7 @@ const ChooseImage = ({
                     currentFolder={currentFolder}
                 />
                 <div className="uploadCont">
-                    <button disabled={isInvalid} type="submit">upload</button>
+                    <Button size="lg" disabled={isInvalid} type="submit">upload</Button>
                 </div>
             </form>
         </div>

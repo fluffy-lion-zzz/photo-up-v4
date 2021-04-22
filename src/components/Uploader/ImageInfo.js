@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import 'firebase/storage'
 // import AddMeta from '../AddMeta/AddMeta'
 import './ImageInfo.css'
+import Button from 'react-bootstrap/Button'
 const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFolder}) => {
     const [imageNames, setImageNames] = useState([])
     const [nameInput, setNameInput] = useState("")
@@ -30,34 +31,39 @@ const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFold
 
     return (
         <div className="imageInfo">
-            <h1>image info</h1>
+            <h4>image info</h4>
+            <div id="imageFileInfo">
             {imageFile ? 
             <p>original name : {imageFile.name}</p> :
             <></>
             }
             {imageNames.includes(imageFile.name) ?
             <div>
-                <p>the original file name is taken</p>
-                <p>if you dont the original file will be overwritten...just sayin</p>
+                <p>the original file name is taken, 
+                if you dont the original file will be overwritten...just sayin</p>
             </div>
             :
             <></>
             }
-            <p>do you want to enter a new name?</p>
+            <p>enter a new name?</p>
             {/* <p>if you dont the original file will be overwritten...just sayin</p> */}
-            <input 
-                type="text"
-                value={nameInput}
-                onChange={(e) => {setNameInput(e.target.value)}}
-            />
-            <button disabled={isInvalid} onClick={handleName}>submit new name</button>
+            <div id="infoInput">
+                <input 
+                    type="text"
+                    value={nameInput}
+                    onChange={(e) => {setNameInput(e.target.value)}}
+                />
+            
+            <Button disabled={isInvalid} onClick={handleName}>submit</Button>
+            </div>
             {display !== "" ?
             <div>
-                <p>new file name: {display}</p>
+                <h4>new file name: {display}</h4>
             </div>
             :
             <div></div>
             }
+            </div>
         </div>
     )
 }

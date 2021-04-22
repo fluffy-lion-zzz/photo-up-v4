@@ -5,18 +5,31 @@
     align-items: center;
 }
 .imageContainer{
-    width: 90%;
+    width: 70%;
     display: flex;
     justify-content: center;
     border: solid 4px lime;
+    background-color: rgba(255, 255, 255, 0.295);
+    border-radius: 5px;
 }
 
 .individualImages {
-    width: 50%;
+    width: 80%;
+    padding: 10px;
+}
+#tagInfo {
+    color: #264E9A;
+    border: solid hotpink 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 .backCont{
     width: 100%;
     border: solid blue 4px;
+    display: flex;
+    justify-content: center;
 }
 .metaContainer {
     border: purple solid 4px;
@@ -31,6 +44,10 @@
     display: flex;
     border: solid orange 4px;
 }
+.metaList {
+    border: solid 4px lightskyblue;
+    display: flex;
+}
 
 .finishButtonCont {
     width: 100%;
@@ -44,6 +61,17 @@
     display: flex;
     justify-content: center;
 }
+
 .tagSelectCont select {
     width: 90%;
+}
+
+.options {
+    color: #264E9A;
+    margin: 2px;
+}
+.tagInputRes {
+    color: #264E9A;
+    font-weight: bold;
+    margin: 2px;
 }
