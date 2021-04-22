@@ -1,14 +1,14 @@
 .updateCont{
-    border:solid green 4px;
+    /* border:solid green 4px; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .imageContainer{
-    width: 70%;
+    width: 60%;
     display: flex;
     justify-content: center;
-    border: solid 4px lime;
+    /* border: solid 4px lime; */
     background-color: rgba(255, 255, 255, 0.295);
     border-radius: 5px;
 }
@@ -19,7 +19,7 @@
 }
 #tagInfo {
     color: #264E9A;
-    border: solid hotpink 4px;
+    /* border: solid hotpink 4px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,12 +27,12 @@
 }
 .backCont{
     width: 100%;
-    border: solid blue 4px;
+    /* border: solid blue 4px; */
     display: flex;
     justify-content: center;
 }
 .metaContainer {
-    border: purple solid 4px;
+    /* border: purple solid 4px; */
     display: flex;
     flex-direction: column;
 }
@@ -42,22 +42,24 @@
 .formCont {
     width: 100%;
     display: flex;
-    border: solid orange 4px;
+    /* border: solid orange 4px; */
 }
 .metaList {
-    border: solid 4px lightskyblue;
+    /* border: solid 4px lightskyblue; */
     display: flex;
+    background-color: rgba(255, 255, 255, 0.295);
+    border-radius: 5px;
 }
 
 .finishButtonCont {
     width: 100%;
-    border: solid fuchsia 4px;
+    /* border: solid fuchsia 4px; */
     display: flex;
     justify-content: center;
 }
 .tagSelectCont {
     width: 100%;
-    border: wheat solid 4px;
+    /* border: wheat solid 4px; */
     display: flex;
     justify-content: center;
 }

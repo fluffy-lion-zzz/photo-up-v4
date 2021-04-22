@@ -1,5 +1,5 @@
 .imagePopCont {
-    border: solid rgb(0, 0, 0) 4px;
+    /* border: solid rgb(0, 0, 0) 4px; */
     margin: 20px;
     /* width: 60%; */
     display: flex;
@@ -8,7 +8,7 @@
     align-items: center; */
 }
 #popWrapper {
-    border: solid plum 4px;
+    /* border: solid plum 4px; */
     background-color: rgba(255, 255, 255, 0.295);
     border-radius: 5px;
     padding: 20px;
@@ -21,7 +21,8 @@
     color: #264E9A;
 }
 .inputCont {
-    border: solid rgb(0, 0, 0) 4px;
+    border: solid #264f9a 2px;
+    border-radius: 5px;;
     width: 100%;
     display: flex;
     justify-items: center;

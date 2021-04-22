@@ -26,16 +26,19 @@ const ChooseImage = ({
     return (
         <div className="chooseImg">
             <div id="changeImg">
-                <p>select a differnt image?</p>
-                <Button size="sm" onClick={()=> setShowImageInfo(false)}>change image</Button>
-            </div>
-            <form onSubmit={handleUpload}>
+                <div id="changeImgText">
+                    <p>select a differnt image?</p>
+                    <Button size="sm" onClick={()=> setShowImageInfo(false)}>change image</Button>
+                </div>
                 <div id="previewCont">
                     { loading ?
                     <Loading /> :
                     <img id="imagePreview" src={imagePreview} />
                     }
                 </div>
+            </div>
+            <form onSubmit={handleUpload}>
+                
                 {/* <ImageInfo imageFile={imageFile}/> */}
                 <ImageInfo 
                     imageFile={imageFile}

@@ -109,8 +109,8 @@ const Uploader = ({ storageRef }) => {
         
             <div className="selectImage">
                 <div id="selectImageHeaders">
-                    <h3>being saved in...</h3>
-                    <h2>{currentFolder}</h2>
+                    <h4>being saved in...</h4>
+                    <h3>{currentFolder}</h3>
                     <div>
                         <Button size="sm" onClick={() => locationImageViewer()}>select a new folder</Button>
                     </div>

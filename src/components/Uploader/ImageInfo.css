@@ -1,12 +1,12 @@
 .imageInfo{
-    border: palevioletred 5px solid;
+    /* border: palevioletred 5px solid; */
 }
 .imageInfo h4 {
     color: #264E9A;
     text-align: center;
 }
 #imageFileInfo {
-    border: violet solid 4px;
+    /* border: violet solid 4px; */
     background-color: rgba(255, 255, 255, 0.295);
     border-radius: 5px;
     padding: 0;
@@ -16,11 +16,23 @@
     align-items: center;
 }
 #imageFileInfo p {
-    margin: 0;
+    margin: 3px;
     color: #264E9A;
+    text-align: center;
 
 }
 #infoInput {
     /* border: solid red 4px; */
+    margin-top: 4px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 50px; */
+    
+}
+#infoButton {
+    margin: 10px;
+    padding: 6px;
+    /* width: 100%;
+    height: 100%; */
 }

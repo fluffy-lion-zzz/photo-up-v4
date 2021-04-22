@@ -1,3 +1,8 @@
-.loadingWrapper{
-    border: solid indianred 4px;
+.loadingWrapper {
+    display: flex;
+    justify-content: center;
+}
+.loadingWrapper h3{
+    /* border: solid indianred 4px; */
+    color: #264E9A;
 }

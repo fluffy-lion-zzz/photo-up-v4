@@ -1,14 +1,16 @@
 .imageLocation {
-    border: rgb(255, 254, 191) 4px solid;
+    /* border: rgb(255, 254, 191) 4px solid; */
 }
 #locationHeaders {
     color: #264E9A;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    margin: 0 20px 0 20px;
 }
 #locationSelect {
-    border: solid salmon 4px;
+    /* border: solid salmon 4px; */
     display: flex;
     flex-direction: column;
     align-items: center;

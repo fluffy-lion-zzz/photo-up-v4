@@ -54,7 +54,7 @@ const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFold
                     onChange={(e) => {setNameInput(e.target.value)}}
                 />
             
-            <Button disabled={isInvalid} onClick={handleName}>submit</Button>
+            <Button id="infoButton" disabled={isInvalid} onClick={handleName}>submit</Button>
             </div>
             {display !== "" ?
             <div>
