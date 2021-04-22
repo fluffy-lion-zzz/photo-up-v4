@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "firebase/storage"
 import './ImageLocation.css'
+import Button from 'react-bootstrap/Button'
 
 
 const SelectFolder = ({ folders, setCurrentFolder, currentFolder, setShowLocation }) => {
@@ -24,30 +25,37 @@ const [newFolder, setNewFolder] = useState("")
     
 
     return (
-        <div>
-            <select
-                value={currentFolder}
-                onChange={(e) => setCurrentFolder(e.target.value)}
-            >
-                <option>--</option>
-                {folders.map((folderNames)=> {
-                    return <option value={folderNames}>{folderNames}</option>
-                    })
-                }
-            </select>
-            <h2>new folder</h2>
-            <form onSubmit={newFolderHandler}>
-                <input
-                    value={newFolder}
-                    onChange={(e) => setNewFolder(e.target.value)}
-                />
-                <button type="submit" disabled={isInvalid}>
-                add folder
-                </button>
-                {currentFolder === "" || currentFolder ==="--" ?
-                    <p>you have to select a folder yo</p> :
-                    <></>}
-            </form>
+        <div id="locationSelect">
+            <div>
+                <select id="locationDropDown"
+                    value={currentFolder}
+                    onChange={(e) => setCurrentFolder(e.target.value)}
+                >
+                    <option>--</option>
+                    {folders.map((folderNames)=> {
+                        return <option value={folderNames}>{folderNames}</option>
+                        })
+                    }
+                </select>
+            </div>
+            <div>
+                <h3>create a new folder</h3>
+                <form onSubmit={newFolderHandler}>
+                    <input
+                        value={newFolder}
+                        onChange={(e) => setNewFolder(e.target.value)}
+                    />
+                    <button type="submit" disabled={isInvalid}>
+                    add folder
+                    </button>
+                    {currentFolder === "" || currentFolder ==="--" ?
+                        <p className="locationText">you have to select a folder yo</p> :
+                        <div>
+                        <br />
+                        <br />
+                        </div>}
+                </form>
+            </div>
         </div>
     )
 }
@@ -79,16 +87,20 @@ const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder, setShowLoc
 
 
         <div className="imageLocation">
-            <h2>new folder</h2>
+            <div id="locationHeaders">
+                <h2>what folder...</h2>
+                <h4>where do you want to store your image?</h4>
+            </div>
             <SelectFolder 
                 folders={folders} 
                 setCurrentFolder={setCurrentFolder}
                 currentFolder={currentFolder}
                 setShowLocation={setShowLocation}
             />
-            <p>{currentFolder}</p>
-            <h3>uploading to {currentFolder}</h3>
-            <button disabled={isInvalid} onClick={() => next()}>next</button>
+            <div id="locationTo">
+                <h3>uploading to {currentFolder}</h3>
+                <Button disabled={isInvalid} onClick={() => next()}>next</Button>
+            </div>
         </div>
     )
 }

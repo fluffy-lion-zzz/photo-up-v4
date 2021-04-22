@@ -82,8 +82,9 @@ const Uploader = ({ storageRef }) => {
     return (
         <Router>
         <div className="uploaderWrapper">
+            <h1>upload</h1>
         { showLocation === true ? 
-            <div className="imageLocation">
+            <div className="imageLocationCont">
                 <ImageLocation
                     storageRef={storageRef}
                     currentFolder={currentFolder}

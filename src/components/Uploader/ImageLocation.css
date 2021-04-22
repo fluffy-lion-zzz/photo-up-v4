@@ -1,3 +1,40 @@
 .imageLocation {
-    border: cyan 4px solid;
+    border: rgb(255, 254, 191) 4px solid;
+}
+#locationHeaders {
+    color: #264E9A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#locationSelect {
+    border: solid salmon 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 200px;
+    padding: 10px;
+    width: 100%;
+}
+
+#locationSelect h3 {
+    color: #264E9A;
+
+}
+#locationDropDown {
+    width: 200px;
+    border: solid 3px cornflowerblue;
+}
+.locationText {
+    color: #264E9A;
+    text-align: center;
+}
+.imageLocation h3 {
+    color: #264E9A;
+}
+#locationTo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
