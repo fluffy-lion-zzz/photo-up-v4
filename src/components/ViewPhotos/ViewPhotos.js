@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import "firebase/storage"
 import './ViewPhotos.css'
 import Loading from '../Loading/Loading'
-import * as Scroll from 'react-scroll'
 import Button from 'react-bootstrap/Button'
-// import Modal from 'react-bootstrap/Modal'
-// import ModalDialog from 'react-bootstrap/ModalDialog'
+
 const Selecter = ({ currentFolder, setCurrentFolder, setFolders, folders, storageRef }) => {
     
     const collect = () => {
@@ -65,13 +63,15 @@ const ViewPhotos = ({ storageRef, storage }) => {
     return (
         <div className="imgWrapper">
             <h1>select a folder</h1>
-            <Selecter 
-                currentFolder={currentFolder}
-                folders={folders}
-                setFolders={setFolders}
-                setCurrentFolder={setCurrentFolder}
-                storageRef={storageRef}
-            />
+            <div id="selectDropDown">
+                <Selecter 
+                    currentFolder={currentFolder}
+                    folders={folders}
+                    setFolders={setFolders}
+                    setCurrentFolder={setCurrentFolder}
+                    storageRef={storageRef}
+                />
+            </div>
             {/* <ViewImages /> */}
             <br/>
             <div id="viewImages">
