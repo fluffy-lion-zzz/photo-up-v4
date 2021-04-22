@@ -64,7 +64,7 @@ const ViewPhotos = ({ storageRef, storage }) => {
 
     return (
         <div className="imgWrapper">
-            <h3>select a folder : </h3>
+            <h1>select a folder</h1>
             <Selecter 
                 currentFolder={currentFolder}
                 folders={folders}
@@ -75,20 +75,25 @@ const ViewPhotos = ({ storageRef, storage }) => {
             {/* <ViewImages /> */}
             <br/>
             <div id="viewImages">
-                <div ref={myRef}></div>
+                
                 { 
                 loading ?
                 <Loading/> :
+                <div id="imgMap">
+                    <div ref={myRef}></div>
+                        {
+                    imgData.map(url => {
+                        
+                    return (
+                        <div className="imagesContainer">
+                            <img className="imageSep" src={url} />
+                        </div>
+                    )
+                    })}
+                    <Button onClick={toTop}>to top</Button>
+                </div>
+                }
                 
-                imgData.map(url => {
-                    
-                return (
-                    <div className="imagesContainer">
-                        <img className="imageSep" src={url} />
-                    </div>
-                )
-                })}
-                <Button onClick={toTop}>to top</Button>
                 {/* <Button onClick={() => scroll.scrollToTop()}>top</Button> */}
             </div>
         </div>

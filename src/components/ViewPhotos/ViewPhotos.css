@@ -5,41 +5,46 @@
     align-items: center;
     
 }
-/* #individualImgWrapper{
-    border: solid rgb(148, 251, 161) 4px;
-    width: 80%;
-    display: flex;
-} */
 
 .imgWrapper{
     border: solid rgb(11, 255, 255) 4px;
-    /* margin: 12px; */
     margin: 2px;
     width: 90vw;
-    height: 90%;
-    overflow-y: scroll;
-    display: block;
-   
-    /* display: flex;
+    height: 75vh;
+    display: flex;
     flex-direction: column;
-    align-items: center; */
+    align-items: center;
 }
+
+.imgWrapper h1{
+    padding: 5px;
+    color: #264E9A;
+    font-size: 2.5em;
+}
+
 #viewImages {
-    border: rgb(255, 94, 94) 4px solid;
-    height:inherit;
+    border: rgb(243, 142, 142) 4px solid;
+    display: block;
+    height: 85%;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+}
+
+#imgMap {
+    border: rgb(30, 255, 0) solid 4px;
+    height: 97%;
     overflow-y: scroll;
+    padding: 10px;
 }
 
 .imageSep {
-    /* border: solid blue 3px; */
-    width: 100%;
-    margin: 4px;
+    width: 80%;
 }
 .imagesContainer{
     border: solid pink 4px;
-    margin: 3px;
-    /* display: flex;
-    justify-content: center;
-    width: 80%;
-    flex-wrap: wrap; */
+    background-color: rgba(255, 255, 255, 0.295);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 15px;
 }
