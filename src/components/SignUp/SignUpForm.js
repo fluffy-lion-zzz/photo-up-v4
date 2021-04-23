@@ -1,8 +1,9 @@
-import React , { useState } from 'react'
+import React , { useState,  } from 'react'
 import './SignUp.css'
 import { doRegister } from '../../services/userAccount'
 // import { Redirect, Route } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import { useHistory } from 'react-router'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 const SignUpForm = () => {
     
@@ -10,7 +11,7 @@ const SignUpForm = () => {
     const [newPassword, setNewPassword] = useState("")
     const [newPasswordTwo, setNewPasswordTwo] = useState("")
 
-    const [newUser, setNewUser] = useState("")
+    const [newUser, setNewUser] = useState({})
 
     // const [error, setError] = useState(null)
     const reg = new RegExp("^[A-Za-z0-9._%+-]+@wearecodenation.com$")
@@ -21,11 +22,18 @@ const SignUpForm = () => {
         reg.test(newEmail) === false
         
 
-    
-    const handleSignUp = (event) => {
+    const history = useHistory()
+
+    const handleSignUp = async (event) => {
         event.preventDefault()
-        console.log(newEmail, newPassword)
-        doRegister(newEmail, newPassword)
+        try {
+            await doRegister(newEmail, newPassword, setNewUser)
+            newUser  ?
+            history.push("/") :
+            console.log("error")
+            } catch(error){
+            alert(error)
+        }
         // let registerResult = doRegister
         // registerResult !== null ? <Redirect to="/home"/> : <Redirect to="/account" />
        

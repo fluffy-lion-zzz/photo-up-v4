@@ -1,7 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 
-export const doRegister = (email, password) => {
+export const doRegister = (email, password, setNewUser) => {
     
     console.log('Register - Email: '+email+ ' ' + password);
     app.auth()
@@ -10,6 +10,7 @@ export const doRegister = (email, password) => {
     {
         alert('user account created')
         console.log(user)
+        setNewUser(user)
         // return true
         
     }).catch((error) => {
@@ -22,7 +23,6 @@ export const doRegister = (email, password) => {
 export const getProfileData = () => {
     let user = app.auth().currentUser;
     if(user != null){
-        // console.log(' user = ', user)
         return user
     } else {
         alert("there is not authenticated user")
