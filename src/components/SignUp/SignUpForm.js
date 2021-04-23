@@ -93,7 +93,7 @@ const SignUpForm = () => {
                     </input>
                     </div>
                     <div className="signUpSubmit">
-                        <Button size="lg" disabled={isInvalid}>submit</Button>
+                        <Button size="lg" type="submit" disabled={isInvalid}>submit</Button>
                     </div>
                 </form>
             </div>

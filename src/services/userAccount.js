@@ -13,7 +13,8 @@ export const doRegister = (email, password) => {
         // return true
         
     }).catch((error) => {
-        alert("user cannot be created")
+        let message = error.message
+        alert(`user cannot be created\n${message}`)
         console.log(error)
     })
 }
