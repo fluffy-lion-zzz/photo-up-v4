@@ -24,7 +24,7 @@ const user = useContext(UserContext)
     return (
         <div className="homeWrapper">
             {/* <h1>home</h1> */}
-                <p>{user.email}</p>
+                {/* <p>{user.email}</p> */}
             <div>
             </div>
              <ViewPhotos storageRef={storageRef} storage={storage}/>

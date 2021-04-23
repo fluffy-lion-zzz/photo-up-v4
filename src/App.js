@@ -62,11 +62,11 @@ const App = () => {
     <Router> 
       {/* <p>auth provider</p> */}
       <div>
-        {user.loggedIn  ? <Logout /> : <></>}
+       
       <div className="navContainer">
         <div className="navComponentWrap">
           <Navigation  />
-          
+         
         </div>
         <div className="topImageWrap">
           <img  src={logo}/>
@@ -74,6 +74,9 @@ const App = () => {
       </div>
         <div id="mainBody">
           <h1 id="titleHead">photo-up</h1>
+          {/* <div>
+            {user.loggedIn  ? <Logout /> : <></>}
+          </div> */}
           {/* {user.loggedIn ?
           <div>
           <Link to={ROUTES.LOG_IN}>login</Link>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import * as ROUTES from '../../services/routes'
@@ -6,7 +6,11 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Navigation.css'
+import UserContext from '../../services/AuthContext'
+import { doLogOut } from '../../services/userAccount'
+
 const Navigation = () => {
+    const user = useContext(UserContext)
     return (
     <div>
         {/* <NavAuthTest /> */}
@@ -15,14 +19,6 @@ const Navigation = () => {
 
                 <NavDropdown.Item>
                     <Link className="dropItem" to={ROUTES.HOME}>home</Link>
-                </NavDropdown.Item>
-
-                <NavDropdown.Item>
-                    <Link className="dropItem" to={ROUTES.LOG_IN}>log in</Link>
-                </NavDropdown.Item>
-
-                <NavDropdown.Item>
-                    <Link className="dropItem" to={ROUTES.SIGN_UP}>sign up</Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
@@ -36,6 +32,19 @@ const Navigation = () => {
                 <NavDropdown.Item>
                     <Link className="dropItem" to={ROUTES.HOWTO}>how to</Link>
                 </NavDropdown.Item>
+
+                <NavDropdown.Item>
+                    <Link className="dropItem" to={ROUTES.SIGN_UP}>sign up</Link>
+                </NavDropdown.Item>
+                {user.loggedIn ?
+                <NavDropdown.Item>
+                    <Link className="dropItem" onClick={doLogOut}>log out</Link>
+                </NavDropdown.Item>
+                :
+                <NavDropdown.Item>
+                    <Link className="dropItem" to={ROUTES.LOG_IN}>log in</Link>
+                </NavDropdown.Item>
+                }
 
             </NavDropdown>
         </Nav>

@@ -18,6 +18,11 @@ const Landing = () => {
         <div className="landingWrapper">
             <div id="landingHead">
                 <h1>welcome to photo-up</h1>
+                <div id="versionInfo">
+                    <h4>beta version</h4>
+                    <p>if you sign up your password is hash protected</p>
+                </div>
+                
             </div>
             <div id="landingButtons">
                 {user.loggedIn ?  

@@ -91,7 +91,9 @@ const MetaSearch = ({ storage }) => {
                         })}
                         {urls.length > 3 ?
                     // <Button>
-                    <Button onClick={toTop}>to top</Button>
+                    <div id="toTopCont">
+                        <Button onClick={toTop}>to top</Button>
+                    </div>
                     // </Button>
                     :
                     <></>}

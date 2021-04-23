@@ -19,7 +19,10 @@ const Login = () => {
         .then((user) => {
             history.push('/')
         }).catch((error) => {
-            console.log(error)
+            alert(error.message)
+            if(error.code === "auth/user-not-found"){
+            history.push('/signup')
+            }
         })
         setEmail("")
     }

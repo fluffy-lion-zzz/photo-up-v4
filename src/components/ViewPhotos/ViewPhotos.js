@@ -57,7 +57,7 @@ const ViewPhotos = ({ storageRef, storage }) => {
     }
     useEffect(() => {
         loader()
-        console.log(imgData.length)
+        // console.log(imgData.length)
     }, [currentFolder])
 
     return (
