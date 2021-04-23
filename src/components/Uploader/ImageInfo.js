@@ -33,7 +33,7 @@ const ImageInfo = ({ imageFile, imageName, setImageName, storageRef, currentFold
         <div className="imageInfo">
             <h4>image info</h4>
             <div id="imageFileInfo">
-            {imageFile ? 
+            {imageFile.name !== null ? 
             <p>original name : {imageFile.name}</p> :
             <></>
             }

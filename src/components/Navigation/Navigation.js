@@ -18,7 +18,7 @@ const Navigation = () => {
             <NavDropdown className="btn-lg" title="Menu" id="nav-dropdown">
 
                 <NavDropdown.Item>
-                    <Link className="dropItem" to={ROUTES.HOME}>home</Link>
+                    <Link className="dropItem" to={ROUTES.HOME}>photos</Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
@@ -33,17 +33,21 @@ const Navigation = () => {
                     <Link className="dropItem" to={ROUTES.HOWTO}>how to</Link>
                 </NavDropdown.Item>
 
-                <NavDropdown.Item>
-                    <Link className="dropItem" to={ROUTES.SIGN_UP}>sign up</Link>
-                </NavDropdown.Item>
+                
                 {user.loggedIn ?
                 <NavDropdown.Item>
                     <Link className="dropItem" onClick={doLogOut}>log out</Link>
                 </NavDropdown.Item>
                 :
+                <>
                 <NavDropdown.Item>
                     <Link className="dropItem" to={ROUTES.LOG_IN}>log in</Link>
                 </NavDropdown.Item>
+
+                <NavDropdown.Item>
+                <Link className="dropItem" to={ROUTES.SIGN_UP}>sign up</Link>
+                </NavDropdown.Item>
+                </>
                 }
 
             </NavDropdown>

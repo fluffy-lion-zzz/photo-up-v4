@@ -35,6 +35,10 @@
 .imageLocation h3 {
     color: #264E9A;
 }
+#locationDisplay {
+    width: 80%;
+    text-align: center;
+}
 #locationTo {
     display: flex;
     flex-direction: column;

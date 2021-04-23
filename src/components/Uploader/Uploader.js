@@ -32,11 +32,15 @@ const Uploader = ({ storageRef }) => {
         setShowLocation(true)
         setShowAddMeta(false)
         setShowAddMeta(false)
+        
+        setShowImageInfo(false)
+        setShowImageInfo(false)
     }
 
     const locationImageViewer = () => {
         setShowLocation(true)
         setShowImage(false)
+        setShowImageInfo(true)
     }
     const handleUpload = (event) => {
         event.preventDefault()
@@ -57,7 +61,7 @@ const Uploader = ({ storageRef }) => {
         .catch((error) => {
             console.log(error)
         })
-        setImageFile(null)
+        setImageFile("")
         setImageName("")
         setCurrentFolder("")
         setShowImage(false)

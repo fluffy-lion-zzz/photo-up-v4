@@ -94,7 +94,7 @@ const UpdateMeta = (props) => {
                       <input
                       type="text"
                       value={input}
-                      onChange={(e) => setInput(e.target.value)}
+                      onChange={(e) => setInput(e.target.value.toLowerCase())}
                       />
                       <Button size="sm" type="submit">Submit Tag</Button>
                   </form>

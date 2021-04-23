@@ -7,10 +7,11 @@ import Button from 'react-bootstrap/Button'
 const SelectFolder = ({ folders, setCurrentFolder, currentFolder, setShowLocation }) => {
 const [newFolder, setNewFolder] = useState("")
  const isInvalid = 
-        newFolder === "" ||
-        newFolder === "--" ||
         currentFolder === "--" ||
         currentFolder === ""
+const isInvalidNew = 
+        newFolder === "" ||
+        newFolder === "--" 
         
     const newFolderHandler = (e) => {
         e.preventDefault()
@@ -19,7 +20,6 @@ const [newFolder, setNewFolder] = useState("")
             console.log("folder already exists")
         } else {
             setCurrentFolder(newFolder)
-            
         }        
     }
     
@@ -45,7 +45,7 @@ const [newFolder, setNewFolder] = useState("")
                         value={newFolder}
                         onChange={(e) => setNewFolder(e.target.value)}
                     />
-                    <button type="submit" disabled={isInvalid}>
+                    <button type="submit" disabled={isInvalidNew}>
                     add folder
                     </button>
                     {currentFolder === "" || currentFolder ==="--" ?
@@ -98,7 +98,9 @@ const ImageLocation = ({ storageRef, currentFolder, setCurrentFolder, setShowLoc
                 setShowLocation={setShowLocation}
             />
             <div id="locationTo">
-                <h3>uploading to {currentFolder}</h3>
+                <div id="locationDisplay">
+                    <h3>uploading to {currentFolder}</h3>
+                </div>
                 <Button disabled={isInvalid} onClick={() => next()}>next</Button>
             </div>
         </div>
