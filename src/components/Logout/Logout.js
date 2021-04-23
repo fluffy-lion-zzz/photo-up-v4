@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { doLogOut } from '../../services/userAccount'
 import UserContext from '../../services/AuthContext'
+import Button from 'react-bootstrap/Button'
 
 const Logout = () => {
     const user = useContext(UserContext)
     return(
-        <div>
-            <h3>logout</h3>       
-            <button onClick={doLogOut}>logout of {user.email}</button>
+        <div> 
+            <Button size="lg" onClick={doLogOut}>Logout</Button>
         </div>
     )
 }

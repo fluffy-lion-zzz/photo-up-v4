@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Login.css'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import app from 'firebase/app'
 import 'firebase/auth'
 import * as ROUTES from '../../services/routes'
@@ -11,13 +11,13 @@ import Button from 'react-bootstrap/Button'
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
+    const history = useHistory()
 
     const handleLogIn = (event) => {
         event.preventDefault()
         app.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
-            console.log(user)
+            history.push('/')
         }).catch((error) => {
             console.log(error)
         })
@@ -50,7 +50,7 @@ const Login = () => {
                     <h3>password...</h3>
                     <input
                     placeholder="enter password"
-                    type="text"
+                    type="password"
                     value={password}
                     onChange={(event) => {
                         setPassword(event.target.value)
