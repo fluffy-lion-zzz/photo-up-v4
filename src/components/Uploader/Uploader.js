@@ -31,8 +31,8 @@ const Uploader = ({ storageRef }) => {
     const reseter = () => {
         setShowLocation(true)
         setShowAddMeta(false)
-        setShowAddMeta(false)
-        
+        // setShowAddMeta(false)
+
         setShowImageInfo(false)
         setShowImageInfo(false)
     }
@@ -40,7 +40,7 @@ const Uploader = ({ storageRef }) => {
     const locationImageViewer = () => {
         setShowLocation(true)
         setShowImage(false)
-        setShowImageInfo(true)
+        setShowImageInfo(false)
     }
     const handleUpload = (event) => {
         event.preventDefault()
