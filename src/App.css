@@ -1,4 +1,4 @@
-#app {
+#app{
   /* border: 4px solid orange; */
   /* display: flex;
   height: 100vh; */
@@ -7,7 +7,15 @@
   /* padding: 5px; */
   overflow-y: scroll;
   margin: 5px;
+  /* width: 60vw; */
   
+}
+@media only screen and (min-width: 600px) {
+  #contents {
+    /* border: 4px solid blue; */
+    margin:auto;
+    width: 80%;
+  }
 }
 .navContainer{
   /* border: solid 4px hotpink; */

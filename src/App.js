@@ -61,7 +61,7 @@ const App = () => {
 <UserProvider value={user}>
     <Router> 
       {/* <p>auth provider</p> */}
-      <div>
+      <div id="contents">
        
       <div className="navContainer">
         <div className="navComponentWrap">
