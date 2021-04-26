@@ -31,8 +31,6 @@ const Uploader = ({ storageRef }) => {
     const reseter = () => {
         setShowLocation(true)
         setShowAddMeta(false)
-        // setShowAddMeta(false)
-
         setShowImageInfo(false)
         setShowImageInfo(false)
     }
