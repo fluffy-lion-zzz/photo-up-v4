@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Navigation from './components/Navigation/Navigation'
 import Login from './components//Login/Login'
-import Logout from './components/Logout/Logout'
 import * as ROUTES from './services/routes'
 import SignUp from './components/SignUp/SignUp'
 import Home from './components/Home/Home'
@@ -18,9 +17,7 @@ import Uploader from './components/Uploader/Uploader'
 import MetaSearch from './components/MetaSearch/MetaSearch'
 import HowTo from './components/HowTo/HowTo'
 import logo from './css-images/logo.png'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ViewPhotos from './components/ViewPhotos/ViewPhotos'
 
 const onAuthStateChange = (callback) => {
   return app.auth().onAuthStateChanged(user => {
@@ -34,8 +31,6 @@ const onAuthStateChange = (callback) => {
 
 const App = () => {
   const [user, setUser] = useState({loggedIn: false})
-  // console.log(user)
-
   const [storageRef, setStorageRef] = useState()
   const [storage, setStorage] = useState()
 
@@ -56,72 +51,43 @@ const App = () => {
 
   return (
     <div id="app">
-      
-{/* <AuthProvider> */}
-<UserProvider value={user}>
-    <Router> 
-      {/* <p>auth provider</p> */}
-      <div id="contents">
-       
-      <div className="navContainer">
-        <div className="navComponentWrap">
-          <Navigation  />
-         
-        </div>
-        <div className="topImageWrap">
-          <img  src={logo}/>
-        </div>
-      </div>
-        <div id="mainBody">
-          <h1 id="titleHead">photo-up</h1>
-          {/* <div>
-            {user.loggedIn  ? <Logout /> : <></>}
-          </div> */}
-          {/* {user.loggedIn ?
-          <div>
-          <Link to={ROUTES.LOG_IN}>login</Link>
-          </div>:
-          <div>
-          <Link to={ROUTES.HOME}>home</Link>
-          </div>
-        } */}
-        <Route exact path="/" render={() => <Landing />} />
-          {/* <AuthStatus /> */}
-          {/* <button onClick={doSignOut}>sign out</button> */}
-          <Route exact path={ROUTES.LANDING} componet={Landing}/>
-            {/* <UserConsumer> */}
-          <Route path={ROUTES.LOG_IN} component={Login}/>
-            {/* </UserConsumer> */}
-          <Route path={ROUTES.SIGN_UP} component={SignUp} />
-          {/* <Route path={ROUTES.HOME} component={Home} /> */}
-          <Route path={ROUTES.HOWTO} component={HowTo} />
-          <PrivateRoute  
-            exact path={ROUTES.HOME}
-            component={() => <Home 
-              storage={storage}
-              storageRef={storageRef}/>}
-          />
-          <PrivateRoute 
-            path={ROUTES.UPLOAD} 
-            component={() => <Uploader storageRef={storageRef} />}
-          />
-          <PrivateRoute
-            path={ROUTES.SEARCH}
-            component={() => <MetaSearch storage={storage} />}
-          />
-          <PrivateRoute path={ROUTES.ACCOUNT} component={Account} />
-          {/* <div className="appCnLogo">
-            <img  src={logo}/>
-          </div> */}
-          
-          </div>
-          
-      </div>
-    </Router>
-    
-      
-</UserProvider>
-    {/* </AuthProvider> */}
+      <UserProvider value={user}>
+          <Router> 
+            <div id="contents">
+            <div className="navContainer">
+              <div className="navComponentWrap">
+                <Navigation  />
+              </div>
+              <div className="topImageWrap">
+                <img  src={logo}/>
+              </div>
+            </div>
+              <div id="mainBody">
+                <h1 id="titleHead">photo-up</h1>
+                <Route exact path="/" render={() => <Landing />} />
+                <Route exact path={ROUTES.LANDING} componet={Landing}/>
+                <Route path={ROUTES.LOG_IN} component={Login}/>
+                <Route path={ROUTES.SIGN_UP} component={SignUp} />
+                <Route path={ROUTES.HOWTO} component={HowTo} />
+                <PrivateRoute  
+                  exact path={ROUTES.HOME}
+                  component={() => <Home 
+                    storage={storage}
+                    storageRef={storageRef}/>}
+                />
+                <PrivateRoute 
+                  path={ROUTES.UPLOAD} 
+                  component={() => <Uploader storageRef={storageRef} />}
+                />
+                <PrivateRoute
+                  path={ROUTES.SEARCH}
+                  component={() => <MetaSearch storage={storage} />}
+                />
+                <PrivateRoute path={ROUTES.ACCOUNT} component={Account} />
+              </div>  
+            </div>
+          </Router>
+      </UserProvider>
     </div>
   );
 }
