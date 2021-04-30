@@ -11,18 +11,15 @@ const ImagePop = ({
     let isInvalid = imageFile === "" || imageFile === null
 
     const handleEvent = (e) => {
-        setImageFile(e.target.files[0])
-        
+        setImageFile(e.target.files[0])        
     }
  
-    console.log("image pop : ", imageFile)
  return(
      <div className="imagePopCont">
          <div id="popWrapper">
             <label for="file"><h3>select an image</h3></label>
             <form 
             onSubmit={handleImageFile}
-
             >
             <div>
                 {reset === false ? 
@@ -32,7 +29,6 @@ const ImagePop = ({
                     name="file"
                     type="file"
                     accept="image/*"
-                    // onChange={(e)=> setFile(e.target.files[0])}
                     onChange={handleEvent}
                     /> 
                 </div>
@@ -42,7 +38,6 @@ const ImagePop = ({
                     name="file"
                     type="file"
                     accept="image/*"
-                    // onChange={(e)=> setFile(e.target.files[0])}
                     onChange={handleEvent}
                     /> 
                 </div>

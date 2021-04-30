@@ -55,16 +55,15 @@ const Uploader = ({ storageRef }) => {
             setUploadComplete(true)
             
         })
-        
         .catch((error) => {
             console.log(error)
         })
+
         setImageFile("")
         setImageName("")
         setCurrentFolder("")
         setShowImage(false)
         setShowAddMeta(true)
-        
     }
     // useEffect(()=> {
     //     setLoading(true)
@@ -83,6 +82,8 @@ const Uploader = ({ storageRef }) => {
         }
         
         setImageFile(imageFile => (image))
+
+        
         setShowImageInfo(true)
         
     }

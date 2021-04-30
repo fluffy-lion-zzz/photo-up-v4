@@ -46,15 +46,15 @@ const UpdateMeta = (props) => {
         console.log(Object.keys(metas).length);
         if (currentMeta !== "tag6") {
           setMetas((prevState) => {
-            return { ...prevState, [currentMeta]: input };
+            return { ...prevState, [currentMeta]: input }
           });
           // addCustomMeta()
           setInput("");
-          let num = currentMeta.slice(-1);
-          console.log(`tag${num++}`);
-          setCurrentMeta(`tag${num++}`);
+          let num = currentMeta.slice(-1)
+          console.log(`tag${num++}`)
+          setCurrentMeta(`tag${num++}`)
         } else {
-          console.log("You have reach the maximum number of metas");
+          alert("You have reach the maximum number of metas");
           setInput("")
         }
       };

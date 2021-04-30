@@ -52,12 +52,11 @@ const ViewPhotos = ({ storageRef, storage }) => {
                 })
             })
             setLoading(false)
+            
         })
-        // setLoading(false)
     }
     useEffect(() => {
         loader()
-        // console.log(imgData.length)
     }, [currentFolder])
 
     return (
@@ -72,10 +71,8 @@ const ViewPhotos = ({ storageRef, storage }) => {
                     storageRef={storageRef}
                 />
             </div>
-            {/* <ViewImages /> */}
             <br/>
             <div id="viewImages">
-                
                 { 
                 loading ?
                 <Loading/> :
@@ -93,8 +90,6 @@ const ViewPhotos = ({ storageRef, storage }) => {
                     <Button onClick={toTop}>to top</Button>
                 </div>
                 }
-                
-                {/* <Button onClick={() => scroll.scrollToTop()}>top</Button> */}
             </div>
         </div>
     )
