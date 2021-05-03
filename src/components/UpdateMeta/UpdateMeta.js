@@ -20,15 +20,13 @@ const UpdateMeta = (props) => {
       const handleSubmit = () => {
         ref.updateMetadata({customMetadata: metas})
           .then((customMetadata) => {
-              console.log(customMetadata)
+              
           }).catch((error) => {
               console.log("error: ", error)
           })
           props.reset ? 
           props.setReset(false) :
           props.setReset(true)
-          
-          // props.setReset(true)
           props.setImagePreview("")
           setMetas({
             tag1: "",
@@ -54,20 +52,17 @@ const UpdateMeta = (props) => {
           console.log(`tag${num++}`)
           setCurrentMeta(`tag${num++}`)
         } else {
-          alert("You have reach the maximum number of metas");
+          alert("You have reach the maximum number of tgs");
           setInput("")
         }
       };
+
       const backHandler = () => {
         props.setShowAddMeta(false)
         props.setShowImage(true)
       }
     return (
         <div className="updateCont">
-          {/* <div className="backCont">
-            <Button onClick={backHandler}>go back</Button>
-          </div> */}
-          
           <div className="imageContainer">
             <img className="individualImages" src={props.imagePreview} />
           </div>
