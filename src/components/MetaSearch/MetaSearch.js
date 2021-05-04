@@ -22,7 +22,6 @@ const MetaSearch = ({ storage }) => {
             })
         })
     }
-
     useEffect(() => {
         loadFiles()
     },[])
@@ -30,7 +29,6 @@ const MetaSearch = ({ storage }) => {
     const handleSearch = (e) => {
         e.preventDefault()
         setUrls([])
-        console.log("hit")
         itemRef.map((item) => {
             storage.ref(item).getMetadata()
             .then((metadata) => {
@@ -45,7 +43,6 @@ const MetaSearch = ({ storage }) => {
                     input === custom.tag4 ||
                     input === custom.tag5 ){
                         let url = metadata.fullPath
-                        console.log("match : ", url)
                         storage.ref(url).getDownloadURL().then((path) => {
                             setUrls(urls => [...urls, path])
                         })
